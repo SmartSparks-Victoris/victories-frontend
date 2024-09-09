@@ -1,12 +1,17 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
+import { useSocket } from '../_contexts/socket-context';
 
 const Form = () => {
+  const { connectSocket, socket, disconnectSocket } = useSocket();
+  console.log('TT');
+  const router = useRouter();
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await fetch('http://localhost:3001/login', {
+      const res = await fetch('http://localhost:3001/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -17,6 +22,10 @@ const Form = () => {
         }),
         credentials: 'include',
       });
+      const result = await res.json();
+      const user = result.user;
+      console.log(user);
+      connectSocket(user.id);
     } catch (error) {
       console.error('Error:', error);
       alert('Error submitting form.');
@@ -30,10 +39,17 @@ const Form = () => {
         credentials: 'include',
       });
       alert('You have been logged out.');
+      socket.emit('logout', 1);
+      // disconnectSocket();
     } catch (error) {
       console.error('Error:', error);
       alert('Error logging out.');
     }
+  }
+
+  function handleButtonClick() {
+    console.log(socket);
+    socket.emit('message', { message: 'Hello', id: 1 });
   }
 
   return (
@@ -53,6 +69,7 @@ const Form = () => {
       </form>
 
       <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleButtonClick}>Change</button>
     </>
   );
 };

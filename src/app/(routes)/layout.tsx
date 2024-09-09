@@ -1,7 +1,12 @@
 import './globals.css';
 
+import { cookies, headers } from 'next/headers';
+
 import type { Metadata } from 'next';
+import SocketComponent from '../_components/socket-component';
+import { SocketProvider } from '../_contexts/socket-context';
 import localFont from 'next/font/local';
+import { parseJwt } from '../_utils/auth';
 
 const geistSans = localFont({
   src: '../_fonts/GeistVF.woff',
@@ -24,11 +29,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = headers();
+  const host = headersList.get('host');
+  console.log('HOST: ', host);
+  const user = parseJwt(cookies().get('token')?.value);
+
+  // if (host !== 'localhost:3000' && !user) {
+  //   return redirect('http://localhost:3000');
+  // }
+
+  // if (host === 'localhost:3000' && user) {
+  //   // return redirect(`${user.subdomain}.localhost:3000`);
+  //   return redirect('home.localhost:3000');
+  // }
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <SocketProvider>
+          {children}
+          <SocketComponent user={user} />
+        </SocketProvider>
       </body>
     </html>
   );
