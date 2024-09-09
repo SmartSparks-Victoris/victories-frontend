@@ -3,8 +3,8 @@ import { cookies } from 'next/headers';
 // import { headers } from 'next/headers';
 import { parseJwt } from '../_utils/auth';
 
-export default function Home() {
-  const user = parseJwt(cookies().get('token')?.value);
+export default async function Home() {
+  const user = parseJwt(await cookies().get('token')?.value);
   // const headersList = headers();
   // const host = headersList.get('host'); // e.g., 'subdomain.example.com'
   // const domain = host;

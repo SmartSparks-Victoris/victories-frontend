@@ -38,7 +38,7 @@ export function middleware(request: NextRequest) {
   // if (host === 'a.localhost:3000') {
   //   return NextResponse.redirect('http://localhost:3000');
   // }
-  console.log(request);
+  // console.log(request);
 
   return NextResponse.next();
 }

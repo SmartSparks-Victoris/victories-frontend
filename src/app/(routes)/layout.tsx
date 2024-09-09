@@ -29,9 +29,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = headers();
-  const host = headersList.get('host');
-  console.log('HOST: ', host);
+  // const headersList = headers();
+  // const host = headersList.get('host');
+  // console.log('HOST: ', host);
   const user = parseJwt(cookies().get('token')?.value);
 
   // if (host !== 'localhost:3000' && !user) {
