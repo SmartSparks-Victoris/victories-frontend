@@ -31,7 +31,7 @@ const GuestNavbar = () => {
   return (
     <nav
       ref={navRef}
-      className="h-[var(--guestNav)] bg-gray-300 p-4 flex items-center fixed w-full top-0 left-0">
+      className="h-[var(--guestNav)] bg-gray-300 p-4 flex items-center fixed w-full top-0 left-0 z-20">
       <div className="container mx-auto flex justify-between items-center">
         <Link href={'/'}>Logo</Link>
         <button className="sm:hidden" onClick={handleNavButtonExpanderClick}>
