@@ -12,12 +12,12 @@ const config: Config = {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },
-      spacing: {
-        guestNav: '80px',
-      },
-      height: {
-        guestNav: '80px',
-      },
+      // spacing: {
+      //   guestNav: '80px',
+      // },
+      // height: {
+      //   guestNav: '80px',
+      // },
     },
   },
   plugins: [],

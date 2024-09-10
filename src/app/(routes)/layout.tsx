@@ -48,7 +48,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased ${
-          !user && 'pt-guestNav'
+          !user && 'pt-[var(--guestNav)]'
         }`}>
         <SocketProvider>
           {!user && <GuestNavbar />}

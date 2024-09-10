@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --guestNav: 80px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,3 +26,4 @@ body {
     text-wrap: balance;
   }
 }
+

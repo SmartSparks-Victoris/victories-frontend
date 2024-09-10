@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer className="flex flex-col gap-4 justify-center bg-stone-400">
-      <div className="grid grid-cols-[repeat(auto-fit,_minmax(172px,_1fr))] md:grid-cols-[repeat(auto-fit,_minmax(172px,_1fr))] gap-[18px]">
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(172px,_1fr))] md:grid-cols-[repeat(auto-fit,_minmax(172px,_1fr))] gap-[18px] container mx-auto">
         <Link href={'/'}>Logo</Link>
         <nav className="flex flex-col">
           <h3>Quick Links</h3>

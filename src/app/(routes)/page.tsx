@@ -1,4 +1,8 @@
-import Form from '../_components/test-form';
+import AboutSection from '../_components/home-sections/about';
+import ContactSection from '../_components/home-sections/contact';
+// import Form from '../_components/test-form';
+import Landing from '../_components/home-sections/landing';
+import ServicesSection from '../_components/home-sections/services';
 import { cookies } from 'next/headers';
 // import { headers } from 'next/headers';
 import { parseJwt } from '../_utils/auth';
@@ -14,12 +18,17 @@ export default async function Home() {
 
   return (
     <>
-      <div>
+      {/* <div>
         {user && JSON.stringify(user)}
         Hello {!user && 'Guest'}
         {user && user.name}
       </div>
-      <Form />
+      <Form /> */}
+
+      <Landing />
+      <AboutSection />
+      <ServicesSection />
+      <ContactSection />
     </>
   );
 }
