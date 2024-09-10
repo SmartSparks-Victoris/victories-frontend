@@ -1,6 +1,7 @@
 import { Socket, io } from 'socket.io-client';
 
 import { UserId } from '../_types/user.types';
+import { revalidateLogin } from '../_actions/login';
 
 export let socket: Socket;
 
@@ -13,7 +14,8 @@ export const initSocket = (id: UserId) => {
       console.log('Message from server:', data);
     });
 
-    socket.on('logout', () => {
+    socket.on('logout', async () => {
+      await revalidateLogin();
       socket.disconnect();
     });
 

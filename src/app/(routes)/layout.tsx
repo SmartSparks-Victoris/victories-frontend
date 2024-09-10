@@ -1,10 +1,11 @@
 import './globals.css';
 
-import { cookies, headers } from 'next/headers';
-
+import Footer from '../_components/navigation/footer';
+import GuestNavbar from '../_components/navigation/guest-navbar';
 import type { Metadata } from 'next';
 import SocketComponent from '../_components/socket-component';
 import { SocketProvider } from '../_contexts/socket-context';
+import { cookies } from 'next/headers';
 import localFont from 'next/font/local';
 import { parseJwt } from '../_utils/auth';
 
@@ -46,9 +47,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased ${
+          !user && 'pt-guestNav'
+        }`}>
         <SocketProvider>
+          {!user && <GuestNavbar />}
           {children}
+          {!user && <Footer />}
           <SocketComponent user={user} />
         </SocketProvider>
       </body>
