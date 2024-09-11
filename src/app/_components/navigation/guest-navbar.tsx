@@ -52,6 +52,9 @@ const GuestNavbar = () => {
               <Link href={'/contact'}>Contact</Link>
             </li>
             <li>
+              <Link href={'/login'}>Login</Link>
+            </li>
+            <li>
               <Link href={'/join'}>Join</Link>
             </li>
           </ul>
