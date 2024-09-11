@@ -44,7 +44,8 @@ const ContactForm = () => {
           <div>
             <textarea
               {...register('message')}
-              className="resize-none"></textarea>
+              className="resize-none"
+              placeholder="Enter Your Message"></textarea>
             {errors.message && <p>{errors.message.message}</p>}
           </div>
           <input type="submit" value="join" />
