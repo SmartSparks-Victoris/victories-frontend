@@ -47,7 +47,7 @@ const JoinForm = () => {
   function handleLoginFailure() {}
 
   return (
-    <section className="h-[calc(100vh-var(--guestNav))] bg-green-800 flex  justify-center items-center">
+    <section className="h-[calc(100vh-var(--guestNav))]  flex  justify-center items-center">
       <div className="container mx-auto flex flex-col justify-center items-center">
         <div className="h-[50px] w-[50px] bg-gray-500"></div>
         <h2>Tell Us About Your Business</h2>

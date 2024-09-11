@@ -3,7 +3,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col gap-4 justify-center bg-stone-400">
+    <footer className="flex flex-col gap-8 justify-center bg-gray-300 py-[40px]">
       <div className="grid grid-cols-[repeat(auto-fit,_minmax(172px,_1fr))] md:grid-cols-[repeat(auto-fit,_minmax(172px,_1fr))] gap-[18px] container mx-auto">
         <Link href={'/'}>Logo</Link>
         <nav className="flex flex-col">
@@ -41,8 +41,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-green-400 w-[90%] mx-auto h-[4px]"></div>
-      <p className="bg-gray-400 text-center">
+      <div className="bg-slate-400 w-[90%] mx-auto h-[4px]"></div>
+      <p className="text-center">
         &copy; {new Date().getFullYear()} Project Name, All Right Reserved
       </p>
     </footer>

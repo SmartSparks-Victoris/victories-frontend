@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const TextInput = ({ label, type, name, error, register, placeholder }) => {
+import { TextInputProps } from '@/app/_types/text-input.types';
+
+const TextInput: FC<TextInputProps> = ({
+  label,
+  type,
+  name,
+  error,
+  register,
+  placeholder,
+}) => {
   return (
     <div>
       <label htmlFor={name}>{label}</label>

@@ -3,6 +3,7 @@
 import * as z from 'zod';
 
 import React from 'react';
+import TextInput from '../shared-ui/text-input';
 import contactSchema from '@/app/_schemas/contact';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -21,26 +22,26 @@ const ContactForm = () => {
   function handleLoginFailure() {}
 
   return (
-    <section className="h-[calc(100vh-var(--guestNav))] bg-green-800 flex  justify-center items-center">
+    <section className="min-h-[calc(100vh-var(--guestNav))]  flex  justify-center items-center">
       <div className="container mx-auto flex justify-center gap-8 flex-wrap items-center">
         <div className="h-[200px] w-[200px] bg-gray-500"></div>
         <form onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}>
-          <div>
-            <input
-              type="text"
-              {...register('name')}
-              placeholder="Enter Your Name"
-            />
-            {errors.name && <p>{errors.name.message}</p>}
-          </div>
-          <div>
-            <input
-              type="email"
-              {...register('email')}
-              placeholder="Enter Your Email"
-            />
-            {errors.email && <p>{errors.email.message}</p>}
-          </div>
+          <TextInput
+            placeholder="Enter Your Name"
+            type="text"
+            name="name"
+            label=""
+            error={errors.name}
+            register={register}
+          />
+          <TextInput
+            placeholder="Enter Your Email"
+            type="email"
+            name="email"
+            label=""
+            error={errors.email}
+            register={register}
+          />
           <div>
             <textarea
               {...register('message')}

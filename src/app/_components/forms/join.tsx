@@ -47,8 +47,8 @@ const JoinForm = () => {
   function handleLoginFailure() {}
 
   return (
-    <section className="h-[calc(100vh-var(--guestNav))] bg-green-800 flex  justify-center items-center">
-      <div className="container mx-auto flex flex-col justify-center items-center">
+    <section className="min-h-[calc(100vh-var(--guestNav))]  flex  justify-center items-center">
+      <div className="container mx-auto flex flex-col justify-center items-center gap-8">
         <div className="h-[50px] w-[50px] bg-gray-500"></div>
         <h2>Tell Us About Your Business</h2>
         <p>Get a personalized trial subscription</p>
@@ -57,7 +57,7 @@ const JoinForm = () => {
           onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}
           className="flex flex-col justify-center">
           {step === 0 && (
-            <div className="flex justify-between gap-16">
+            <div className="flex justify-between gap-16 flex-col lg:flex-row items-center">
               <div className="flex flex-col gap-4">
                 <TextInput
                   placeholder="Enter Company Name"

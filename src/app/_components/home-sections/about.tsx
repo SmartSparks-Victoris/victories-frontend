@@ -3,7 +3,7 @@ import React from 'react';
 
 const AboutSection = () => {
   return (
-    <section className="h-[calc(100vh-var(--guestNav))] bg-green-800 flex justify-center items-center">
+    <section className="min-h-[calc(100vh-var(--guestNav))]  flex justify-center items-center">
       <div className="container mx-auto flex sm:flex-row flex-col justify-between items-center gap-4">
         <div className="image w-[200px] h-[200px] bg-gray-400 shrink-0"></div>
         <div className="text">

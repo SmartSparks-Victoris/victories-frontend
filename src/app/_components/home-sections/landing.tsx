@@ -3,7 +3,7 @@ import React from 'react';
 
 const Landing = () => {
   return (
-    <section className="h-[calc(100vh-var(--guestNav))] bg-green-800 flex justify-center items-center">
+    <section className="min-h-[calc(100vh-var(--guestNav))]  flex justify-center items-center">
       <div className="container mx-auto flex sm:flex-row flex-col justify-between items-center gap-4">
         <div className="text">
           <h2>WE CONNECT YOU WITH YOUR CUSTOMERS</h2>

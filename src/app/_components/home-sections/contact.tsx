@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactSection = () => {
   return (
-    <section className="h-[calc(100vh-var(--guestNav))] bg-green-800 flex justify-center items-center">
+    <section className="min-h-[calc(100vh-var(--guestNav))]  flex justify-center items-center">
       <div className="container mx-auto flex flex-col items-center gap-16">
         <div className="text-center">
           <h3>Contact</h3>

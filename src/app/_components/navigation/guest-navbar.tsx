@@ -31,15 +31,15 @@ const GuestNavbar = () => {
   return (
     <nav
       ref={navRef}
-      className="h-[var(--guestNav)] bg-gray-300 p-4 flex items-center fixed w-full top-0 left-0 z-20">
+      className="h-[var(--guestNav)] bg-gray-300 py-4 flex items-center fixed w-full top-0 left-0 z-20">
       <div className="container mx-auto flex justify-between items-center">
         <Link href={'/'}>Logo</Link>
         <button className="sm:hidden" onClick={handleNavButtonExpanderClick}>
           =
         </button>
-        <div className="bg-stone-400 absolute sm:relative top-[var(--guestNav)] sm:top-0 left-0 w-full">
+        <div className="absolute sm:relative top-[var(--guestNav)] sm:top-0 left-0 w-full">
           <ul
-            className={`sm:flex gap-4 flex-col sm:flex-row sm:justify-end bg-slate-600 container mx-auto p-4 ${
+            className={`sm:flex gap-4 flex-col sm:flex-row sm:justify-end container mx-auto p-4 ${
               isOpen ? 'flex' : 'hidden'
             }`}>
             <li>

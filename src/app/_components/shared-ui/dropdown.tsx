@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const DropDown = ({ name, label, register, array, error }) => {
+import { DropDownProps } from '@/app/_types/dropdown.types';
+
+const DropDown: FC<DropDownProps> = ({
+  name,
+  label,
+  register,
+  array,
+  error,
+}) => {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
