@@ -6,6 +6,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --guestNav: 80px;
+  --adminNav: 200px;
+  --adminNavSmall: 80px;
 }
 
 @media (prefers-color-scheme: dark) {

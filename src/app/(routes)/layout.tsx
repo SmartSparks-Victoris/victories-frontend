@@ -1,5 +1,6 @@
 import './globals.css';
 
+import AdminNavbar from '../_components/navigation/admin-navbar';
 import Footer from '../_components/navigation/footer';
 import GuestNavbar from '../_components/navigation/guest-navbar';
 import type { Metadata } from 'next';
@@ -49,9 +50,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased ${
           !user && 'pt-[var(--guestNav)]'
-        }`}>
+        } ${user && 'pl-[var(--adminNav)]'}`}>
         <SocketProvider>
           {!user && <GuestNavbar />}
+          {user && <AdminNavbar />}
           {children}
           {!user && <Footer />}
           <SocketComponent user={user} />

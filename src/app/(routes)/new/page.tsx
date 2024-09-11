@@ -1,7 +1,12 @@
+import Form from '@/app/_components/test-form';
 import React from 'react';
 
 const page = () => {
-  return <div>NEW</div>;
+  return (
+    <>
+      <Form />
+    </>
+  );
 };
 
 export default page;

@@ -82,9 +82,7 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<z.infer<typeof loginSchema>>({
-    resolver: zodResolver(loginSchema),
-  });
+  } = useForm();
 
   return (
     <>

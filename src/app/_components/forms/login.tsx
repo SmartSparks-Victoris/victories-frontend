@@ -5,10 +5,16 @@ import * as z from 'zod';
 import React from 'react';
 import TextInput from '../shared-ui/text-input';
 import loginSchema from '@/app/_schemas/login';
+import { revalidateLogin } from '@/app/_actions/login';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { useSocket } from '@/app/_contexts/socket-context';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const LoginForm = () => {
+  const { connectSocket } = useSocket();
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -17,7 +23,30 @@ const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  function handleLoginSuccess() {}
+  async function handleLoginSuccess(data) {
+    try {
+      const res = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: data.username,
+          password: data.password,
+        }),
+        credentials: 'include',
+      });
+      const result = await res.json();
+      const user = result.user;
+      console.log(user);
+      connectSocket(user.id);
+      await revalidateLogin();
+      router.push('/');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error submitting form.');
+    }
+  }
 
   function handleLoginFailure() {}
 
