@@ -1,49 +1,36 @@
 // import { cookies, headers } from 'next/headers';
 
 import { NextRequest, NextResponse } from 'next/server';
-// import { parseJwt } from './app/_utils/auth';
+import { adminRoutes, guestRoutes, publicRoutes } from './routes';
+
+import { parseJwt } from './app/_utils/auth';
 
 export function middleware(request: NextRequest) {
-  // const headersList = headers();
-  // const host = headersList.get('host');
-  // console.log(host);
-  // const subdomains = host?.split('.');
-  // if (cookies().get('token') === undefined) {
-  //   return NextResponse.redirect('http://redirect.localhost:3000');
-  // }
+  const token = request.cookies.get('token')?.value;
+  const user = parseJwt(token);
+  const pathname = request.nextUrl.pathname;
 
-  // const user = parseJwt(cookies().get('token')?.value);
+  if (publicRoutes.includes(pathname)) {
+    return NextResponse.next();
+  }
 
-  // if (user && host === 'localhost:3000') {
-  //   console.log('USER IS: ', user);
-  //   console.log('HOST IS: ', host);
-  //   return NextResponse.redirect(`http://${user.subdomain}.localhost:3000`);
-  // }
+  if (user?.role === 'admin' && adminRoutes.includes(pathname)) {
+    return NextResponse.next();
+  }
 
-  // console.log(subdomains);
+  if (!user && adminRoutes.includes(pathname)) {
+    return NextResponse.redirect(
+      new URL(`/login?redirect=${pathname}`, request.url),
+    );
+  }
 
-  // if (host === 'redirect.localhost:3000') {
-  //   console.log('YEs');
-  //   return NextResponse.redirect('http://localhost:3000');
-  // }
+  if (!user && guestRoutes.includes(pathname)) {
+    return NextResponse.next();
+  }
 
-  // if (subdomains && subdomains?.length > 2) {
-  //   return NextResponse.redirect('http://b.localhost:3000');
-  // }
-
-  // if (host === 'localhost:3000') {
-  //   return NextResponse.redirect('http://home.localhost:3000');
-  // }
-
-  // if (host === 'a.localhost:3000') {
-  //   return NextResponse.redirect('http://localhost:3000');
-  // }
-  // console.log(request);
-
-  return NextResponse.next();
+  return NextResponse.redirect(new URL('/', request.url));
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher:
     '/((?!api|_next/static|_next/image|favicon.ico|icon.ico|sitemap.xml|robots.txt).*)',

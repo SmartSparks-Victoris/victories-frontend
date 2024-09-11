@@ -19,16 +19,16 @@ const AdminNavbar = () => {
       alert('You have been logged out.');
       socket.emit('logout', 1);
       // disconnectSocket();
+      await revalidateLogin();
+      router.push('/');
     } catch (error) {
       console.error('Error:', error);
       alert('Error logging out.');
     }
-    await revalidateLogin();
-    router.push('/');
   }
 
   return (
-    <nav className="w-[var(--adminNavSmall)] md:w-[var(--adminNav)] min-h-[100vh] fixed left-0 top-0 bg-green-400">
+    <nav className="w-[var(--adminNavSmall)] md:w-[var(--adminNav)] min-h-[100vh] fixed left-0 top-0 bg-slate-300">
       <div>
         <Link href="/">Smart Sparks</Link>
         <ul>

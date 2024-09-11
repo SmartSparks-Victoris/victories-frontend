@@ -8,6 +8,7 @@
   --guestNav: 80px;
   --adminNav: 200px;
   --adminNavSmall: 80px;
+  --searchNav: 40px;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,14 +1,15 @@
 import './globals.css';
 
-import AdminNavbar from '../_components/navigation/admin-navbar';
-import Footer from '../_components/navigation/footer';
-import GuestNavbar from '../_components/navigation/guest-navbar';
+import AdminNavbar from '@/app/_components/navigation/admin-navbar';
+import Footer from '@/app/_components/navigation/footer';
+import GuestNavbar from '@/app/_components/navigation/guest-navbar';
 import type { Metadata } from 'next';
-import SocketComponent from '../_components/socket-component';
-import { SocketProvider } from '../_contexts/socket-context';
+import SearchBar from '../_components/navigation/searchbar';
+import SocketComponent from '@/app/_components/socket-component';
+import { SocketProvider } from '@/app/_contexts/socket-context';
 import { cookies } from 'next/headers';
 import localFont from 'next/font/local';
-import { parseJwt } from '../_utils/auth';
+import { parseJwt } from '@/app/_utils/auth';
 
 const geistSans = localFont({
   src: '../_fonts/GeistVF.woff',
@@ -50,10 +51,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased ${
           !user && 'pt-[var(--guestNav)]'
-        } ${user && 'pl-[var(--adminNav)]'}`}>
+        } ${
+          user &&
+          'pl-[var(--adminNavSmall)] md:pl-[var(--adminNav)] pt-[var(--searchNav)]'
+        }`}>
         <SocketProvider>
           {!user && <GuestNavbar />}
-          {user && <AdminNavbar />}
+          {user && (
+            <>
+              <AdminNavbar />
+              <SearchBar />
+            </>
+          )}
           {children}
           {!user && <Footer />}
           <SocketComponent user={user} />

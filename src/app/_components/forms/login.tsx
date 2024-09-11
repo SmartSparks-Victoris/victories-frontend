@@ -2,7 +2,8 @@
 
 import * as z from 'zod';
 
-import React from 'react';
+import React, { FC } from 'react';
+
 import TextInput from '../shared-ui/text-input';
 import loginSchema from '@/app/_schemas/login';
 import { revalidateLogin } from '@/app/_actions/login';
@@ -11,7 +12,7 @@ import { useRouter } from 'next/navigation';
 import { useSocket } from '@/app/_contexts/socket-context';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-const LoginForm = () => {
+const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
   const { connectSocket } = useSocket();
   const router = useRouter();
 
@@ -41,7 +42,7 @@ const LoginForm = () => {
       console.log(user);
       connectSocket(user.id);
       await revalidateLogin();
-      router.push('/');
+      router.push(redirect);
     } catch (error) {
       console.error('Error:', error);
       alert('Error submitting form.');
