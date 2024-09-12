@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 const Results = ({ results }) => {
-  console.log(results);
   const router = useRouter();
   const searchParams = useSearchParams();
   const [filteredResults, setFilteredResults] = useState(null);
@@ -12,7 +11,7 @@ const Results = ({ results }) => {
     searchParams.get('order') || 'desc',
   );
   const [sortKeyView, setSortKeyView] = useState(
-    searchParams.get('key') || 'urgent',
+    searchParams.get('key') || 'time',
   );
 
   function handleToggleSort() {
@@ -39,22 +38,10 @@ const Results = ({ results }) => {
   useEffect(() => {
     const category = Number(searchParams.get('category'));
     const status = Number(searchParams.get('status'));
-    const sortKey = searchParams.get('key') || 'urgent'; // Default sort key
+    const sortKey = searchParams.get('key') || 'time'; // Default sort key
     const sortOrder = searchParams.get('order') || 'desc'; // Default sort order
 
     let myFilteredResults = results;
-
-    if (category) {
-      myFilteredResults = myFilteredResults.filter(
-        (result) => result.category_id === category,
-      );
-    }
-
-    if (status) {
-      myFilteredResults = myFilteredResults.filter(
-        (result) => result.status_id === status,
-      );
-    }
 
     console.log('MY');
     console.log(myFilteredResults);
@@ -71,8 +58,9 @@ const Results = ({ results }) => {
     setFilteredResults(myFilteredResults);
   }, [searchParams, results]);
 
-  function handleRowClick(id) {
-    router.push(`/tickets/${id}`);
+  function handleCustomerClick(id) {
+    // Navigate to customer page with selected customer id
+    router.push(`/customers/${id}`);
   }
 
   return (
@@ -80,44 +68,15 @@ const Results = ({ results }) => {
       <table>
         <thead>
           <tr>
+            <th>Customer</th>
             <th>
-              <button onClick={() => handleSetSortKey('urgent')}>Urgent</button>
-            </th>
-            <th>
-              <button onClick={() => handleSetSortKey('status')}>Status</button>
-            </th>
-            <th>
-              <button onClick={() => handleSetSortKey('title')}>Title</button>
-            </th>
-            <th>
-              <button onClick={() => handleSetSortKey('category')}>
-                Category
+              <button onClick={() => handleSetSortKey('contact')}>
+                Contact
               </button>
             </th>
             <th>
-              <button onClick={() => handleSetSortKey('admin')}>Admin</button>
+              <button onClick={() => handleSetSortKey('time')}>Time</button>
             </th>
-            <th>
-              <button onClick={() => handleSetSortKey('date')}>Date</button>
-            </th>
-            <th>
-              <button onClick={() => handleSetSortKey('sentiment')}>
-                Sentiment
-              </button>
-            </th>
-            <th>
-              <button onClick={() => handleSetSortKey('degree')}>
-                Degree Of Sentiment
-              </button>
-            </th>
-            {/* <th>Urgent</th>
-            <th>Status</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Sentiment</th>
-            <th>Degree Of Sentiment</th> */}
           </tr>
         </thead>
         <tbody>
@@ -125,16 +84,11 @@ const Results = ({ results }) => {
             filteredResults.map((result) => (
               <tr
                 key={result.id}
-                onClick={() => handleRowClick(result.id)}
+                onClick={() => handleCustomerClick(result.id)}
                 className="cursor-pointer">
-                <td>{result.urgent}</td>
-                <td>{result.status}</td>
-                <td>{result.title}</td>
-                <td>{result.category}</td>
-                <td>{result.admin}</td>
-                <td>{result.date}</td>
-                <td>{result.sentiment}</td>
-                <td>{result.degree_of_sentiment}</td>
+                <td>{result.img}</td>
+                <td>{result.contact}</td>
+                <td>{result.time}</td>
               </tr>
             ))}
         </tbody>

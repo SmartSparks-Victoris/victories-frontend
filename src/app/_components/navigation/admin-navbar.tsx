@@ -33,7 +33,7 @@ const AdminNavbar = () => {
         <Link href="/">Smart Sparks</Link>
         <ul>
           <li>
-            <Link href="/views">Views</Link>
+            <Link href="/tickets">Tickets</Link>
           </li>
           <li>
             <Link href="/customers">Customers</Link>

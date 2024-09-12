@@ -1,10 +1,15 @@
 export const publicRoutes = ['/'];
 export const adminRoutes = [
-  '/views',
+  '/tickets',
+  '/tickets/1',
   '/customers',
+  '/customers/1',
   '/pricing',
   '/settings',
   '/profile',
+  '/search',
+  '/admins',
+  '/admins/1',
 ];
 export const guestRoutes = [
   '/about',
@@ -13,3 +18,4 @@ export const guestRoutes = [
   '/login',
   '/join',
 ];
+

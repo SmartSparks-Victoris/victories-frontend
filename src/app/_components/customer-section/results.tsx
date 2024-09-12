@@ -37,24 +37,10 @@ const Results = ({ results }) => {
   }
 
   useEffect(() => {
-    const category = Number(searchParams.get('category'));
-    const status = Number(searchParams.get('status'));
     const sortKey = searchParams.get('key') || 'urgent'; // Default sort key
     const sortOrder = searchParams.get('order') || 'desc'; // Default sort order
 
     let myFilteredResults = results;
-
-    if (category) {
-      myFilteredResults = myFilteredResults.filter(
-        (result) => result.category_id === category,
-      );
-    }
-
-    if (status) {
-      myFilteredResults = myFilteredResults.filter(
-        (result) => result.status_id === status,
-      );
-    }
 
     console.log('MY');
     console.log(myFilteredResults);
@@ -71,18 +57,11 @@ const Results = ({ results }) => {
     setFilteredResults(myFilteredResults);
   }, [searchParams, results]);
 
-  function handleRowClick(id) {
-    router.push(`/tickets/${id}`);
-  }
-
   return (
     <section className="flex">
       <table>
         <thead>
           <tr>
-            <th>
-              <button onClick={() => handleSetSortKey('urgent')}>Urgent</button>
-            </th>
             <th>
               <button onClick={() => handleSetSortKey('status')}>Status</button>
             </th>
@@ -110,24 +89,12 @@ const Results = ({ results }) => {
                 Degree Of Sentiment
               </button>
             </th>
-            {/* <th>Urgent</th>
-            <th>Status</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Sentiment</th>
-            <th>Degree Of Sentiment</th> */}
           </tr>
         </thead>
         <tbody>
           {filteredResults &&
             filteredResults.map((result) => (
-              <tr
-                key={result.id}
-                onClick={() => handleRowClick(result.id)}
-                className="cursor-pointer">
-                <td>{result.urgent}</td>
+              <tr key={result.id}>
                 <td>{result.status}</td>
                 <td>{result.title}</td>
                 <td>{result.category}</td>

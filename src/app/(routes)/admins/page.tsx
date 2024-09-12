@@ -1,7 +1,7 @@
 import React from 'react';
-import Results from '@/app/_components/customers-section/results';
+import Results from '@/app/_components/admins-sections/page';
 
-const customers = [
+const admins = [
   {
     img: 'https://example.com/images/customer1.jpg',
     id: 1,
@@ -67,7 +67,7 @@ const customers = [
 const page = () => {
   return (
     <>
-      <Results results={customers} />
+      <Results results={admins} />
     </>
   );
 };
