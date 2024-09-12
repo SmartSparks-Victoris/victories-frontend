@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Smart Sparks
+
+## Project Overview
+
+The project aims to develop a comprehensive customer service platform that integrates with popular messaging services such as WhatsApp and Messenger. The primary objective is to streamline the process of managing and classifying user inquiries and support tickets, enabling businesses to deliver efficient and responsive customer service. This platform will serve as a centralized hub where all customer interactions, regardless of the communication channel, are aggregated, managed, and resolved.
+
+## Technologies Used
+
+- **Next.js 14**: For server-side rendering and static site generation.
+- **React**: For building the user interface components.
+- **TypeScript**: For type safety and better development experience.
+- **Socket.IO**: For real-time communication.
+- **Tailwind CSS**: For styling the application.
+
+## Application Structure
+
+The application is organized into three different views:
+
+1. **Guest View**:
+
+   - **Purpose**: Allows guests to explore information about the service and learn what will be offered if they subscribe.
+   - **Features**: Provides details on services, benefits, and subscription options.
+
+2. **Owner View**:
+
+   - **Purpose**: Designed for shop owners or businesses who need to manage and categorize different types of feedback.
+   - **Features**: Includes tools for managing feedback, viewing statistics, and interacting with customer inquiries.
+
+3. **Admin View**:
+
+   - **Purpose**: Admins assist owners by managing their tasks with some limitations compared to owners.
+   - **Features**: Provides access to manage user accounts, view reports, and perform administrative tasks.
 
 ## Getting Started
 
-First, run the development server:
+To run the application locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Set up the Testing Server**:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   - Open a new terminal and navigate to the main project folder
+   - Navigate to the `server` directory:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+     ```bash
+     cd server
+     ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   - Install dependencies:
 
-## Learn More
+     ```bash
+     npm install
+     ```
 
-To learn more about Next.js, take a look at the following resources:
+   - Start the server using `nodemon`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+     ```bash
+     nodemon server.js
+     ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Run the Client**:
 
-## Deploy on Vercel
+   - Open a new terminal and navigate to the main project folder
+   - Install client-side dependencies:
+     ```bash
+     npm install
+     ```
+   - Start the development server:
+     ```bash
+     npm run dev
+     ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Testing the Application**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   - Access the client application at [http://localhost:3000](http://localhost:3000).
+   - Use the following credentials to test different functionalities:
+     - **Admin**: Username: `john`, Password: `any password`
+     - **Owner**: Username: `jane`, Password: `any password`
+
+## Current State
+
+The application is currently in its initial implementation phase. The structure represents the foundational codebase, but the UI design and final features are still in development.
+
+## Summary
+
+Feel free to explore and test the application by navigating to the client URL. This README provides an overview of the application’s setup and the roles available. For more details or specific instructions, refer to the codebase or contact the development team.
+
