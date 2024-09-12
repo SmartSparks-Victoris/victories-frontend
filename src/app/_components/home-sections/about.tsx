@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import CustomLink from '../navigation/custom-link';
 import React from 'react';
 
 const AboutSection = () => {
@@ -16,7 +16,7 @@ const AboutSection = () => {
             enhance communication and deliver exceptional service{' '}
           </p>
           <div>
-            <Link href="/about">Read More</Link>
+            <CustomLink href={'/about'}>Read More</CustomLink>
           </div>
         </div>
       </div>

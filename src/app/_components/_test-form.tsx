@@ -7,7 +7,7 @@ import React, { useTransition } from 'react';
 import loginSchema from '../_schemas/login';
 import { revalidateLogin } from '../_actions/login';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'nextjs-toploader/app';
 import { useSocket } from '../_contexts/socket-context';
 import { zodResolver } from '@hookform/resolvers/zod';
 

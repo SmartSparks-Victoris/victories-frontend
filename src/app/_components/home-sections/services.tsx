@@ -1,3 +1,4 @@
+import CustomLink from '../navigation/custom-link';
 import Link from 'next/link';
 import React from 'react';
 
@@ -14,7 +15,7 @@ const ServicesSection = () => {
             help you deliver efficient, responsive, and personalized support.{' '}
           </p>
           <div>
-            <Link href="/services">Read More</Link>
+            <CustomLink href="/services">Read More</CustomLink>
           </div>
         </div>
         <div className="image w-[200px] h-[200px] bg-gray-400 shrink-0"></div>

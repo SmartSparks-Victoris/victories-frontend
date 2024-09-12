@@ -2,11 +2,12 @@
 
 import * as z from 'zod';
 
+import CustomLink from './custom-link';
 import Link from 'next/link';
 import React from 'react';
 import semanticSearchSchema from '@/app/_schemas/semantic-search';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'nextjs-toploader/app';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const SearchBar = () => {
@@ -41,7 +42,7 @@ const SearchBar = () => {
         {errors.query && <p>{errors.query.message}</p>}
         <button type="submit">Search</button>
       </form>
-      <Link href="/profile">Profile</Link>
+      <CustomLink href="/profile">Profile</CustomLink>
     </nav>
   );
 };

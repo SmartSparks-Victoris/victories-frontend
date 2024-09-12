@@ -1,3 +1,4 @@
+import CustomLink from '../navigation/custom-link';
 import Link from 'next/link';
 import React from 'react';
 
@@ -13,8 +14,8 @@ const Landing = () => {
             lorem ipsum
           </p>
           <div>
-            <Link href="/join">Join</Link>
-            <Link href="/">How it works</Link>
+            <CustomLink href="/join">Join</CustomLink>
+            <CustomLink href="/">How it works</CustomLink>
           </div>
         </div>
         <div className="image w-[200px] h-[200px] bg-gray-400 shrink-0"></div>

@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 
+import CustomLink from '../navigation/custom-link';
 import DeleteModal from '../shared-ui/delete-modal';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'nextjs-toploader/app';
 
 const admins = [
   {
@@ -61,7 +61,7 @@ const Admins = () => {
     <section>
       <div>
         <h2>Admins</h2>
-        <Link href="/new">Add another admin</Link>
+        <CustomLink href="/new">Add another admin</CustomLink>
       </div>
       {admins.map((admin) => (
         <div

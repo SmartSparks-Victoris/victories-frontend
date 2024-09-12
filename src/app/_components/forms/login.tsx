@@ -4,12 +4,14 @@ import * as z from 'zod';
 
 import React, { FC } from 'react';
 
+import CustomLink from '../navigation/custom-link';
 import Link from 'next/link';
 import TextInput from '../shared-ui/text-input';
 import loginSchema from '@/app/_schemas/login';
 import { revalidateLogin } from '@/app/_actions/login';
+import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'nextjs-toploader/app';
 import { useSocket } from '@/app/_contexts/socket-context';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -44,6 +46,7 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
       connectSocket(user.id);
       await revalidateLogin();
       router.push(redirect);
+      toast.success('Logged In Successfully');
     } catch (error) {
       console.error('Error:', error);
       alert('Error submitting form.');
@@ -78,7 +81,7 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
             error={errors.password}
             register={register}
           />
-          <Link href="/forget-password">Forget Password?</Link>
+          <CustomLink href="/forget-password">Forget Password</CustomLink>
           <input type="submit" value="Login" />
         </form>
       </div>

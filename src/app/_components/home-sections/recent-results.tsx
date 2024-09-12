@@ -1,16 +1,16 @@
 'use client';
 
-import Link from 'next/link';
+import CustomLink from '../navigation/custom-link';
 
 const Recent = ({ results }) => {
   return (
     <section className="flex">
       {results &&
         results.map((result) => (
-          <Link href={`/tickets/${result.id}`} key={result.id}>
+          <CustomLink href={`/tickets/${result.id}`} key={result.id}>
             <p>{result.status}</p>
             <p>{result.title}</p>
-          </Link>
+          </CustomLink>
         ))}
     </section>
   );

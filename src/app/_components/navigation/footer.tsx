@@ -1,25 +1,25 @@
-import Link from 'next/link';
+import CustomLink from './custom-link';
 import React from 'react';
 
 const Footer = () => {
   return (
     <footer className="flex flex-col gap-8 justify-center bg-gray-300 py-[40px]">
       <div className="grid grid-cols-[repeat(auto-fit,_minmax(172px,_1fr))] md:grid-cols-[repeat(auto-fit,_minmax(172px,_1fr))] gap-[18px] container mx-auto">
-        <Link href={'/'}>Logo</Link>
+        <CustomLink href={'/'}>Logo</CustomLink>
         <nav className="flex flex-col">
           <h3>Quick Links</h3>
           <ul className="flex flex-col">
             <li>
-              <Link href={'/'}>Home</Link>
+              <CustomLink href={'/'}>Home</CustomLink>
             </li>
             <li>
-              <Link href={'/about'}>About</Link>
+              <CustomLink href={'/about'}>About</CustomLink>
             </li>
             <li>
-              <Link href={'/contact'}>Contact</Link>
+              <CustomLink href={'/contact'}>Contact</CustomLink>
             </li>
             <li>
-              <Link href={'/services'}>Services</Link>
+              <CustomLink href={'/services'}>Services</CustomLink>
             </li>
           </ul>
         </nav>

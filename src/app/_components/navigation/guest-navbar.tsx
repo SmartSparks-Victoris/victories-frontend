@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-import Link from 'next/link';
+import CustomLink from './custom-link';
 
 const GuestNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +33,7 @@ const GuestNavbar = () => {
       ref={navRef}
       className="h-[var(--guestNav)] bg-gray-300 py-4 flex items-center fixed w-full top-0 left-0 z-20">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href={'/'}>Logo</Link>
+        <CustomLink href={'/'}>Logo</CustomLink>
         <button className="sm:hidden" onClick={handleNavButtonExpanderClick}>
           =
         </button>
@@ -43,19 +43,19 @@ const GuestNavbar = () => {
               isOpen ? 'flex' : 'hidden'
             }`}>
             <li>
-              <Link href={'/about'}>About</Link>
+              <CustomLink href={'/about'}>About</CustomLink>
             </li>
             <li>
-              <Link href={'/services'}>Services</Link>
+              <CustomLink href={'/services'}>Services</CustomLink>
             </li>
             <li>
-              <Link href={'/contact'}>Contact</Link>
+              <CustomLink href={'/contact'}>Contact</CustomLink>
             </li>
             <li>
-              <Link href={'/login'}>Login</Link>
+              <CustomLink href={'/login'}>Login</CustomLink>
             </li>
             <li>
-              <Link href={'/join'}>Join</Link>
+              <CustomLink href={'/join'}>Join</CustomLink>
             </li>
           </ul>
         </div>

@@ -1,3 +1,4 @@
+import CustomLink from '../navigation/custom-link';
 import Link from 'next/link';
 import React from 'react';
 
@@ -7,7 +8,7 @@ const JoinSection = () => {
       <div className="container flex justify-center items-center flex-col gap-4 bg-slate-300 py-[80px] text-center">
         <p>Join Us Now</p>
         <h2>We Are Always Ready To Take You To The Next Level</h2>
-        <Link href="/join">Get Started</Link>
+        <CustomLink href={'/join'}>Get Started</CustomLink>
       </div>
     </section>
   );
