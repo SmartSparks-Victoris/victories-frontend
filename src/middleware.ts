@@ -1,24 +1,34 @@
-// import { cookies, headers } from 'next/headers';
-
 import { NextRequest, NextResponse } from 'next/server';
-import { adminRoutes, guestRoutes, publicRoutes } from './routes';
+import { guestRoutes, ownerRoutes, publicRoutes, sharedRoutes } from './routes';
 
 import { parseJwt } from './app/_utils/auth';
 
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value;
   const user = parseJwt(token);
-  const pathname = request.nextUrl.pathname;
+  let pathname = request.nextUrl.pathname;
+
+  pathname = normalizePath(pathname);
 
   if (publicRoutes.includes(pathname)) {
     return NextResponse.next();
   }
 
-  if (user?.role === 'admin' && adminRoutes.includes(pathname)) {
+  if (user?.role === 'admin' && sharedRoutes.includes(pathname)) {
     return NextResponse.next();
   }
 
-  if (!user && adminRoutes.includes(pathname)) {
+  if (
+    user?.role === 'owner' &&
+    (sharedRoutes.includes(pathname) || ownerRoutes.includes(pathname))
+  ) {
+    return NextResponse.next();
+  }
+
+  if (
+    !user &&
+    (sharedRoutes.includes(pathname) || ownerRoutes.includes(pathname))
+  ) {
     return NextResponse.redirect(
       new URL(`/login?redirect=${pathname}`, request.url),
     );
@@ -31,8 +41,12 @@ export function middleware(request: NextRequest) {
   return NextResponse.redirect(new URL('/', request.url));
 }
 
+function normalizePath(pathname: string): string {
+  return pathname.replace(/\/\d+/, '/:id');
+}
+
 export const config = {
   matcher:
-    '/((?!api|_next/static|_next/image|favicon.ico|icon.ico|sitemap.xml|robots.txt).*)',
+    '/((?!api|fonts|images|_next/static|_next/image|favicon.ico|icon.ico|sitemap.xml|robots.txt).*)',
 };
 

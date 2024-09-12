@@ -11,10 +11,6 @@ const page = async ({ searchParams }) => {
   const result2 = await response2.json();
   const status = result2.status;
 
-  // const response3 = await fetch('http://localhost:3001/results');
-  // const result3 = await response3.json();
-  // const results = result3.results;
-
   const results = [
     {
       id: 1,
@@ -82,8 +78,6 @@ const page = async ({ searchParams }) => {
       degree_of_sentiment: 30,
     },
   ];
-
-  console.log(results);
 
   return (
     <>

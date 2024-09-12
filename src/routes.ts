@@ -1,19 +1,24 @@
 export const publicRoutes = ['/'];
-export const adminRoutes = [
-  '/tickets',
-  '/tickets/1',
-  '/customers',
-  '/customers/1',
+
+export const ownerRoutes = [
   '/pricing',
   '/settings',
+  '/admins/:id',
+  '/admins',
+  '/new',
+];
+
+export const sharedRoutes = [
+  '/tickets/:id', // Placeholder for dynamic segments
+  '/tickets', // For non-dynamic route
+  '/customers/:id',
+  '/customers',
   '/profile',
   '/search',
-  '/admins',
-  '/admins/1',
   '/support',
-  '/new',
   '/help',
 ];
+
 export const guestRoutes = [
   '/about',
   '/services',

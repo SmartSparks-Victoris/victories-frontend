@@ -10,19 +10,7 @@ import SocketComponent from '@/app/_components/socket-component';
 import { SocketProvider } from '@/app/_contexts/socket-context';
 import { Toaster } from 'react-hot-toast';
 import { cookies } from 'next/headers';
-import localFont from 'next/font/local';
 import { parseJwt } from '@/app/_utils/auth';
-
-const geistSans = localFont({
-  src: '../_fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: '../_fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -34,26 +22,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const headersList = headers();
-  // const host = headersList.get('host');
-  // console.log('HOST: ', host);
   const user = parseJwt(cookies().get('token')?.value);
-
-  // if (host !== 'localhost:3000' && !user) {
-  //   return redirect('http://localhost:3000');
-  // }
-
-  // if (host === 'localhost:3000' && user) {
-  //   // return redirect(`${user.subdomain}.localhost:3000`);
-  //   return redirect('home.localhost:3000');
-  // }
 
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased ${
-          !user && 'pt-[var(--guestNav)]'
-        } ${
+        className={`font-poppins ${!user && 'pt-[var(--guestNav)]'} ${
           user &&
           'pl-[calc(var(--adminNavSmall)+var(--paddingAdmin))] md:pl-[calc(var(--adminNav)+var(--paddingAdmin))] pt-[calc(var(--searchNav)+var(--paddingAdmin))] pb-[var(--paddingAdmin)] pr-[var(--paddingAdmin)]'
         }`}>
@@ -63,7 +37,7 @@ export default function RootLayout({
           {!user && <GuestNavbar />}
           {user && (
             <>
-              <AdminNavbar />
+              <AdminNavbar user={user} />
               <SearchBar />
             </>
           )}

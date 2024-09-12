@@ -10,7 +10,7 @@ const data = {
   email: 'shoukryworkamr1@gmail.com',
 };
 
-const PersonalData = () => {
+const PersonalData = ({ user }) => {
   return (
     <section>
       <h2>Profile</h2>
@@ -27,9 +27,11 @@ const PersonalData = () => {
       <div>
         <PasswordForm />
       </div>
-      <div>
-        <Admins />
-      </div>
+      {user && user.role === 'owner' && (
+        <div>
+          <Admins />
+        </div>
+      )}
     </section>
   );
 };

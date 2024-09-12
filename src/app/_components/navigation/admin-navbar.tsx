@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSocket } from '@/app/_contexts/socket-context';
 
-const AdminNavbar = () => {
+const AdminNavbar = ({ user }) => {
   const { socket } = useSocket();
   const router = useRouter();
 
@@ -39,22 +39,30 @@ const AdminNavbar = () => {
           <li>
             <button onClick={() => handleLinkClick('/tickets')}>Tickets</button>
           </li>
-          <li>
-            <button onClick={() => handleLinkClick('/admins')}>Admins</button>
-          </li>
+          {user && user.role === 'owner' && (
+            <li>
+              <button onClick={() => handleLinkClick('/admins')}>Admins</button>
+            </li>
+          )}
           <li>
             <button onClick={() => handleLinkClick('/customers')}>
               Customers
             </button>
           </li>
-          <li>
-            <button onClick={() => handleLinkClick('/pricing')}>Pricing</button>
-          </li>
-          <li>
-            <button onClick={() => handleLinkClick('/settings')}>
-              Settings
-            </button>
-          </li>
+          {user && user.role === 'owner' && (
+            <li>
+              <button onClick={() => handleLinkClick('/pricing')}>
+                Pricing
+              </button>
+            </li>
+          )}
+          {user && user.role === 'owner' && (
+            <li>
+              <button onClick={() => handleLinkClick('/settings')}>
+                Settings
+              </button>
+            </li>
+          )}
           <li>
             <button onClick={() => handleLinkClick('/profile')}>Profile</button>
           </li>

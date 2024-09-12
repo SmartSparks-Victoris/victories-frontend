@@ -151,11 +151,17 @@ export default function Home() {
   console.log(user);
 
   if (user) {
+    if (user.role === 'admin') {
+      return (
+        <>
+          <Admin results={results} recent={recent} />
+        </>
+      );
+    }
+
     return (
       <>
-        {/* <Owner admins={admins} /> */}
-        <h1>Owner</h1>
-        <Admin results={results} recent={recent} />
+        <Owner admins={admins} />
       </>
     );
   }
