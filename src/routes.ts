@@ -10,6 +10,9 @@ export const adminRoutes = [
   '/search',
   '/admins',
   '/admins/1',
+  '/support',
+  '/new',
+  '/help',
 ];
 export const guestRoutes = [
   '/about',
@@ -17,5 +20,6 @@ export const guestRoutes = [
   '/contact',
   '/login',
   '/join',
+  '/forget-password',
 ];
 

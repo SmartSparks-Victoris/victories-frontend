@@ -1,10 +1,10 @@
-import Pricing from '@/app/_components/pricing-sections/pricing';
+import Help from '@/app/_components/help-sections/help';
 import React from 'react';
 
 const page = () => {
   return (
     <>
-      <Pricing />
+      <Help />
     </>
   );
 };

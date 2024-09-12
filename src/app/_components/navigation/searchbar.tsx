@@ -6,9 +6,11 @@ import Link from 'next/link';
 import React from 'react';
 import semanticSearchSchema from '@/app/_schemas/semantic-search';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const SearchBar = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -17,7 +19,10 @@ const SearchBar = () => {
     resolver: zodResolver(semanticSearchSchema),
   });
 
-  function handleSearchSuccess() {}
+  function handleSearchSuccess(data) {
+    // Navigate to search results page with query parameter
+    router.push(`/search?query=${data.query}`);
+  }
 
   function handleSearchFailure() {}
 

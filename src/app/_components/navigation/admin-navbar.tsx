@@ -36,6 +36,9 @@ const AdminNavbar = () => {
             <Link href="/tickets">Tickets</Link>
           </li>
           <li>
+            <Link href="/admins">Admins</Link>
+          </li>
+          <li>
             <Link href="/customers">Customers</Link>
           </li>
           <li>
@@ -49,7 +52,18 @@ const AdminNavbar = () => {
           </li>
         </ul>
       </div>
-      <button onClick={handleLogout}>Logout</button>
+      <div>
+        <ul>
+          <li>
+            <Link href="/help">Help</Link>
+          </li>
+          <li>
+            <Link href="/support">Support Chat</Link>
+          </li>
+
+          <button onClick={handleLogout}>Logout</button>
+        </ul>
+      </div>
     </nav>
   );
 };

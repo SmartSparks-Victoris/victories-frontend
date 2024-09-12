@@ -1,6 +1,28 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
+
+import DeleteModal from '../shared-ui/delete-modal';
 
 const Admin = ({ admin }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedAdmin, setSelectedAdmin] = useState(null);
+
+  const openModal = (admin) => {
+    setSelectedAdmin(admin);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedAdmin(null);
+  };
+
+  function handleButtonClick(e, admin) {
+    e.stopPropagation(); // Prevents parent div click
+    openModal(admin);
+  }
+
   return (
     <section>
       <div key={admin.id} className="flex">
@@ -22,9 +44,14 @@ const Admin = ({ admin }) => {
           <p>ID: {admin.id}</p>
         </div>
         <div>
-          <button>Delete</button>
+          <button onClick={(e) => handleButtonClick(e, admin)}>Delete</button>
         </div>
       </div>
+      <DeleteModal
+        show={isModalOpen}
+        onClose={closeModal}
+        admin={selectedAdmin}
+      />
     </section>
   );
 };

@@ -4,6 +4,7 @@ import * as z from 'zod';
 
 import React, { FC } from 'react';
 
+import Link from 'next/link';
 import TextInput from '../shared-ui/text-input';
 import loginSchema from '@/app/_schemas/login';
 import { revalidateLogin } from '@/app/_actions/login';
@@ -77,6 +78,7 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
             error={errors.password}
             register={register}
           />
+          <Link href="/forget-password">Forget Password?</Link>
           <input type="submit" value="Login" />
         </form>
       </div>
