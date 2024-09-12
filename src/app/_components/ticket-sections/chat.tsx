@@ -47,7 +47,9 @@ const Chat = ({ ticket }) => {
       </div>
       <form onSubmit={handleSubmit(handleSuccessMessage, handleErrorMessage)}>
         <textarea id="chatMessage" {...register('message')}></textarea>
-        {errors.message && <p>{errors.message.message}</p>}
+        {errors.message && (
+          <p className="fieldError">{errors.message.message}</p>
+        )}
         <input type="submit" />
       </form>
     </section>

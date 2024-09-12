@@ -46,7 +46,9 @@ const CreatePassword = ({ setStep, username, mobile }) => {
                 {...register('newPassword')}
                 placeholder="******"
               />
-              {errors.newPassword && <p>{errors.newPassword.message}</p>}
+              {errors.newPassword && (
+                <p className="fieldError">{errors.newPassword.message}</p>
+              )}
             </div>
 
             <div>
@@ -57,7 +59,9 @@ const CreatePassword = ({ setStep, username, mobile }) => {
                 {...register('confirm')}
                 placeholder="******"
               />
-              {errors.confirm && <p>{errors.confirm.message}</p>}
+              {errors.confirm && (
+                <p className="fieldError">{errors.confirm.message}</p>
+              )}
             </div>
             <input type="submit" value="Confirm" />
           </form>

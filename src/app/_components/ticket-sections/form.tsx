@@ -43,7 +43,9 @@ const Form = ({ ticket, categories, status }) => {
               );
             })}
           </select>
-          {errors.category && <p>errors.category.message</p>}
+          {errors.category && (
+            <p className="fieldError">errors.category.message</p>
+          )}
         </div>
 
         <div>
@@ -57,7 +59,7 @@ const Form = ({ ticket, categories, status }) => {
               );
             })}
           </select>
-          {errors.status && <p>errors.status.message</p>}
+          {errors.status && <p className="fieldError">errors.status.message</p>}
         </div>
 
         <div>
@@ -69,7 +71,9 @@ const Form = ({ ticket, categories, status }) => {
         <div>
           <label htmlFor="summary"></label>
           <textarea id="summary" {...register('summary')}></textarea>
-          {errors.summary && <p>errors.summary.message</p>}
+          {errors.summary && (
+            <p className="fieldError">errors.summary.message</p>
+          )}
         </div>
 
         <input type="submit" value="Update" />

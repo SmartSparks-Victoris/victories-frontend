@@ -39,7 +39,9 @@ const NewForm = () => {
                 {...register('fname')}
                 placeholder="Enter Your First Name"
               />
-              {errors.fname && <p>{errors.fname.message}</p>}
+              {errors.fname && (
+                <p className="fieldError">{errors.fname.message}</p>
+              )}
             </div>
             <div>
               <label htmlFor="fname">Last Name</label>
@@ -49,7 +51,9 @@ const NewForm = () => {
                 {...register('lname')}
                 placeholder="Enter Your Last Name"
               />
-              {errors.fname && <p>{errors.fname.message}</p>}
+              {errors.fname && (
+                <p className="fieldError">{errors.fname.message}</p>
+              )}
             </div>
             <div>
               <label htmlFor="email">Email</label>
@@ -59,7 +63,9 @@ const NewForm = () => {
                 {...register('email')}
                 placeholder="Enter Your Email"
               />
-              {errors.fname && <p>{errors.fname.message}</p>}
+              {errors.fname && (
+                <p className="fieldError">{errors.fname.message}</p>
+              )}
             </div>
           </div>
 
@@ -72,7 +78,9 @@ const NewForm = () => {
                 {...register('username')}
                 placeholder="Enter Your User Name"
               />
-              {errors.username && <p>{errors.username.message}</p>}
+              {errors.username && (
+                <p className="fieldError">{errors.username.message}</p>
+              )}
             </div>
             <div>
               <label htmlFor="password">Password</label>
@@ -82,7 +90,9 @@ const NewForm = () => {
                 {...register('password')}
                 placeholder="Enter Your Password"
               />
-              {errors.password && <p>{errors.password.message}</p>}
+              {errors.password && (
+                <p className="fieldError">{errors.password.message}</p>
+              )}
             </div>
           </div>
           <input type="submit" value="Add New" />

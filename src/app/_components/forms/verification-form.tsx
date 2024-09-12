@@ -84,44 +84,46 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
   };
 
   return (
-    <div className="verification-form">
-      <h1>Code Verification</h1>
+    <div className="verification-form min-h-[100vh] py-[16px] flex justify-center items-center">
+      <div className="container mx-auto flex flex-col items-center">
+        <h1>Code Verification</h1>
 
-      <form onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}>
-        <p>Please enter the verification code sent to {mobile}</p>
+        <form onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}>
+          <p>Please enter the verification code sent to {mobile}</p>
 
-        <div className="code-inputs flex gap-2">
-          {[1, 2, 3, 4, 5, 6].map((num, index) => (
-            <div key={num}>
-              <input
-                type="number"
-                id={`code-input-${index}`}
-                {...register(`n${num}`)}
-                value={code[index]}
-                className={`border-2 border-solid border-green-200 text-center w-12 h-12 ${
-                  errors[`n${num}`] ? 'border-red-500' : ''
-                }`}
-                onChange={(e) => handleInputChange(e, index)}
-              />
-              {errors[`n${num}`] && (
-                <p className="text-red-500 text-sm">
-                  {errors[`n${num}`]?.message}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
+          <div className="code-inputs flex gap-2">
+            {[1, 2, 3, 4, 5, 6].map((num, index) => (
+              <div key={num}>
+                <input
+                  type="number"
+                  id={`code-input-${index}`}
+                  {...register(`n${num}`)}
+                  value={code[index]}
+                  className={`border-2 border-solid border-green-200 text-center w-12 h-12 ${
+                    errors[`n${num}`] ? 'border-red-500' : ''
+                  }`}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+                {errors[`n${num}`] && (
+                  <p className="text-red-500 text-sm">
+                    {errors[`n${num}`]?.message}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
 
-        <input
-          type="submit"
-          value="Submit"
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-        />
+          <input
+            type="submit"
+            value="Submit"
+            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+          />
 
-        <button onClick={resendCode} className="mt-2 text-blue-500">
-          Resend Code
-        </button>
-      </form>
+          <button onClick={resendCode} className="mt-2">
+            Resend Code
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

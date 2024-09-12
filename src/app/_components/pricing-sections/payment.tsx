@@ -32,7 +32,7 @@ const Payment = () => {
               id="name"
               placeholder="Enter Carholder name "
             />
-            {errors.name && <p> errors.name.message</p>}
+            {errors.name && <p className="fieldError"> errors.name.message</p>}
           </div>
           <div>
             <label htmlFor="number">Card Number</label>
@@ -42,7 +42,9 @@ const Payment = () => {
               id="number"
               placeholder="Enter Card number "
             />
-            {errors.number && <p> errors.number.message</p>}
+            {errors.number && (
+              <p className="fieldError"> errors.number.message</p>
+            )}
           </div>
           <div>
             <div>
@@ -53,7 +55,9 @@ const Payment = () => {
                 id="number"
                 placeholder="Enter Card EXpiry "
               />
-              {errors.expiry && <p> errors.expiry.message</p>}
+              {errors.expiry && (
+                <p className="fieldError"> errors.expiry.message</p>
+              )}
             </div>
             <div>
               <label htmlFor="cvc">cvc</label>
@@ -63,7 +67,7 @@ const Payment = () => {
                 id="number"
                 placeholder="Enter Card EXpiry "
               />
-              {errors.cvc && <p> errors.cvc.message</p>}
+              {errors.cvc && <p className="fieldError"> errors.cvc.message</p>}
             </div>
           </div>
 

@@ -55,7 +55,7 @@ export default function RootLayout({
           !user && 'pt-[var(--guestNav)]'
         } ${
           user &&
-          'pl-[var(--adminNavSmall)] md:pl-[var(--adminNav)] pt-[var(--searchNav)]'
+          'pl-[calc(var(--adminNavSmall)+var(--paddingAdmin))] md:pl-[calc(var(--adminNav)+var(--paddingAdmin))] pt-[calc(var(--searchNav)+var(--paddingAdmin))] pb-[var(--paddingAdmin)] pr-[var(--paddingAdmin)]'
         }`}>
         <Toaster position="top-center" />
         <NextTopLoader />

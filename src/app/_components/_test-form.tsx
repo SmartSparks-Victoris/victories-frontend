@@ -95,7 +95,7 @@ const Form = () => {
             }`}
             {...register('email')}
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <p className="fieldError">{errors.email.message}</p>}
         </div>
         <div>
           <input
@@ -105,7 +105,9 @@ const Form = () => {
             }`}
             {...register('password')}
           />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <p className="fieldError">{errors.password.message}</p>
+          )}
         </div>
 
         <input type="submit" />

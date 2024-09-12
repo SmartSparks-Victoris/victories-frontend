@@ -19,7 +19,7 @@ const TextInput: FC<TextInputProps> = ({
         {...register(name)}
         placeholder={placeholder && placeholder}
       />
-      {error && <p>{error.message}</p>}
+      {error && <p className="fieldError">{error.message}</p>}
     </div>
   );
 };

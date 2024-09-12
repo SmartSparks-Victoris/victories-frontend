@@ -39,7 +39,7 @@ const SearchBar = () => {
           className="flex-grow"
           {...register('query', { required: true })}
         />
-        {errors.query && <p>{errors.query.message}</p>}
+        {errors.query && <p className="fieldError">{errors.query.message}</p>}
         <button type="submit">Search</button>
       </form>
       <CustomLink href="/profile">Profile</CustomLink>

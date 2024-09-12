@@ -36,7 +36,7 @@ const PasswordForm = () => {
           className="flex-grow"
           {...register('old', { required: true })}
         />
-        {errors.old && <p>{errors.old.message}</p>}
+        {errors.old && <p className="fieldError">{errors.old.message}</p>}
       </div>
       <div>
         <label htmlFor="new">New Password</label>
@@ -47,7 +47,7 @@ const PasswordForm = () => {
           className="flex-grow"
           {...register('new', { required: true })}
         />
-        {errors.old && <p>{errors.old.message}</p>}
+        {errors.old && <p className="fieldError">{errors.old.message}</p>}
       </div>
       <input type="submit" value="Update" />
     </form>

@@ -42,7 +42,7 @@ const PersonalInfoForm = ({ data }) => {
           className="flex-grow"
           {...register('fname', { required: true })}
         />
-        {errors.fname && <p>{errors.fname.message}</p>}
+        {errors.fname && <p className="fieldError">{errors.fname.message}</p>}
       </div>
       <div>
         <label htmlFor="lname">Last Name</label>
@@ -53,7 +53,7 @@ const PersonalInfoForm = ({ data }) => {
           className="flex-grow"
           {...register('lname', { required: true })}
         />
-        {errors.lname && <p>{errors.lname.message}</p>}
+        {errors.lname && <p className="fieldError">{errors.lname.message}</p>}
       </div>
       <div>
         <label htmlFor="lname">Email</label>
@@ -64,7 +64,7 @@ const PersonalInfoForm = ({ data }) => {
           className="flex-grow"
           {...register('email', { required: true })}
         />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && <p className="fieldError">{errors.email.message}</p>}
       </div>
 
       <input type="submit" value="Update" />

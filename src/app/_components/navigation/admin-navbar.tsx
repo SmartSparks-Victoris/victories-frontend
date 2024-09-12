@@ -32,7 +32,7 @@ const AdminNavbar = () => {
   }
 
   return (
-    <nav className="w-[var(--adminNavSmall)] md:w-[var(--adminNav)] min-h-[100vh] fixed left-0 top-0 bg-slate-300">
+    <nav className="w-[var(--adminNavSmall)] md:w-[var(--adminNav)] min-h-[100vh] fixed left-0 top-0 bg-slate-300 flex flex-col gap-8 p-[16px]">
       <div>
         <button onClick={() => handleLinkClick('/')}>Smart Sparks</button>
         <ul>

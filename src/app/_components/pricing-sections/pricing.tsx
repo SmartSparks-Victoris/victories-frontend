@@ -62,14 +62,14 @@ const Pricing = () => {
             <button
               onClick={() => handleDurationChange('monthly')}
               className={`${
-                duration === 'monthly' ? 'bg-green-300' : 'bg-white'
+                duration === 'monthly' ? 'bg-green-300' : 'bg-gray-500'
               }`}>
               Monthly
             </button>
             <button
               onClick={() => handleDurationChange('annual')}
               className={`${
-                duration === 'annual' ? 'bg-green-300' : 'bg-white'
+                duration === 'annual' ? 'bg-green-300' : 'bg-gray-500'
               }`}>
               Annual - 30% Offer
             </button>
@@ -77,18 +77,22 @@ const Pricing = () => {
           <div>
             <button
               onClick={() => handlePlanChange('free')}
-              className={`${plan === 'free' ? 'bg-orange-300' : 'bg-white'}`}>
+              className={`${
+                plan === 'free' ? 'bg-orange-300' : 'bg-gray-500'
+              }`}>
               Free Plan
             </button>
             <button
               onClick={() => handlePlanChange('basic')}
-              className={`${plan === 'basic' ? 'bg-orange-300' : 'bg-white'}`}>
+              className={`${
+                plan === 'basic' ? 'bg-orange-300' : 'bg-gray-500'
+              }`}>
               Basic Plan
             </button>
             <button
               onClick={() => handlePlanChange('premium')}
               className={`${
-                plan === 'premium' ? 'bg-orange-300' : 'bg-white'
+                plan === 'premium' ? 'bg-orange-300' : 'bg-gray-500'
               }`}>
               Premium Plan
             </button>

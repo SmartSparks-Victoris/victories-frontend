@@ -9,6 +9,7 @@
   --adminNav: 200px;
   --adminNavSmall: 80px;
   --searchNav: 40px;
+  --paddingAdmin: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +25,27 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+select,
+textarea {
+  @apply border-2 border-gray-300 focus:ring-2 focus:ring-gray-500 rounded-[16px] p-[8px] mx-[8px] my-[8px];
+}
+
+input[type='submit'],
+button {
+  @apply bg-slate-400 rounded-full my-[8px] text-white py-[8px] px-[24px] inline-block;
+}
+
+nav button {
+  @apply !bg-transparent !rounded-none !my-0 !mx-0 !text-black !py-0 !px-0;
+}
+
+p.fieldError {
+  @apply text-red-500;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

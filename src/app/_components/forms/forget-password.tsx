@@ -44,7 +44,9 @@ const ForgetPassword = ({ setStep, setUsername, setMobile }) => {
                 {...register('username')}
                 placeholder="Enter Your User Name"
               />
-              {errors.mobile && <p>{errors.mobile.message}</p>}
+              {errors.mobile && (
+                <p className="fieldError">{errors.mobile.message}</p>
+              )}
             </div>
 
             <div>
@@ -55,7 +57,9 @@ const ForgetPassword = ({ setStep, setUsername, setMobile }) => {
                 {...register('mobile')}
                 placeholder="Enter Your Mobile Number"
               />
-              {errors.mobile && <p>{errors.mobile.message}</p>}
+              {errors.mobile && (
+                <p className="fieldError">{errors.mobile.message}</p>
+              )}
             </div>
             <input type="submit" value="Send" />
           </form>
