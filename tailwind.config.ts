@@ -11,9 +11,27 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        mainColor: 'var(--mainColor)',
+        errorColor: 'var(--errorColor)',
+        mainColorAlpha: 'var(--mainColorAlpha)',
+        textColor: 'var(--textColor)',
+        backgroundColor: 'var(--backgroundColor)',
+        borderColor: 'var(--borderColor)',
+        placeHolderColor: 'var(--placeHolderColor)',
+        listOptionHoverColor: 'var(--listOptionHoverColor)',
       },
       fontFamily: {
         poppins: ['Poppins', 'serif'],
+      },
+      container: {
+        center: true, // Optional: centers the container
+        padding: {
+          DEFAULT: '16px', // This applies 16px padding horizontally by default
+          sm: '16px', // Small screens and above
+          md: '16px', // Medium screens and above
+          lg: '16px', // Large screens and above
+          xl: '16px', // Extra large screens and above
+        },
       },
 
       // spacing: {
@@ -24,7 +42,9 @@ const config: Config = {
       // },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@xpd/tailwind-3dtransforms")
+  ],
 };
 export default config;
 

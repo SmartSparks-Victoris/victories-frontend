@@ -1,7 +1,7 @@
 import * as z from 'zod';
 
 const mobileSchema = z.object({
-  username: z.string().min(1),
+  email: z.string().email(),
   mobile: z.string().min(1),
 });
 

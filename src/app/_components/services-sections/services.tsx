@@ -13,16 +13,35 @@ const ServicesSection = () => {
         <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] md:grid-cols-[repeat(auto-fit,_minmax(472px,_1fr))] gap-x-[18px] gap-y-[180px]">
           {servicesData.map((service) => {
             return (
-              <div
-                key={service.id}
-                className="flex flex-col gap-4 items-center justify-center relative bg-slate-300 min-h-[500px]">
-                {/* <img src={service.img} alt={service.description} /> */}
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <div className="absolute top-[0%] translate-y-[-50%] left-[50%] translate-x-[-50%] w-[200px] h-[200px] bg-slate-200">
-                  <img src={''} alt="" />
+              <>
+                <div
+                  key={service.id}
+                  className="card group relative min-h-[300px] perspective-1000">
+                  <div className="absolute top-[0%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[200px] h-[200px] z-20">
+                    <div className="transition-transform duration-500 group-hover:rotate-y-180 transform-style-3d  bg-slate-200 ">
+                      <img
+                        src={'/images/test.png'}
+                        className="absolute backface-hidden"
+                        alt=""
+                      />
+                      <img
+                        src={'/images/login.png'}
+                        className="absolute rotate-y-180 backface-hidden"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+
+                  <div className="card-inner group-hover:-rotate-y-180 absolute w-[100%] h-[100%] transition-transform transform-style-3d duration-500">
+                    <div className="flex flex-col gap-[32px] items-center justify-center card-front backface-hidden absolute w-[100%] h-[100%] bg-green-500">
+                      <h2>Front</h2>
+                    </div>
+                    <div className="flex flex-col gap-[32px] items-center justify-center card-back rotate-y-180 backface-hidden	absolute w-[100%] h-[100%] bg-slate-400">
+                      <h2>Back</h2>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </>
             );
           })}
         </div>

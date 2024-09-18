@@ -1,15 +1,24 @@
 'use client';
 
+import { Controller, useForm } from 'react-hook-form';
 import React, { useEffect, useState } from 'react';
 
+import DropDown from '../shared-ui/dropdown';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSearchParams } from 'next/navigation';
 
 const Filters = ({ categories, status, numberOfResults }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState(-1);
-  const [selectedStatus, setSelectedStatus] = useState(-1);
+  const [selectedCategory, setSelectedCategory] = useState(
+    Number(searchParams.get('category')) || -1,
+  );
+  const [selectedStatus, setSelectedStatus] = useState(
+    Number(searchParams.get('status')) || -1,
+  );
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const { control } = useForm();
 
   useEffect(() => {
     const category = Number(searchParams.get('category'));
@@ -28,35 +37,35 @@ const Filters = ({ categories, status, numberOfResults }) => {
     }
   }, [searchParams]);
 
-  function handleCategoryChange(e) {
-    const newCategory = Number(e.target.value);
+  function handleCategoryChange(selectedValue) {
     const searchParams = new URLSearchParams(window.location.search);
-    if (newCategory === -1) {
+
+    if (selectedValue === -1) {
       searchParams.delete('category');
     } else {
-      searchParams.set('category', newCategory);
+      searchParams.set('category', selectedValue);
     }
-    setSelectedCategory(newCategory);
+
+    setSelectedCategory(selectedValue);
     router.push(`${window.location.pathname}?${searchParams.toString()}`);
   }
 
-  function handleStatusChange(e) {
-    const newStatus = Number(e.target.value);
+  function handleStatusChange(selectedValue) {
     const searchParams = new URLSearchParams(window.location.search);
 
-    if (newStatus === -1) {
+    if (selectedValue === -1) {
       searchParams.delete('status');
     } else {
-      searchParams.set('status', newStatus);
+      searchParams.set('status', selectedValue);
     }
-    setSelectedStatus(newStatus);
+    setSelectedStatus(selectedValue);
 
     router.push(`${window.location.pathname}?${searchParams.toString()}`);
   }
 
   return (
-    <section>
-      <div>
+    <section className="flex justify-between items-center mb-8">
+      <div className="flex gap-4 items-center">
         <svg
           width="24"
           height="24"
@@ -69,23 +78,36 @@ const Filters = ({ categories, status, numberOfResults }) => {
           />
         </svg>
 
-        <select onChange={handleCategoryChange} value={selectedCategory}>
-          <option value="-1">All</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-
-        <select onChange={handleStatusChange} value={selectedStatus}>
-          <option value="-1">All</option>
-          {status.map((st) => (
-            <option key={st.id} value={st.id}>
-              {st.name}
-            </option>
-          ))}
-        </select>
+        <div className="w-fit">
+          <DropDown
+            name="category"
+            label=""
+            control={control}
+            defaultValue={selectedCategory}
+            array={categories}
+            value={selectedCategory}
+            selectedDropDown={openDropdown}
+            setSelectedDropDown={(name) => setOpenDropdown(name)}
+            isOpen={openDropdown === 'category'}
+            all={true}
+            handleChange={handleCategoryChange}
+          />
+        </div>
+        <div className="w-fit">
+          <DropDown
+            name="status"
+            label=""
+            control={control}
+            defaultValue={selectedStatus}
+            array={status}
+            value={selectedStatus}
+            selectedDropDown={openDropdown}
+            setSelectedDropDown={(name) => setOpenDropdown(name)}
+            isOpen={openDropdown === 'status'}
+            all={true}
+            handleChange={handleStatusChange}
+          />
+        </div>
       </div>
       <p>Total Results: {numberOfResults}</p>
     </section>

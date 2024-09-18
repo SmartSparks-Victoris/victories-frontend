@@ -11,15 +11,24 @@ const TextInput: FC<TextInputProps> = ({
   placeholder,
 }) => {
   return (
-    <div>
-      <label htmlFor={name}>{label}</label>
+    <div className="flex flex-col gap-[16px]">
+      <label htmlFor={name} className="text-[22px] font-medium">
+        {label}
+      </label>
       <input
         type={type}
         id={name}
         {...register(name)}
         placeholder={placeholder && placeholder}
+        className={`border-[2px] border-solid rounded-[16px] p-[16px] w-[100%] bg-backgroundColor ${
+          error ? 'border-errorColor' : 'border-borderColor'
+        }`}
       />
-      {error && <p className="fieldError">{error.message}</p>}
+      {error && (
+        <p className="text-[14px] font-medium text-errorColor">
+          * {error.message}
+        </p>
+      )}
     </div>
   );
 };

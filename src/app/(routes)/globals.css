@@ -18,6 +18,14 @@
   --adminNavSmall: 80px;
   --searchNav: 40px;
   --paddingAdmin: 16px;
+  --mainColor: #7e4556;
+  --mainColorAlpha: #decad0;
+  --textColor: #000000;
+  --backgroundColor: #fff4f7;
+  --errorColor: #be0202;
+  --placeHolderColor: #666263;
+  --listOptionHoverColor: #decad0;
+  --borderColor: rgba(0, 0, 0, 0.4);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,13 +35,28 @@
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: 'Poppins', Times, serif;
+input::placeholder {
+  color: var(--placeHolderColor); /* Change to the desired color */
+  opacity: 1; /* Adjust opacity if needed */
 }
 
-input[type='text'],
+body {
+  color: var(--foreground);
+  /* background: var(--background); */
+  font-family: 'Poppins', Times, serif;
+  overflow-x: hidden;
+  background-attachment: fixed;
+}
+
+/* .card:hover .card-inner {
+  transform: rotateY(-180deg);
+}
+
+.card-back {
+  transform: rotateY(-180deg);
+} */
+
+/* input[type='text'],
 input[type='email'],
 input[type='password'],
 input[type='number'],
@@ -53,10 +76,24 @@ nav button {
 
 p.fieldError {
   @apply text-red-500;
-}
+} */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .-rotate-y-180 {
+    transform: rotateY(-180deg);
+  }
+}
+
+::selection {
+  background-color: var(
+    --mainColorAlpha
+  ); /* Background color of the selected text */
+  color: var(--textColor); /* Text color of the selected text */
 }
 

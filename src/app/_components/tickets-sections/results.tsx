@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSearchParams } from 'next/navigation';
 
-const Results = ({ results }) => {
+const Results = ({ results, setLength }) => {
   console.log(results);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -71,6 +71,7 @@ const Results = ({ results }) => {
     console.log(myFilteredResults);
 
     setFilteredResults(myFilteredResults);
+    setLength(myFilteredResults.length);
   }, [searchParams, results]);
 
   function handleRowClick(id) {

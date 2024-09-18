@@ -1,9 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import * as z from 'zod';
 
 import React, { useState } from 'react';
 
+import Button from '../shared-ui/button';
+import TextInput from '../shared-ui/text-input';
+import { motion } from 'framer-motion';
+import useAnimation from '@/app/_hooks/useAnimation';
 import { useForm } from 'react-hook-form';
 import verificationSchema from '@/app/_schemas/verification';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -32,6 +37,7 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
 
   const handleLoginSuccess = () => {
     // TODO: Handle successful verification
+    setIsStepTransitionComplete(false);
     setStep(3);
   };
 
@@ -82,49 +88,68 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
       }
     }
   };
+  const { setIsStepTransitionComplete, animationVariants } = useAnimation();
 
   return (
-    <div className="verification-form min-h-[100vh] py-[16px] flex justify-center items-center">
-      <div className="container mx-auto flex flex-col items-center">
-        <h1>Code Verification</h1>
-
-        <form onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}>
-          <p>Please enter the verification code sent to {mobile}</p>
-
-          <div className="code-inputs flex gap-2">
-            {[1, 2, 3, 4, 5, 6].map((num, index) => (
-              <div key={num}>
-                <input
-                  type="number"
-                  id={`code-input-${index}`}
-                  {...register(`n${num}`)}
-                  value={code[index]}
-                  className={`border-2 border-solid border-green-200 text-center w-12 h-12 ${
-                    errors[`n${num}`] ? 'border-red-500' : ''
-                  }`}
-                  onChange={(e) => handleInputChange(e, index)}
-                />
-                {errors[`n${num}`] && (
-                  <p className="text-red-500 text-sm">
-                    {errors[`n${num}`]?.message}
-                  </p>
-                )}
-              </div>
-            ))}
+    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-[32px]">
+      <div className="container rounded-[20px] bg-backgroundColor">
+        <motion.div
+          variants={animationVariants}
+          initial="hiddenRight"
+          animate="visible"
+          exit="hiddenLeft"
+          className="flex flex-col justify-center gap-[32px] lg:gap-[40px] items-center  py-[32px] px-[40px] mx-[16px] lg:flex-row">
+          <div className="w-[100%] flex items-center justify-center">
+            <img src="/images/otp.png" alt="" />
           </div>
+          <div className="w-[100%]">
+            <h2 className="font-semibold text-[30px]">Code Verification</h2>
 
-          <input
-            type="submit"
-            value="Submit"
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-          />
+            <form
+              onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}>
+              <p className="text-[22px] font-medium mt-[32px] mb-[24px]">
+                Enter your code
+              </p>
 
-          <button onClick={resendCode} className="mt-2">
-            Resend Code
-          </button>
-        </form>
+              <div className="code-inputs  flex-wrap flex gap-2 mb-[48px]">
+                {[1, 2, 3, 4, 5, 6].map((num, index) => (
+                  <div key={num} className="">
+                    <input
+                      type="text"
+                      id={`code-input-${index}`}
+                      {...register(`n${num}`)}
+                      value={code[index]}
+                      className={`border-2 border-solid border-black text-center w-[56px] h-[56px] lg:w-[64px] lg:h-[64px] xl:w-[86px] xl:h-[86px] rounded-[15px] text-[30px] font-medium  ${
+                        errors[`n${num}`] ? 'border-errorColor' : ''
+                      }`}
+                      onChange={(e) => handleInputChange(e, index)}
+                    />
+                    {errors[`n${num}`] && (
+                      <p className="text-red-500 text-sm">
+                        {errors[`n${num}`]?.message}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col gap-[24px]">
+                <Button
+                  type="submit"
+                  value="Send"
+                  className="w-[100%]"></Button>
+
+                <button
+                  onClick={resendCode}
+                  className="mt-2 text-[20px] font-bold text-black underline">
+                  Resend Code
+                </button>
+              </div>
+            </form>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

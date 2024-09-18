@@ -9,6 +9,7 @@ import SearchBar from '../_components/navigation/searchbar';
 import SocketComponent from '@/app/_components/socket-component';
 import { SocketProvider } from '@/app/_contexts/socket-context';
 import { Toaster } from 'react-hot-toast';
+import Transition from './transition';
 import { cookies } from 'next/headers';
 import { parseJwt } from '@/app/_utils/auth';
 
@@ -33,7 +34,10 @@ export default function RootLayout({
         className={`font-poppins ${!user && 'pt-[var(--guestNav)]'} ${
           user &&
           'pl-[calc(var(--adminNavSmall)+var(--paddingAdmin))] md:pl-[calc(var(--adminNav)+var(--paddingAdmin))] pt-[calc(var(--searchNav)+var(--paddingAdmin))] pb-[var(--paddingAdmin)] pr-[var(--paddingAdmin)]'
-        }`}>
+        } ${
+          !user &&
+          'bg-[url("/images/background.png")] bg-no-repeat bg-center bg-cover'
+        } `}>
         <Toaster position="top-center" />
         <NextTopLoader />
         <SocketProvider>

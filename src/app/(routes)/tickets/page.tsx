@@ -1,6 +1,7 @@
-import Filters from '@/app/_components/views-sections/filters';
+import Filters from '@/app/_components/tickets-sections/filters';
 import React from 'react';
-import Results from '@/app/_components/views-sections/results';
+import Results from '@/app/_components/tickets-sections/results';
+import TicketsMain from '@/app/_components/tickets-sections/main';
 
 const page = async ({ searchParams }) => {
   const response = await fetch('http://localhost:3001/categories');
@@ -81,12 +82,7 @@ const page = async ({ searchParams }) => {
 
   return (
     <>
-      <Filters
-        categories={categories}
-        status={status}
-        numberOfResults={results.length}
-      />
-      <Results results={results} />
+      <TicketsMain categories={categories} status={status} results={results} />
     </>
   );
 };

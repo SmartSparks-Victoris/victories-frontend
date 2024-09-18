@@ -2,25 +2,23 @@ import * as z from 'zod';
 
 import {
   communicate,
-  customers,
+  employees,
   industry,
-  people,
   plan,
   size,
   solution,
 } from '../_dropdowns/join';
 
 const joinSchema = z.object({
-  name: z.string().min(1),
-  industry: z.enum(industry),
-  size: z.enum(size),
-  communicate: z.enum(communicate),
-  solution: z.enum(solution),
-  customers: z.enum(customers),
-  plan: z.enum(plan),
-  people: z.enum(people),
-  email: z.string().email(),
-  phone: z.string().min(1),
+  name: z.string().min(1, { message: 'Name is required' }),
+  industry: z.enum(industry, { message: 'Invalid industry selection' }),
+  size: z.enum(size, { message: 'Invalid size selection' }),
+  communicate: z.enum(communicate, { message: 'Invalid communication method' }),
+  solution: z.enum(solution, { message: 'Invalid solution selection' }),
+  employees: z.enum(employees, { message: 'Invalid number of employees' }),
+  plan: z.enum(plan, { message: 'Invalid plan selection' }),
+  email: z.string().email({ message: 'Invalid email address' }),
+  phone: z.string().min(1, { message: 'Phone number is required' }),
 });
 
 export default joinSchema;
