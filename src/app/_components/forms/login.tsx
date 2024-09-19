@@ -63,7 +63,7 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
         <div className="w-[232px] flex justify-center items-center overflow-hidden">
           <img src="/images/login.png" alt="" />
         </div>
-        <h2 className="font-semibold text-[30px] text-textColor mt-[40px] mb-[16px] text-center">
+        <h2 className="font-semibold text-[30px] text-textColor mt-[40px] mb-[16px] text-center font-roboto">
           Welcome back !
         </h2>
         <p className="font-semibold text-[20px] text-[#999294] text-center">

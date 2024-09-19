@@ -46,7 +46,7 @@ const ForgetPassword = ({ setStep, setUsername, setMobile }) => {
             <img src="/images/reset.png" alt="" />
           </div>
           <div className="w-[100%]">
-            <h2 className="font-semibold text-[30px] text-textColor text-center lg:text-start">
+            <h2 className="font-semibold text-[30px] text-textColor text-center lg:text-start font-roboto">
               Find your account
             </h2>
 

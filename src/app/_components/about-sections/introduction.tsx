@@ -1,21 +1,38 @@
+/* eslint-disable @next/next/no-img-element */
 import CustomLink from '../navigation/custom-link';
 import React from 'react';
+import Transition from '../shared-ui/transition';
 
 const Introduction = () => {
   return (
-    <section className="py-[80px]  flex justify-center items-center">
-      <div className="container mx-auto flex items-center gap-8 sm:flex-row flex-col">
-        <div className="image w-[200px] h-[200px] bg-gray-400 shrink-0"></div>
-        <div className="flex flex-col gap-4 items-center text-center sm:items-start sm:text-start">
-          <h3>About</h3>
-          <h2>Lorem Ipsum lorem ipsum</h2>
-          <p>
-            lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
-            ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-            lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
-            ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.
-          </p>
-          <CustomLink href="/contact">Contact</CustomLink>
+    <section className="min-h-[calc(100vh-var(--guestNav))] flex justify-center items-center py-[64px] bg-backgroundOpacity">
+      <div className="container mx-auto flex lg:flex-row flex-col justify-between items-center gap-[80px] text-textWhite">
+        <div className="w-[100%] flex justify-center">
+          <Transition from={'left'}>
+            <img src="/images/about-section.png" alt="" />
+          </Transition>
+        </div>
+
+        <div className="w-[100%]">
+          <Transition from={'right'}>
+            <h2 className="text-[40px] font-semibold font-roboto">
+              Who We Are
+            </h2>
+          </Transition>
+          <Transition from={'right'} delay={0.1}>
+            <p className="mt-[32px] mb-[40px] text-[24px]">
+              We are a tech company transforming customer engagement by
+              simplifying support through a centralized platform that integrates
+              WhatsApp and Messenger, enhancing communication and service.{' '}
+            </p>
+          </Transition>
+          <Transition from={'right'} delay={0.2}>
+            <div>
+              <CustomLink href="/contact" type="button">
+                Contact Us
+              </CustomLink>
+            </div>
+          </Transition>
         </div>
       </div>
     </section>

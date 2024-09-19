@@ -10,11 +10,19 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --guestNav: 80px;
-  --adminNav: 200px;
+  --adminNav: 229px;
   --adminNavSmall: 80px;
   --searchNav: 40px;
   --paddingAdmin: 16px;
@@ -22,10 +30,12 @@
   --mainColorAlpha: #decad0;
   --textColor: #000000;
   --backgroundColor: #fff4f7;
+  --textWhite: #fff4f7;
   --errorColor: #be0202;
   --placeHolderColor: #666263;
   --listOptionHoverColor: #decad0;
   --borderColor: rgba(0, 0, 0, 0.4);
+  --backgroundOpacity: rgba(255, 244, 247, 0.2);
 }
 
 @media (prefers-color-scheme: dark) {

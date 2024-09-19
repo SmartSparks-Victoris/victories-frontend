@@ -19,9 +19,12 @@ const config: Config = {
         borderColor: 'var(--borderColor)',
         placeHolderColor: 'var(--placeHolderColor)',
         listOptionHoverColor: 'var(--listOptionHoverColor)',
+        textWhite: 'var(--textWhite)',
+        backgroundOpacity: 'var(--backgroundOpacity)',
       },
       fontFamily: {
         poppins: ['Poppins', 'serif'],
+        roboto: ['Roboto', 'serif'],
       },
       container: {
         center: true, // Optional: centers the container
@@ -42,9 +45,7 @@ const config: Config = {
       // },
     },
   },
-  plugins: [
-    require("@xpd/tailwind-3dtransforms")
-  ],
+  plugins: [require('@xpd/tailwind-3dtransforms')],
 };
 export default config;
 

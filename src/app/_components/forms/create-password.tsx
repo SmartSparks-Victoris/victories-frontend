@@ -45,7 +45,9 @@ const CreatePassword = ({ setStep, username, mobile }) => {
             <img src="/images/new-password.png" alt="" />
           </div>
           <div className="w-[100%]">
-            <h2 className="font-semibold text-[30px]">Create New Password</h2>
+            <h2 className="font-semibold text-[30px] font-roboto">
+              Create New Password
+            </h2>
             <p className="text-[16px] mt-[16px] mb-[24px]">
               The password must contain a mix of uppercase and lowercase letters
               numbers, and special symbols. Minimum length is 8 characters{' '}

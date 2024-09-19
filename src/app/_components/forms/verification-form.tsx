@@ -103,7 +103,9 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
             <img src="/images/otp.png" alt="" />
           </div>
           <div className="w-[100%]">
-            <h2 className="font-semibold text-[30px]">Code Verification</h2>
+            <h2 className="font-semibold text-[30px] font-roboto">
+              Code Verification
+            </h2>
 
             <form
               onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}>

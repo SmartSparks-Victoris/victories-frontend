@@ -84,7 +84,7 @@ const JoinForm = () => {
         <div className="w-[232px] flex justify-center items-center overflow-hidden">
           <img src="/images/join.png" alt="" />
         </div>
-        <h2 className="font-semibold text-[30px] text-textColor mt-[40px] mb-[16px] text-center">
+        <h2 className="font-semibold text-[30px] text-textColor mt-[40px] mb-[16px] text-center font-roboto">
           Tell Us About Your Business
         </h2>
         <p className="font-semibold text-[20px] text-[#999294] text-center">
@@ -258,12 +258,12 @@ const JoinForm = () => {
             )}
           </AnimatePresence>
           {step === 0 && (
-            <Button onClick={getNext} className="w-[100%]">
+            <Button onClick={getNext} className="w-[100%] md:w-[50%] mt-[80px]">
               Next
             </Button>
           )}
           {step === 1 && (
-            <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] lg:w-[50%]">
+            <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] lg:w-[50%] mt-[80px]">
               <Button onClick={getPrevious} className="w-[100%]">
                 Previous
               </Button>

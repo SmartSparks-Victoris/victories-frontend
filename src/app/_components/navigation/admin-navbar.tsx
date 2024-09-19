@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
+import CustomLink from './custom-link';
 import React from 'react';
 import { revalidateLogin } from '@/app/_actions/login';
 import toast from 'react-hot-toast';
@@ -32,8 +34,12 @@ const AdminNavbar = ({ user }) => {
   }
 
   return (
-    <nav className="w-[var(--adminNavSmall)] md:w-[var(--adminNav)] min-h-[100vh] fixed left-0 top-0 bg-slate-300 flex flex-col gap-8 p-[16px]">
+    <nav className="w-[var(--adminNavSmall)] md:w-[var(--adminNav)] min-h-[100vh] fixed left-0 top-0 bg-slate-300 flex flex-col gap-8 p-[16px] bg-[url('/images/Background.png')] bg-cover text-textWhite">
       <div>
+        <CustomLink href="/" className="flex items-center gap-[14px]">
+          <img src="/images/logo.png" alt="" className="h-[31px]" />
+          <p className="font-roboto text-[20px] font-bold">Smart Sparks</p>
+        </CustomLink>
         <button onClick={() => handleLinkClick('/')}>Smart Sparks</button>
         <ul>
           <li>
