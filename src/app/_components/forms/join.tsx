@@ -18,7 +18,9 @@ import {
 } from '@/app/_dropdowns/join';
 
 import Button from '../shared-ui/button';
+import DocumentItem from './document-item';
 import DropDown from '../shared-ui/dropdown';
+import FileUpload from '../shared-ui/file-upload';
 import MessageAndRedirect from '../shared-ui/temp-component';
 import TextInput from '../shared-ui/text-input';
 import joinSchema from '@/app/_schemas/join';
@@ -43,7 +45,7 @@ const JoinForm = () => {
   }
 
   function getNext() {
-    if (step < 2) {
+    if (step < 3) {
       setIsStepTransitionComplete(false); // Disable rendering next step until transition completes
       setStep((step) => step + 1);
     }
@@ -53,6 +55,7 @@ const JoinForm = () => {
     control,
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<z.infer<typeof joinSchema>>({
     resolver: zodResolver(joinSchema),
@@ -85,10 +88,13 @@ const JoinForm = () => {
           <img src="/images/join.png" alt="" />
         </div>
         <h2 className="font-semibold text-[30px] text-textColor mt-[40px] mb-[16px] text-center font-roboto">
-          Tell Us About Your Business
+          {step === 3 && 'Accepted documents'}
+          {step !== 3 && 'Tell Us About Your Business'}
         </h2>
         <p className="font-semibold text-[20px] text-[#999294] text-center">
-          Get a personalized trial subscription
+          {step === 3 &&
+            "Upload one of these documents to verify your business's address and phone number"}
+          {step !== 3 && 'Get a personalized trial subscription'}
         </p>
 
         <form
@@ -325,6 +331,35 @@ const JoinForm = () => {
               </motion.div>
             )}
           </AnimatePresence>
+          <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
+            {step === 3 && isStepTransitionComplete && (
+              <motion.div
+                variants={animationVariants}
+                initial="hiddenRight"
+                animate="visible"
+                exit="hiddenRight"
+                className="grid grid-cols-1 gap-x-[40px] gap-y-[32px] w-[100%]">
+                <div className="flex flex-col gap-[24px]">
+                  <DocumentItem
+                    head="Utility bill"
+                    text="A document proving that services are being provided for you to run your business (gas, water, electricity, etc...)."
+                  />
+                  <DocumentItem
+                    head="Bank statement"
+                    text="A printed or electronic record of the balance in a bank account and the transactions therein."
+                  />
+                  <DocumentItem
+                    head="Business license"
+                    text="A permit issued by a government agency that allows you to conduct business within a geographical jurisdiction."
+                  />
+                </div>
+                <FileUpload setValue={setValue} />
+                {errors.file && (
+                  <p className="text-red-600">{errors.file.message}</p>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {step === 0 && (
             <Button onClick={getNext} className="w-[100%] xl:w-[50%] mt-[80px]">
@@ -343,6 +378,16 @@ const JoinForm = () => {
           )}
 
           {step === 2 && (
+            <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
+              <Button onClick={getPrevious} className="w-[100%]">
+                Previous
+              </Button>
+              <Button onClick={getNext} className="w-[100%]">
+                Next
+              </Button>
+            </div>
+          )}
+          {step === 3 && (
             <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
               <Button onClick={getPrevious} className="w-[100%]">
                 Previous

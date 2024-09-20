@@ -143,7 +143,7 @@ export default function ImageUpload({
         >
           <div
             ref={modalRef}
-            className="modal-content bg-white p-6 rounded-md shadow-md lg:w-[539px] w-[40%]">
+            className="modal-content bg-textWhite p-6 rounded-md shadow-md lg:w-[539px] w-[40%]">
             <h3 className="text-[#452033] text-[20px] font-bold">
               New Picture
             </h3>

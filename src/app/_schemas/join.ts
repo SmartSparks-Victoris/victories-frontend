@@ -26,6 +26,7 @@ const joinSchema = z.object({
   postal: z.string().min(1, { message: 'Postal is required' }),
   link: z.string().min(1, { message: 'Link is required' }),
   country: z.string().min(1, { message: 'Country is required' }),
+  file: z.instanceof(File, { message: 'A valid file is required' }),
 });
 
 export default joinSchema;
