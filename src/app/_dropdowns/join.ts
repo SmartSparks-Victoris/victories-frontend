@@ -1,9 +1,9 @@
-export const industry = [
-  'Customer Service',
-  'E-commerce',
-  'Restaurant',
-  'Education',
-  'Other',
+export const type = [
+  'Corporation',
+  'Sole Proprietorship',
+  'Partnership',
+  'Private Company',
+  'Institution',
 ] as const;
 export const size = ['1-10', '11-50', '51-100', '101-150', 'Other'] as const;
 export const communicate = ['Whatsapp', 'Messenger', 'Instagram'] as const;

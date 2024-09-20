@@ -27,6 +27,7 @@ const config: Config = {
         completedColor: 'var(--completedColor)',
         inProgressStroke: 'var(--inProgressStroke)',
         inProgressColor: 'var(--inProgressColor)',
+        urgentStroke: 'var(--urgentStroke)',
       },
       boxShadow: {
         custom: '0 4px 8px 2px rgba(0, 0, 0, 0.2)',

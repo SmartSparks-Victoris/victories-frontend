@@ -161,7 +161,7 @@ export default function Home() {
 
     return (
       <>
-        <Owner admins={admins} />
+        <Owner admins={admins} user={user} />
       </>
     );
   }

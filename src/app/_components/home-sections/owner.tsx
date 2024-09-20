@@ -4,12 +4,12 @@ import Link from 'next/link';
 import React from 'react';
 import Transition from '../shared-ui/transition';
 
-const Owner = ({ admins }) => {
+const Owner = ({ admins, user }) => {
   return (
     <section className="">
       <Transition from="up">
         <h2 className="text-[#452033] text-[26px] font-semibold mb-[16px]">
-          Welcome Owner!
+          Welcome {user.name}!
         </h2>
         <p className="text-[#452033] text-[24px]">
           Connect with your customers faster and more effectively with our

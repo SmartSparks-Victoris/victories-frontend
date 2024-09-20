@@ -38,7 +38,21 @@ export default function RootLayout({
           'bg-[url("/images/background.png")] bg-no-repeat bg-center bg-cover'
         } `}>
         <Toaster position="top-center" />
-        <NextTopLoader />
+        <NextTopLoader
+          color="var(--textWhite)"
+          initialPosition={0.18}
+          crawlSpeed={200}
+          height={8}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #var(--textWhite),0 0 5px var(--textWhite)"
+          template='<div class="bar" role="bar"><div class="peg"></div></div>
+          <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+          zIndex={1600}
+          showAtBottom={false}
+        />
         <SocketProvider>
           {!user && <GuestNavbar />}
           {user && (

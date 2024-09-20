@@ -43,6 +43,7 @@
   --completedStroke: #008132;
   --inProgressStroke: #c0760d;
   --inProgressColor: #ffe9c7;
+  --urgentStroke: #452033;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -5,25 +5,46 @@ import Link from 'next/link';
 import React from 'react';
 import Recent from './recent-results';
 import Results from './admin-results';
+import ResultsHead from '../shared-ui/results-head';
+import TicketItem from './ticket-item';
 
 const Admin = ({ results, recent }) => {
   return (
-    <section>
-      <div>
-        <CustomLink href={'/tickets?status=1'}>
-          <p>Un Opened Tickets</p>
-        </CustomLink>
-        <CustomLink href={'/tickets?status=2'}>
-          <p>In Progress Tickets</p>
-        </CustomLink>
-        <CustomLink href={'/tickets?status=3'}>
-          <p>Completed Tickets</p>
-        </CustomLink>
-        <CustomLink href={'/tickets?sort=desc&key=urgent'}>
-          <p>Urgent Tickets</p>
-        </CustomLink>
+    <section className="flex gap-[64px] flex-col 2xl:flex-row">
+      <div className="order-2 2xl:order-1 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[16px] mb-[32px]">
+          <TicketItem
+            href={'/tickets?status=1'}
+            type="open"
+            text="Unopened Tickets"
+            percentage={25}
+            number={25}
+          />
+          <TicketItem
+            href={'/tickets?status=2'}
+            type="inProgress"
+            text="In Progress Tickets"
+            percentage={35}
+            number={35}
+          />
+          <TicketItem
+            href={'/tickets?status=3'}
+            type="completed"
+            text="Completed Tickets"
+            percentage={40}
+            number={40}
+          />
+          <TicketItem
+            href={'/tickets?key=urgent&order=desc'}
+            type="urgent"
+            text="Urgent Tickets"
+            percentage={20}
+            number={20}
+          />
+        </div>
+        <ResultsHead text="Tickets" />
+        <Results results={results} />
       </div>
-      <Results results={results} />
       <Recent results={recent} />
     </section>
   );

@@ -10,11 +10,11 @@ import {
   communicate,
   customers,
   employees,
-  industry,
   people,
   plan,
   size,
   solution,
+  type,
 } from '@/app/_dropdowns/join';
 
 import Button from '../shared-ui/button';
@@ -43,7 +43,7 @@ const JoinForm = () => {
   }
 
   function getNext() {
-    if (step < 1) {
+    if (step < 2) {
       setIsStepTransitionComplete(false); // Disable rendering next step until transition completes
       setStep((step) => step + 1);
     }
@@ -101,14 +101,22 @@ const JoinForm = () => {
                 initial="hiddenLeft"
                 animate="visible"
                 exit="hiddenLeft"
-                className="flex justify-between gap-[44px] flex-col lg:flex-row items-start w-[100%]">
-                <div className="flex flex-col gap-[16px] w-[100%]">
+                className="flex justify-between gap-[44px] flex-col xl:flex-row items-start w-[100%]">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-[40px] gap-y-[32px] w-[100%]">
                   <TextInput
-                    placeholder="Enter Company Name"
+                    placeholder="Enter Business Name"
                     type="text"
                     name="name"
-                    label="Company Name"
+                    label="Business Name"
                     error={errors.name}
+                    register={register}
+                  />
+                  <TextInput
+                    placeholder="Phone Number"
+                    type="text"
+                    name="phone"
+                    label="Phone Number"
+                    error={errors.phone}
                     register={register}
                   />
                   <TextInput
@@ -119,72 +127,30 @@ const JoinForm = () => {
                     error={errors.email}
                     register={register}
                   />
-
-                  {/* <div className="flex gap-4 flex-grow sm:flex-row flex-col">
-                </div> */}
-                  <Controller
-                    name="communicate"
-                    control={control}
-                    defaultValue=""
-                    render={({ field }) => (
-                      <DropDown
-                        name="communicate"
-                        label="How do you communicate with customers today?"
-                        control={control}
-                        array={communicate}
-                        error={errors.communicate}
-                        value={field.value}
-                        selectedDropDown={openDropdown}
-                        setSelectedDropDown={(name) => setOpenDropdown(name)}
-                        isOpen={openDropdown === 'communicate'}
-                      />
-                    )}
-                  />
-                </div>
-                <div className="flex flex-col gap-[16px] w-[100%]">
                   <TextInput
-                    placeholder="Phone Number"
+                    placeholder="City"
                     type="text"
-                    name="phone"
-                    label="Phone Number"
-                    error={errors.phone}
+                    name="city"
+                    label="City"
+                    error={errors.city}
                     register={register}
                   />
-                  <Controller
-                    name="industry"
-                    control={control}
-                    defaultValue=""
-                    render={({ field }) => (
-                      <DropDown
-                        name="industry"
-                        label="Company Industry"
-                        control={control}
-                        array={industry}
-                        error={errors.industry}
-                        value={field.value}
-                        selectedDropDown={openDropdown}
-                        setSelectedDropDown={(name) => setOpenDropdown(name)}
-                        isOpen={openDropdown === 'industry'}
-                      />
-                    )}
+
+                  <TextInput
+                    placeholder="Street Address"
+                    type="text"
+                    name="address"
+                    label="Street Address"
+                    error={errors.address}
+                    register={register}
                   />
-                  <Controller
-                    name="size"
-                    control={control}
-                    defaultValue=""
-                    render={({ field }) => (
-                      <DropDown
-                        name="size"
-                        label="Company Size"
-                        control={control}
-                        array={size}
-                        error={errors.size}
-                        value={field.value}
-                        selectedDropDown={openDropdown}
-                        setSelectedDropDown={(name) => setOpenDropdown(name)}
-                        isOpen={openDropdown === 'size'}
-                      />
-                    )}
+                  <TextInput
+                    placeholder="Street Address 2"
+                    type="text"
+                    name="address2"
+                    label="Street Address 2"
+                    error={errors.address2}
+                    register={register}
                   />
                 </div>
               </motion.div>
@@ -197,7 +163,109 @@ const JoinForm = () => {
                 initial="hiddenRight"
                 animate="visible"
                 exit="hiddenRight"
-                className="flex flex-col gap-[16px] w-[100%] lg:w-[50%]">
+                className="grid grid-cols-1 xl:grid-cols-2 gap-x-[40px] gap-y-[32px] w-[100%]">
+                <TextInput
+                  placeholder="State"
+                  type="text"
+                  name="state"
+                  label="State"
+                  error={errors.state}
+                  register={register}
+                />
+                <TextInput
+                  placeholder="Postal Code"
+                  type="text"
+                  name="postal"
+                  label="Postal Code"
+                  error={errors.postal}
+                  register={register}
+                />
+
+                <TextInput
+                  placeholder="Link"
+                  type="text"
+                  name="link"
+                  label="Link"
+                  error={errors.link}
+                  register={register}
+                />
+
+                <TextInput
+                  placeholder="Country"
+                  type="text"
+                  name="country"
+                  label="Country"
+                  error={errors.country}
+                  register={register}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
+            {step === 2 && isStepTransitionComplete && (
+              <motion.div
+                variants={animationVariants}
+                initial="hiddenRight"
+                animate="visible"
+                exit="hiddenRight"
+                className="grid grid-cols-1 xl:grid-cols-2 gap-x-[40px] gap-y-[32px] w-[100%]">
+                <Controller
+                  name="type"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <DropDown
+                      name="type"
+                      label="Business Type"
+                      control={control}
+                      array={type}
+                      error={errors.type}
+                      value={field.value}
+                      selectedDropDown={openDropdown}
+                      setSelectedDropDown={(name) => setOpenDropdown(name)}
+                      isOpen={openDropdown === 'type'}
+                    />
+                  )}
+                />
+
+                <Controller
+                  name="communicate"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <DropDown
+                      name="communicate"
+                      label="How do you communicate with customers today?"
+                      control={control}
+                      array={communicate}
+                      error={errors.communicate}
+                      value={field.value}
+                      selectedDropDown={openDropdown}
+                      setSelectedDropDown={(name) => setOpenDropdown(name)}
+                      isOpen={openDropdown === 'communicate'}
+                    />
+                  )}
+                />
+
+                <Controller
+                  name="size"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <DropDown
+                      name="size"
+                      label="Company Size"
+                      control={control}
+                      array={size}
+                      error={errors.size}
+                      value={field.value}
+                      selectedDropDown={openDropdown}
+                      setSelectedDropDown={(name) => setOpenDropdown(name)}
+                      isOpen={openDropdown === 'size'}
+                    />
+                  )}
+                />
+
                 <Controller
                   name="plan"
                   control={control}
@@ -257,13 +325,25 @@ const JoinForm = () => {
               </motion.div>
             )}
           </AnimatePresence>
+
           {step === 0 && (
-            <Button onClick={getNext} className="w-[100%] md:w-[50%] mt-[80px]">
+            <Button onClick={getNext} className="w-[100%] xl:w-[50%] mt-[80px]">
               Next
             </Button>
           )}
           {step === 1 && (
-            <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] lg:w-[50%] mt-[80px]">
+            <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
+              <Button onClick={getPrevious} className="w-[100%]">
+                Previous
+              </Button>
+              <Button onClick={getNext} className="w-[100%]">
+                Next
+              </Button>
+            </div>
+          )}
+
+          {step === 2 && (
+            <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
               <Button onClick={getPrevious} className="w-[100%]">
                 Previous
               </Button>
@@ -278,6 +358,25 @@ const JoinForm = () => {
     </section>
   );
 };
+
+// <Controller
+// name="industry"
+// control={control}
+// defaultValue=""
+// render={({ field }) => (
+//   <DropDown
+//     name="industry"
+//     label="Company Industry"
+//     control={control}
+//     array={industry}
+//     error={errors.industry}
+//     value={field.value}
+//     selectedDropDown={openDropdown}
+//     setSelectedDropDown={(name) => setOpenDropdown(name)}
+//     isOpen={openDropdown === 'industry'}
+//   />
+// )}
+// />
 
 export default JoinForm;
 
