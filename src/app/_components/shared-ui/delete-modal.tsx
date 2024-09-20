@@ -29,19 +29,19 @@ const DeleteModal = ({ show, onClose, admin }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-[99] w-[100%] h-[100%] top-0 left-0 flex justify-center items-center">
       <div
-        className="bg-white p-6 rounded-lg max-w-lg mx-auto relative"
+        className="bg-textWhite p-6 rounded-lg max-w-lg mx-auto relative"
         ref={modalRef}>
         <h2 className="text-lg font-bold">Delete Admin</h2>
-        <p>Are you sure you want to delete {admin?.name}?</p>
-        <div className="flex justify-end gap-2 mt-4">
-          <button
-            onClick={onClose}
-            className="p-2 bg-gray-400 text-white rounded">
+        <p className="mt-[16px] mb-[24px]">
+          Are you sure you want to delete {admin?.name}?
+        </p>
+        <div className="flex justify-end gap-[16px] mt-4">
+          <button onClick={onClose} className="text-[#452033]">
             Cancel
           </button>
           <button
             onClick={onClose}
-            className="p-2 bg-red-500 text-white rounded">
+            className="p-[12px] bg-[url('/images/service-background.png')] text-textWhite rounded-[8px]">
             Confirm
           </button>
         </div>

@@ -218,6 +218,7 @@ const users = [
   {
     id: 1,
     username: 'john',
+    fullname: 'John Doe',
     name: 'John Doe',
     email: 'john@example.com',
     role: 'admin',
@@ -226,6 +227,7 @@ const users = [
   {
     id: 2,
     username: 'jane',
+    fullname: 'Jane Doe',
     name: 'Jane Doe',
     email: 'jane@example.com',
     role: 'owner',
@@ -256,6 +258,7 @@ app.post('/login', (req, res) => {
       email: user.email,
       role: user.role,
       subdomain: user.subdomain,
+      fullname: user.fullname,
     },
     JWT_SECRET,
     { expiresIn: '1h' }, // Token expires in 1 hour

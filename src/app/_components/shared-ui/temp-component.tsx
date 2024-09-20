@@ -7,7 +7,7 @@ import useAnimation from '@/app/_hooks/useAnimation';
 import { useEffect } from 'react';
 import { useRouter } from 'nextjs-toploader/app';
 
-const MessageAndRedirect = ({ nextPage, src, text }) => {
+const MessageAndRedirect = ({ nextPage, src, text, text2 = '' }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -40,9 +40,16 @@ const MessageAndRedirect = ({ nextPage, src, text }) => {
               exit="hiddenRight"
               className="flex flex-col justify-center items-center py-[80px] px-[40px] mx-[16px] gap-[50px]">
               <img src={src} alt="" />
-              <p className="text-lg font-bold text-[30px] text-center">
-                {text}
-              </p>
+              <div className="flex flex-col gap-[2px]">
+                <p className="text-lg font-bold text-[30px] text-center">
+                  {text}
+                </p>
+                {text2 && (
+                  <p className="text-lg font-bold text-[30px] text-center">
+                    {text2}
+                  </p>
+                )}
+              </div>
             </motion.div>
           </div>
         </section>

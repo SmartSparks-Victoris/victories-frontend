@@ -64,7 +64,7 @@ const Filters = ({ categories, status, numberOfResults }) => {
   }
 
   return (
-    <section className="flex justify-between items-center mb-8">
+    <section className="flex justify-between items-center">
       <div className="flex gap-4 items-center">
         <svg
           width="24"

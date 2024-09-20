@@ -2,7 +2,9 @@
 
 import * as z from 'zod';
 
+import Button from '../shared-ui/button';
 import React from 'react';
+import TextInput from '../shared-ui/text-input';
 import passwordSchema from '@/app/_schemas/password';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'nextjs-toploader/app';
@@ -27,29 +29,22 @@ const PasswordForm = () => {
 
   return (
     <form onSubmit={handleSubmit(handleInfoSuccess, handleInfoFailure)}>
-      <div>
-        <label htmlFor="old">Current Password</label>
-        <input
-          id="old"
+      <div className="flex gap-[40px] w-[100%] flex-col lg:flex-row">
+        <TextInput
+          name="old"
+          label="Current Password"
+          register={register}
           type="password"
-          placeholder="******"
-          className="flex-grow"
-          {...register('old', { required: true })}
         />
-        {errors.old && <p className="fieldError">{errors.old.message}</p>}
-      </div>
-      <div>
-        <label htmlFor="new">New Password</label>
-        <input
-          id="new"
+        <TextInput
+          name="new"
+          label="New Password"
+          register={register}
           type="password"
-          placeholder="******"
-          className="flex-grow"
-          {...register('new', { required: true })}
         />
-        {errors.old && <p className="fieldError">{errors.old.message}</p>}
       </div>
-      <input type="submit" value="Update" />
+
+      <Button type="submit" value="Update" className="mt-[32px]"></Button>
     </form>
   );
 };

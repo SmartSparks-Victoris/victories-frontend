@@ -32,9 +32,11 @@ const DropDown: FC<DropDownProps> = ({
 
   return (
     <div className="flex flex-col w-[100%] gap-[16px]">
-      <label htmlFor={name} className="text-[22px] font-medium">
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={name} className="text-[22px] font-medium">
+          {label}
+        </label>
+      )}
       <div className="relative ">
         <Controller
           name={name}
@@ -100,7 +102,7 @@ const DropDown: FC<DropDownProps> = ({
                         onChange(-1); // Set the form value
                       }}
                       className={`p-[16px] cursor-pointer hover:bg-listOptionHoverColor hover:text-textColor border-b-[1px] border-solid border-b-mainColor ${
-                        value === -1 ? 'bg-mainColor' : ''
+                        value === -1 ? 'bg-mainColor text-white' : ''
                       }`}>
                       All
                     </div>
@@ -114,7 +116,7 @@ const DropDown: FC<DropDownProps> = ({
                             onChange(option.id); // Set the form value
                           }}
                           className={`p-[16px] cursor-pointer hover:bg-listOptionHoverColor hover:text-textColor border-b-[1px] border-solid border-b-mainColor ${
-                            value === option.id ? 'bg-mainColor' : ''
+                            value === option.id ? 'bg-mainColor text-white' : ''
                           }`}>
                           {option.name}
                         </div>

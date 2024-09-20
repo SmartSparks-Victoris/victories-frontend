@@ -32,8 +32,7 @@ export default function RootLayout({
       </head>
       <body
         className={`font-poppins ${!user && 'pt-[var(--guestNav)]'} ${
-          user &&
-          'pl-[calc(var(--adminNavSmall)+var(--paddingAdmin))] md:pl-[calc(var(--adminNav)+var(--paddingAdmin))] pt-[calc(var(--searchNav)+var(--paddingAdmin))] pb-[var(--paddingAdmin)] pr-[var(--paddingAdmin)]'
+          user && 'pagePadding'
         } ${
           !user &&
           'bg-[url("/images/background.png")] bg-no-repeat bg-center bg-cover'
@@ -45,7 +44,7 @@ export default function RootLayout({
           {user && (
             <>
               <AdminNavbar user={user} />
-              <SearchBar />
+              <SearchBar user={user} />
             </>
           )}
           {children}

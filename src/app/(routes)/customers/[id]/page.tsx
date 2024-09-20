@@ -2,15 +2,7 @@ import Admin from '@/app/_components/admin-sections/admin';
 import Customer from '@/app/_components/customer-section/customer';
 import React from 'react';
 import Results from '@/app/_components/customer-section/results';
-
-const customer = {
-  img: 'http',
-  id: 1,
-  name: 'John Doe',
-  time: '14/8/2024',
-  tickets: 250,
-  online: true,
-};
+import ResultsHead from '@/app/_components/shared-ui/results-head';
 
 const results = [
   {
@@ -25,6 +17,8 @@ const results = [
     date: '2024-09-11',
     sentiment: 'positive',
     degree_of_sentiment: 85,
+    img: '/images/default.png',
+    number: '01098536400',
   },
   {
     id: 2,
@@ -38,6 +32,8 @@ const results = [
     date: '2024-09-10',
     sentiment: 'neutral',
     degree_of_sentiment: 50,
+    img: '/images/default.png',
+    number: '01098536401',
   },
   {
     id: 3,
@@ -51,6 +47,8 @@ const results = [
     date: '2024-09-09',
     sentiment: 'negative',
     degree_of_sentiment: 20,
+    img: '/images/default.png',
+    number: '01098536402',
   },
   {
     id: 4,
@@ -64,6 +62,8 @@ const results = [
     date: '2024-09-08',
     sentiment: 'positive',
     degree_of_sentiment: 90,
+    img: '/images/default.png',
+    number: '01098536403',
   },
   {
     id: 5,
@@ -77,13 +77,21 @@ const results = [
     date: '2024-09-07',
     sentiment: 'negative',
     degree_of_sentiment: 30,
+    img: '/images/default.png',
+    number: '01098536404',
   },
 ];
 
-const page = () => {
+const page = ({ params }) => {
+  const id = Number(params.id);
+  const customer = results.filter((a) => a.id === id)[0];
+
   return (
     <>
       <Customer customer={customer} />
+      <div className="mt-[24px]">
+        <ResultsHead text={'History of tickets'} />
+      </div>
       <Results results={results} />
     </>
   );

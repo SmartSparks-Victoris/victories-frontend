@@ -2,7 +2,9 @@
 
 import * as z from 'zod';
 
-import React from 'react';
+import Button from '../shared-ui/button';
+import ResultsHead from '../shared-ui/results-head';
+import TextInput from '../shared-ui/text-input';
 import newSchema from '@/app/_schemas/new';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -16,88 +18,62 @@ const NewForm = () => {
     resolver: zodResolver(newSchema),
   });
 
-  function handleLoginSuccess() {}
-
-  function handleLoginFailure() {}
-
+  function handleSuccess(data) {}
+  function handleError(errors) {
+    console.error('Validation errors:', errors);
+  }
   return (
-    <section className="h-[calc(100vh-var(--guestNav))]  flex  justify-center items-center">
-      <div className="container mx-auto flex flex-col justify-center items-center">
-        <div className="h-[50px] w-[50px] bg-gray-500"></div>
-        <h2>New Admin!</h2>
-        <p>You are going to add a new admin.</p>
+    <section className="">
+      <ResultsHead text="New Admin" />
 
-        <form
-          onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}
-          className="flex flex-col justify-center">
-          <div>
-            <div>
-              <label htmlFor="fname">First Name</label>
-              <input
-                type="text"
-                id="fname"
-                {...register('fname')}
-                placeholder="Enter Your First Name"
-              />
-              {errors.fname && (
-                <p className="fieldError">{errors.fname.message}</p>
-              )}
-            </div>
-            <div>
-              <label htmlFor="fname">Last Name</label>
-              <input
-                type="text"
-                id="lname"
-                {...register('lname')}
-                placeholder="Enter Your Last Name"
-              />
-              {errors.fname && (
-                <p className="fieldError">{errors.fname.message}</p>
-              )}
-            </div>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                id="email"
-                {...register('email')}
-                placeholder="Enter Your Email"
-              />
-              {errors.fname && (
-                <p className="fieldError">{errors.fname.message}</p>
-              )}
-            </div>
-          </div>
+      <form
+        onSubmit={handleSubmit(handleSuccess, handleError)}
+        className="bg-textWhite ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
+          <TextInput
+            name="fname"
+            label="First Name"
+            placeholder="Enter Admin First Name"
+            error={errors.fname}
+            register={register}
+            type="text"
+          />
+          <TextInput
+            name="lname"
+            label="Last Name"
+            placeholder="Enter Admin First Name"
+            error={errors.lname}
+            register={register}
+            type="text"
+          />
+          <TextInput
+            name="email"
+            label="Email"
+            placeholder="Enter Admin Email"
+            error={errors.email}
+            register={register}
+            type="email"
+          />
+          <TextInput
+            name="username"
+            label="UserName"
+            placeholder="Enter Admin Username"
+            error={errors.username}
+            register={register}
+            type="text"
+          />
+          <TextInput
+            name="password"
+            label="Password"
+            placeholder="Enter Admin Password"
+            error={errors.password}
+            register={register}
+            type="password"
+          />
+        </div>
 
-          <div>
-            <div>
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                id="username"
-                {...register('username')}
-                placeholder="Enter Your User Name"
-              />
-              {errors.username && (
-                <p className="fieldError">{errors.username.message}</p>
-              )}
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                type="password"
-                {...register('password')}
-                placeholder="Enter Your Password"
-              />
-              {errors.password && (
-                <p className="fieldError">{errors.password.message}</p>
-              )}
-            </div>
-          </div>
-          <input type="submit" value="Add New" />
-        </form>
-      </div>
+        <Button type="submit" className="mt-[108px] w-[100%]"></Button>
+      </form>
     </section>
   );
 };

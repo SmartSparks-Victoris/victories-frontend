@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 
 import DeleteModal from '../shared-ui/delete-modal';
+import RowView from '../shared-ui/row-view';
 
 const Admin = ({ admin }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,35 +25,19 @@ const Admin = ({ admin }) => {
   }
 
   return (
-    <section>
-      <div key={admin.id} className="flex">
-        <div>
-          <img src="" alt="" />
-          {admin.img}
-        </div>
-        <div>
-          <p>{admin.name}</p>
-          <p>{admin.time}</p>
-        </div>
-        <div>
-          <p>{admin.tickets}</p>
-        </div>
-        <div>
-          <p>{admin.online ? 'Online Now!' : 'Offline'}</p>
-        </div>
-        <div>
-          <p>ID: {admin.id}</p>
-        </div>
-        <div>
-          <button onClick={(e) => handleButtonClick(e, admin)}>Delete</button>
-        </div>
-      </div>
+    <>
+      <RowView
+        onClick={(e) => handleButtonClick(e, admin)}
+        data={admin}
+        type="admin"
+        href={`/admins/${admin.id}`}
+      />
       <DeleteModal
         show={isModalOpen}
         onClose={closeModal}
         admin={selectedAdmin}
       />
-    </section>
+    </>
   );
 };
 

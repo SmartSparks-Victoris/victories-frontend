@@ -28,7 +28,7 @@ const page = async ({ searchParams }) => {
     },
     {
       id: 2,
-      urgent: 4,
+      urgent: 0,
       status: 'completed', // "open", "inProgress", "completed"
       status_id: 3,
       title: 'Feedback #5678',
@@ -41,7 +41,7 @@ const page = async ({ searchParams }) => {
     },
     {
       id: 3,
-      urgent: 10,
+      urgent: 0,
       status: 'open', // "open", "inProgress", "completed"
       status_id: 1,
       title: 'Person Update #2345',

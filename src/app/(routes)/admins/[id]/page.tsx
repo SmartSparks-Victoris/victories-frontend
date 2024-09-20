@@ -1,15 +1,8 @@
-import Admin from '@/app/_components/admin-sections/admin';
-import React from 'react';
-import Results from '@/app/_components/admin-sections/results';
+import React, { useState } from 'react';
 
-const admin = {
-  img: 'http',
-  id: 1,
-  name: 'John Doe',
-  time: '14/8/2024',
-  tickets: 250,
-  online: true,
-};
+import Admin from '@/app/_components/admin-sections/admin';
+import Results from '@/app/_components/admin-sections/results';
+import ResultsHead from '@/app/_components/shared-ui/results-head';
 
 const results = [
   {
@@ -79,10 +72,40 @@ const results = [
   },
 ];
 
-const page = () => {
+const admins = [
+  {
+    img: '/images/default.png',
+    id: 1,
+    name: 'John Doe',
+    date: '2024-09-19T08:05:00Z',
+    tickets: 250,
+  },
+  {
+    img: '/images/default.png',
+    id: 2,
+    name: 'Jane Doe',
+    date: '2024-09-19T08:05:00Z',
+    tickets: 150,
+  },
+  {
+    img: '/images/default.png',
+    id: 3,
+    name: 'Doe Joe',
+    date: '2024-09-19T08:05:00Z',
+    tickets: 270,
+  },
+];
+
+const page = ({ params }) => {
+  const id = Number(params.id);
+  const admin = admins.filter((a) => a.id === id)[0];
+
   return (
     <>
       <Admin admin={admin} />
+      <div className="mt-[24px]">
+        <ResultsHead text={'History'} />
+      </div>
       <Results results={results} />
     </>
   );

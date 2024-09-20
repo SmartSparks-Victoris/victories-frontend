@@ -4,15 +4,21 @@ import * as z from 'zod';
 
 import React, { useState } from 'react';
 
+import Button from '../shared-ui/button';
+import DropDown from '../shared-ui/dropdown';
 import SearchForm from './search-form';
+import TextInput from '../shared-ui/text-input';
 import ticketUpdateSchema from '@/app/_schemas/ticket';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'nextjs-toploader/app';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const Form = ({ ticket, categories, status }) => {
+  const [selectedDropDown, setSelectedDropDown] = useState(null);
   console.log(ticket);
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<z.infer<typeof ticketUpdateSchema>>({
@@ -28,55 +34,71 @@ const Form = ({ ticket, categories, status }) => {
   function handleSuccess() {}
   function handleFailure() {}
 
+  const router = useRouter();
+
+  const [selectedCategory, setSelectedCategory] = useState(ticket.category_id);
+  const [selectedStatus, setSelectedStatus] = useState(ticket.status_id);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  function handleCategoryChange(selectedValue) {
+    setSelectedCategory(selectedValue);
+    router.refresh();
+  }
+
+  function handleStatusChange(selectedValue) {
+    setSelectedStatus(selectedValue);
+    router.refresh();
+  }
+
+  console.log('TICKET: ', ticket);
+
   return (
-    <section>
+    <section className="flex flex-col gap-[24px] xl:order-1 order-2">
       <SearchForm />
-      <form onSubmit={handleSubmit(handleSuccess, handleFailure)}>
-        <div>
-          <label htmlFor="category">Category</label>
-          <select {...register('category')} id="category">
-            {categories.map((category) => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              );
-            })}
-          </select>
-          {errors.category && (
-            <p className="fieldError">errors.category.message</p>
-          )}
+      <form
+        onSubmit={handleSubmit(handleSuccess, handleFailure)}
+        className="flex flex-col gap-[48px]">
+        <div className="flex flex-col gap-[24px]">
+          <DropDown
+            name="category"
+            label="Category"
+            control={control}
+            defaultValue={ticket.cateogry_id}
+            array={categories}
+            value={selectedCategory}
+            selectedDropDown={openDropdown}
+            setSelectedDropDown={(name) => setOpenDropdown(name)}
+            isOpen={openDropdown === 'category'}
+            handleChange={handleCategoryChange}
+          />
+          <DropDown
+            name="status"
+            label="Status"
+            control={control}
+            defaultValue={ticket.status_id}
+            array={status}
+            value={selectedStatus}
+            selectedDropDown={openDropdown}
+            setSelectedDropDown={(name) => setOpenDropdown(name)}
+            isOpen={openDropdown === 'status'}
+            handleChange={handleStatusChange}
+          />
+          <TextInput
+            name="title"
+            register={register}
+            label="Title"
+            placeholder="Title"
+            type="text"
+          />
+          <TextInput
+            name="summary"
+            register={register}
+            label="Summary"
+            placeholder="Summary"
+            type="textarea"
+          />
         </div>
-
-        <div>
-          <label htmlFor="status">Status</label>
-          <select {...register('status')} id="status">
-            {status.map((st) => {
-              return (
-                <option key={st.id} value={st.id}>
-                  {st.name}
-                </option>
-              );
-            })}
-          </select>
-          {errors.status && <p className="fieldError">errors.status.message</p>}
-        </div>
-
-        <div>
-          <label htmlFor="title">Title</label>
-          <input type="text" {...register('title')} id="title" />
-          {errors.title && <p>errors.title.message</p>}
-        </div>
-
-        <div>
-          <label htmlFor="summary"></label>
-          <textarea id="summary" {...register('summary')}></textarea>
-          {errors.summary && (
-            <p className="fieldError">errors.summary.message</p>
-          )}
-        </div>
-
-        <input type="submit" value="Update" />
+        <Button type="submit" value="Update" />
       </form>
     </section>
   );

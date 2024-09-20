@@ -17,6 +17,7 @@ export const sharedRoutes = [
   '/search',
   '/support',
   '/help',
+  '/notifications',
 ];
 
 export const guestRoutes = [

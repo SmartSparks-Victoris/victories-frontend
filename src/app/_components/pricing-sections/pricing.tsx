@@ -2,7 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 
+import Button from '../shared-ui/button';
+import MessageAndRedirect from '../shared-ui/temp-component';
 import Payment from './payment';
+import PricingItem from './pricing-item';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSearchParams } from 'next/navigation';
 
@@ -10,6 +13,7 @@ const Pricing = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [step, setStep] = useState(1);
+  const [price, setPrice] = useState(null);
 
   const [duration, setDuration] = useState(
     searchParams.get('duration') || 'monthly',
@@ -35,10 +39,12 @@ const Pricing = () => {
     router.push(`${window.location.pathname}?${searchParams.toString()}`);
   }
 
-  function handlePlanChange(value) {
+  function handlePlanChange(value, price) {
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.set('plan', value);
     router.push(`${window.location.pathname}?${searchParams.toString()}`);
+    setPrice(price);
+    setStep((step) => step + 1);
   }
 
   function handleNext() {
@@ -53,54 +59,90 @@ const Pricing = () => {
     <>
       {step === 1 && (
         <div>
-          <h2>Choose the Plan That Fits Your Business Needs</h2>
-          <p>
+          <h2 className="text-[#231318] text-[20px] font-bold font-roboto text-center">
+            Choose the Plan That Fits Your Business Needs
+          </h2>
+          <p className="text-[16px] font-medium text-center mt-[16px]">
             Whether you are a small business or a large enterprise, we have a
             plan that suits your customer service requirements.
           </p>
-          <div>
+          <div className='flex bg-[url("/images/service-background.png")] bg-cover py-[14px] px-[22px] rounded-[16px] gap-[46px] w-fit flex-wrap mx-auto mt-[40px] mb-[32px]'>
             <button
               onClick={() => handleDurationChange('monthly')}
               className={`${
-                duration === 'monthly' ? 'bg-green-300' : 'bg-gray-500'
-              }`}>
+                duration === 'monthly'
+                  ? 'bg-textWhite py-[16px] px-[14px] rounded-[16px] text-[20px] font-medium'
+                  : 'text-textWhite font-bold text-[20px]'
+              } `}>
               Monthly
             </button>
             <button
               onClick={() => handleDurationChange('annual')}
               className={`${
-                duration === 'annual' ? 'bg-green-300' : 'bg-gray-500'
-              }`}>
-              Annual - 30% Offer
+                duration === 'annual'
+                  ? 'bg-textWhite py-[16px] px-[14px] rounded-[16px]'
+                  : 'text-textWhite font-bold text-[20px]'
+              } flex gap-[10px] items-center`}>
+              <span className="text-[20px] flex">Annual</span>
+              <span className="text-[16px] flex">30% Offer</span>
             </button>
           </div>
-          <div>
-            <button
-              onClick={() => handlePlanChange('free')}
-              className={`${
-                plan === 'free' ? 'bg-orange-300' : 'bg-gray-500'
-              }`}>
-              Free Plan
-            </button>
-            <button
-              onClick={() => handlePlanChange('basic')}
-              className={`${
-                plan === 'basic' ? 'bg-orange-300' : 'bg-gray-500'
-              }`}>
-              Basic Plan
-            </button>
-            <button
-              onClick={() => handlePlanChange('premium')}
-              className={`${
-                plan === 'premium' ? 'bg-orange-300' : 'bg-gray-500'
-              }`}>
-              Premium Plan
+          <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] lg:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-[40px]">
+            <PricingItem
+              handlePlanChange={handlePlanChange}
+              type={'Free'}
+              price={'0'}
+              description={'Per user/month , billed annualy :'}
+              features={[
+                'Lorem ipsum dolor sit amet, ',
+                'Lorem ipsum dolor sit amet, ',
+                'Lorem ipsum dolor sit amet, ',
+              ]}
+            />
+            <PricingItem
+              handlePlanChange={handlePlanChange}
+              type={'Pro'}
+              price={'400'}
+              description={'Great For Medium business :'}
+              features={[
+                'Lorem ipsum dolor sit amet, ',
+                'Lorem ipsum dolor sit amet, ',
+                'Lorem ipsum dolor sit amet, ',
+              ]}
+            />
+            <PricingItem
+              handlePlanChange={handlePlanChange}
+              type={'Enterprise'}
+              price={'Custom'}
+              description={'For multiple items :'}
+              features={[
+                'Lorem ipsum dolor sit amet, ',
+                'Lorem ipsum dolor sit amet, ',
+                'Lorem ipsum dolor sit amet, ',
+                'Lorem ipsum dolor sit amet, ',
+              ]}
+            />
+          </div>
+
+          <div className="flex justify-between mt-[55px] flex-wrap gap-[24px] items-center">
+            <p className="text-[#452033] text-[20px] font-medium">
+              Your current plan is set to auto-renew on a regular basis.
+            </p>
+            <button className="text-[#452033] text-[16px] font-bold border-[1px] border-solid border-[#7E4556] p-[14px] rounded-[16px]">
+              Cancel your subscription
             </button>
           </div>
-          <button onClick={handleNext}>Next</button>
         </div>
       )}
-      {step === 2 && <Payment />}
+      {step === 2 && <Payment total={price} handleNext={handleNext} />}
+      {step === 3 && (
+        <MessageAndRedirect
+          nextPage="/"
+          src="/images/payment-success.png"
+          text="Thank you for your payment"
+          text2="Your transaction has been successfully completed"
+        />
+      )}
     </>
   );
 };

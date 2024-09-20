@@ -3,6 +3,7 @@
 import * as z from 'zod';
 
 import React from 'react';
+import TextInput from '../shared-ui/text-input';
 import semanticSearchSchema from '@/app/_schemas/semantic-search';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'nextjs-toploader/app';
@@ -29,14 +30,16 @@ const SearchForm = () => {
 
   return (
     <form onSubmit={handleSubmit(handleSearchSuccess, handleSearchFailure)}>
-      <input
+      <TextInput
+        name="query"
         type="text"
-        placeholder="Search..."
-        className="flex-grow"
-        {...register('query', { required: true })}
+        label=""
+        icon="search"
+        iconSubmit={true}
+        register={register}
+        error={errors.query}
+        placeholder="Search for similar Problems"
       />
-      {errors.query && <p className="fieldError"> {errors.query.message}</p>}
-      <button type="submit">Search</button>
     </form>
   );
 };

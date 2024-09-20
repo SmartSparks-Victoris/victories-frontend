@@ -1,65 +1,66 @@
 import React from 'react';
 import Results from '@/app/_components/customers-section/results';
+import ResultsHead from '@/app/_components/shared-ui/results-head';
 
 const customers = [
   {
-    img: 'https://example.com/images/customer1.jpg',
+    img: '/images/default.png',
     id: 1,
-    contact: 'john.doe@example.com',
+    contact: '01094774383',
     time: '2024-09-01T10:00:00Z',
   },
   {
-    img: 'https://example.com/images/customer2.jpg',
+    img: '/images/default.png',
     id: 2,
-    contact: 'jane.smith@example.com',
+    contact: '01094734383',
     time: '2024-09-01T11:30:00Z',
   },
   {
-    img: 'https://example.com/images/customer3.jpg',
+    img: '/images/default.png',
     id: 3,
-    contact: 'alice.jones@example.com',
+    contact: '01194774383',
     time: '2024-09-01T13:45:00Z',
   },
   {
-    img: 'https://example.com/images/customer4.jpg',
+    img: '/images/default.png',
     id: 4,
-    contact: 'bob.brown@example.com',
+    contact: '01294774383',
     time: '2024-09-01T15:00:00Z',
   },
   {
-    img: 'https://example.com/images/customer5.jpg',
+    img: '/images/default.png',
     id: 5,
-    contact: 'carol.white@example.com',
+    contact: '01294774383',
     time: '2024-09-01T16:30:00Z',
   },
   {
-    img: 'https://example.com/images/customer6.jpg',
+    img: '/images/default.png',
     id: 6,
-    contact: 'david.black@example.com',
+    contact: '01594774383',
     time: '2024-09-01T18:00:00Z',
   },
   {
-    img: 'https://example.com/images/customer7.jpg',
+    img: '/images/default.png',
     id: 7,
-    contact: 'emily.green@example.com',
+    contact: '01022774383',
     time: '2024-09-01T19:15:00Z',
   },
   {
-    img: 'https://example.com/images/customer8.jpg',
+    img: '/images/default.png',
     id: 8,
-    contact: 'frank.miller@example.com',
+    contact: '01094774380',
     time: '2024-09-01T20:45:00Z',
   },
   {
-    img: 'https://example.com/images/customer9.jpg',
+    img: '/images/default.png',
     id: 9,
-    contact: 'grace.lee@example.com',
+    contact: '01014774383',
     time: '2024-09-01T22:00:00Z',
   },
   {
-    img: 'https://example.com/images/customer10.jpg',
+    img: '/images/default.png',
     id: 10,
-    contact: 'hank.taylor@example.com',
+    contact: '01094114383',
     time: '2024-09-01T23:30:00Z',
   },
 ];
@@ -67,6 +68,7 @@ const customers = [
 const page = () => {
   return (
     <>
+      <ResultsHead text="Customers" results={customers} />
       <Results results={customers} />
     </>
   );

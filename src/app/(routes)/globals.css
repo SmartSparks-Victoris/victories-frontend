@@ -24,8 +24,9 @@
   --guestNav: 80px;
   --adminNav: 229px;
   --adminNavSmall: 80px;
-  --searchNav: 40px;
-  --paddingAdmin: 16px;
+  --searchNav: 76px;
+  --paddingAdminTop: 40px;
+  --paddingAdminLeft: 40px;
   --mainColor: #7e4556;
   --mainColorAlpha: #decad0;
   --textColor: #000000;
@@ -36,6 +37,12 @@
   --listOptionHoverColor: #decad0;
   --borderColor: rgba(0, 0, 0, 0.4);
   --backgroundOpacity: rgba(255, 244, 247, 0.2);
+  --openStroke: #be0202;
+  --openColor: #ffd6dd;
+  --completedColor: #c6edd0;
+  --completedStroke: #008132;
+  --inProgressStroke: #c0760d;
+  --inProgressColor: #ffe9c7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -57,6 +64,120 @@ body {
   overflow-x: hidden;
   background-attachment: fixed;
 }
+
+svg {
+  display: flex;
+}
+
+.owner-table th,
+.owner-table td {
+  border: 1px solid #231318;
+}
+
+.owner-table th,
+.owner-table td {
+  padding: 40px 28px;
+}
+
+table td,
+table th {
+  text-align: center;
+}
+
+.resultsDiv {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #7e4556;
+  border-radius: 24px;
+  box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.2); /* Adjust the color and opacity as needed */
+}
+
+.results {
+  width: 100%;
+}
+
+.results th {
+  padding: 32px 16px;
+  @apply font-roboto font-semibold text-[14px] text-[#452033];
+}
+
+/* .results tr:first-of-type {
+  @apply border-y-[1px] border-b-solid border-y-[#7E4556];
+} */
+
+.results tr:first-of-type {
+  @apply border-y-[1px] border-solid border-y-[#7E4556];
+}
+
+.results tr:not(:last-of-type) {
+  border-bottom: 1px solid #999999;
+}
+
+.results td {
+  padding: 20px 16px;
+}
+
+.pagePadding {
+  @apply pl-[calc(var(--adminNavSmall)+var(--paddingAdminLeft))]
+         md:pl-[calc(var(--adminNav)+var(--paddingAdminLeft))]
+         pt-[calc(var(--searchNav)+var(--paddingAdminTop))]
+         pb-[var(--paddingAdminTop)]
+         pr-[var(--paddingAdminLeft)]
+         bg-[var(--textWhite)];
+}
+
+input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Custom checkbox container */
+.custom-checkbox {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #7e4556;
+  border-radius: 4px;
+  background-color: #f0f0f0; /* Background color when unchecked */
+  transition: background-color 0.2s; /* Optional: smooth transition */
+}
+
+/* Checkmark (hidden by default) */
+.custom-checkbox::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 10px;
+  top: 5px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Show the checkmark when the checkbox is checked */
+input[type='checkbox']:checked + .custom-checkbox::after {
+  display: block;
+}
+
+/* Change background color when checked */
+input[type='checkbox']:checked ~ .custom-checkbox {
+  background-color: #7e4556; /* Background color when checked */
+}
+
+/* Optional: Hover effect */
+.custom-checkbox:hover {
+  background-color: #d1d1d1; /* Slightly darker on hover when unchecked */
+}
+
+/* Hover effect (optional) */
+/* input[type='checkbox']:hover + .custom-checkbox {
+  background-color: #f0f0f0;
+} */
 
 /* .card:hover .card-inner {
   transform: rotateY(-180deg);

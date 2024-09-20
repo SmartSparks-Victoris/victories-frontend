@@ -2,7 +2,9 @@
 
 import * as z from 'zod';
 
+import Button from '../shared-ui/button';
 import React from 'react';
+import TextInput from '../shared-ui/text-input';
 import personalInfoSchema from '@/app/_schemas/personal-info';
 import semanticSearchSchema from '@/app/_schemas/semantic-search';
 import { useForm } from 'react-hook-form';
@@ -33,41 +35,27 @@ const PersonalInfoForm = ({ data }) => {
 
   return (
     <form onSubmit={handleSubmit(handleInfoSuccess, handleInfoFailure)}>
-      <div>
-        <label htmlFor="fname">First Name</label>
-        <input
-          id="fname"
+      <div className="flex gap-[40px] w-[100%] flex-col lg:flex-row">
+        <TextInput
+          name="fname"
+          label="First Name"
+          register={register}
           type="text"
-          placeholder="Name"
-          className="flex-grow"
-          {...register('fname', { required: true })}
         />
-        {errors.fname && <p className="fieldError">{errors.fname.message}</p>}
-      </div>
-      <div>
-        <label htmlFor="lname">Last Name</label>
-        <input
-          id="lname"
+        <TextInput
+          name="lname"
+          label="Last Name"
+          register={register}
           type="text"
-          placeholder="Name"
-          className="flex-grow"
-          {...register('lname', { required: true })}
         />
-        {errors.lname && <p className="fieldError">{errors.lname.message}</p>}
-      </div>
-      <div>
-        <label htmlFor="lname">Email</label>
-        <input
-          id="email"
+        <TextInput
+          name="email"
+          label="Email"
+          register={register}
           type="email"
-          placeholder="Name"
-          className="flex-grow"
-          {...register('email', { required: true })}
         />
-        {errors.email && <p className="fieldError">{errors.email.message}</p>}
       </div>
-
-      <input type="submit" value="Update" />
+      <Button type="submit" value="Update" className="mt-[32px]"></Button>
     </form>
   );
 };

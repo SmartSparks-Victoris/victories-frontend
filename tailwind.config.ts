@@ -21,6 +21,15 @@ const config: Config = {
         listOptionHoverColor: 'var(--listOptionHoverColor)',
         textWhite: 'var(--textWhite)',
         backgroundOpacity: 'var(--backgroundOpacity)',
+        openStroke: 'var(--openStroke)',
+        openColor: 'var(--openColor)',
+        completedStroke: 'var(--completedStroke)',
+        completedColor: 'var(--completedColor)',
+        inProgressStroke: 'var(--inProgressStroke)',
+        inProgressColor: 'var(--inProgressColor)',
+      },
+      boxShadow: {
+        custom: '0 4px 8px 2px rgba(0, 0, 0, 0.2)',
       },
       fontFamily: {
         poppins: ['Poppins', 'serif'],

@@ -15,6 +15,7 @@ const page = async ({ searchParams }) => {
       date: '2024-09-11',
       sentiment: 'positive',
       degree_of_sentiment: 85,
+      similarity_ratio: '48%',
     },
     {
       id: 2,
@@ -28,6 +29,7 @@ const page = async ({ searchParams }) => {
       date: '2024-09-10',
       sentiment: 'neutral',
       degree_of_sentiment: 50,
+      similarity_ratio: '58%',
     },
     {
       id: 3,
@@ -41,6 +43,7 @@ const page = async ({ searchParams }) => {
       date: '2024-09-09',
       sentiment: 'negative',
       degree_of_sentiment: 20,
+      similarity_ratio: '84%',
     },
     {
       id: 4,
@@ -54,6 +57,7 @@ const page = async ({ searchParams }) => {
       date: '2024-09-08',
       sentiment: 'positive',
       degree_of_sentiment: 90,
+      similarity_ratio: '90%',
     },
     {
       id: 5,
@@ -67,6 +71,7 @@ const page = async ({ searchParams }) => {
       date: '2024-09-07',
       sentiment: 'negative',
       degree_of_sentiment: 30,
+      similarity_ratio: '64%',
     },
   ];
 

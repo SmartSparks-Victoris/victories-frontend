@@ -1,9 +1,20 @@
 'use client';
 
 import React from 'react';
+import { ReactNode } from 'react';
 import classNames from 'classnames';
 
-const Button = ({
+interface ButtonProps {
+  children?: string | ReactNode; // Accepts a string or any valid React node (including SVGs)
+  onClick?: MouseEventHandler<HTMLButtonElement>; // Handles the onClick event for a button
+  type?: 'button' | 'submit' | 'reset'; // Specifies the type of button
+  value?: string; // Value can be a string like 'submit'
+  className?: string; // Additional class names for styling
+  variant?: 'default' | 'primary' | 'secondary'; // Variant of the button
+  variantColor?: string; // Color variant for customization
+}
+
+const Button: React.FC<ButtonProps> = ({
   children = '',
   onClick = () => {},
   type = 'button',

@@ -17,7 +17,7 @@ const ServicesSection = () => {
         </Transition>
         <Transition
           from={'down'}
-          className="w-full grid grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))] lg:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-x-[18px] gap-y-[180px]">
+          className="w-full grid grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))] lg:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-x-[18px] gap-y-[180px] justify-center">
           {servicesData.map((service) => {
             return (
               <>
