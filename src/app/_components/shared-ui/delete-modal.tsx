@@ -35,7 +35,7 @@ const DeleteModal = ({ show, onClose, admin }) => {
         <p className="mt-[16px] mb-[24px]">
           Are you sure you want to delete {admin?.name}?
         </p>
-        <div className="flex justify-end gap-[16px] mt-4">
+        <div className="flex justify-end gap-2 mt-4">
           <button onClick={onClose} className="text-[#452033]">
             Cancel
           </button>

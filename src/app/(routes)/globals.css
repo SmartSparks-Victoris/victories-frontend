@@ -3,6 +3,86 @@
 @tailwind utilities;
 
 @layer utilities {
+  .h1-80 {
+    @apply font-semibold font-roboto text-[80px];
+  }
+
+  .h2-48 {
+    @apply font-semibold font-roboto text-[48px];
+  }
+
+  .h3-40 {
+    @apply font-semibold font-roboto text-[40px];
+  }
+
+  .h4-32 {
+    @apply font-semibold font-roboto text-[32px];
+  }
+
+  .text-28 {
+    @apply font-medium font-poppins text-[28px];
+  }
+
+  .text-26 {
+    @apply font-semibold font-poppins text-[26px];
+  }
+
+  .text-24 {
+    @apply font-regular font-poppins text-[24px];
+  }
+
+  .text-22 {
+    @apply font-medium font-poppins text-[22px];
+  }
+
+  .text-21 {
+    @apply font-medium font-poppins text-[21px];
+  }
+
+  .caption-20 {
+    @apply font-medium font-poppins text-[20px];
+  }
+
+  .caption-18 {
+    @apply font-medium font-poppins text-[18px];
+  }
+
+  .caption-16 {
+    @apply font-medium font-poppins text-[16px];
+  }
+
+  .caption-14 {
+    @apply font-regular font-poppins text-[14px];
+  }
+
+  .caption-12 {
+    @apply font-regular font-poppins text-[12px];
+  }
+
+  .caption-8 {
+    @apply font-medium font-poppins text-[8px];
+  }
+
+  .button-24 {
+    @apply font-semibold font-poppins text-[24px];
+  }
+
+  .button-20 {
+    @apply font-bold font-poppins text-[20px];
+  }
+
+  .button-20 {
+    @apply font-bold font-poppins text-[16px];
+  }
+
+  .button-14 {
+    @apply font-semibold font-roboto text-[14px];
+  }
+
+  .border-1 {
+    @apply border-solid border-[1px];
+  }
+
   .rotate-y-180 {
     transform: rotateY(180deg);
   }
@@ -12,30 +92,57 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
   --guestNav: 80px;
+  --searchNav: 76px;
+
   --adminNav: 229px;
   --adminNavSmall: 80px;
-  --searchNav: 76px;
+
   --paddingAdminTop: 40px;
   --paddingAdminLeft: 40px;
+
+  /******************************************************/
+
+  --primary100: #fff7fa;
+  --primary200: #dbbdc6;
+  --primary300: #c99caa;
+  --primary400: #745865;
+  --primary500: #7e4556;
+  --primary600: #84485a;
+  --primary700: #633644;
+  --primary800: #452033;
+  --primary900: #211217;
+
+  --neutral100: #e6e6e6;
+  --neutral200: #cccccc;
+  --neutral300: #b3b3b3;
+  --neutral400: #999999;
+  --neutral500: #ffffff;
+  --neutral600: #666666;
+  --neutral700: #4d4d4d;
+  --neutral800: #333333;
+  --neutral900: #1a1a1a;
+
+  --errorColor: #be0202;
+
+  --openStroke: #be0202;
+  --openColor: #ffd6dd;
+
+  --completedColor: #c6edd0;
+  --completedStroke: #008132;
+
+  --inProgressStroke: #c0760d;
+  --inProgressColor: #ffe9c7;
+
   --mainColor: #7e4556;
   --mainColorAlpha: #decad0;
   --textColor: #000000;
   --backgroundColor: #fff4f7;
   --textWhite: #fff4f7;
-  --errorColor: #be0202;
   --placeHolderColor: #666263;
   --listOptionHoverColor: #decad0;
   --borderColor: rgba(0, 0, 0, 0.4);
   --backgroundOpacity: rgba(255, 244, 247, 0.2);
-  --openStroke: #be0202;
-  --openColor: #ffd6dd;
-  --completedColor: #c6edd0;
-  --completedStroke: #008132;
-  --inProgressStroke: #c0760d;
-  --inProgressColor: #ffe9c7;
   --urgentStroke: #452033;
 }
 

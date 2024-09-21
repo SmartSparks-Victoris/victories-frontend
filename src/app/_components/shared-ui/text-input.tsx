@@ -16,7 +16,7 @@ const TextInput: FC<TextInputProps> = ({
 }) => {
   if (type === 'textarea') {
     return (
-      <div className="flex flex-col gap-[16px]">
+      <div className="flex flex-col gap-2">
         <label
           htmlFor={name}
           className={`text-[22px] font-medium ${
@@ -41,7 +41,7 @@ const TextInput: FC<TextInputProps> = ({
     );
   }
   return (
-    <div className="flex flex-col gap-[16px] w-[100%]">
+    <div className="flex flex-col gap-2 w-[100%]">
       {label && (
         <label
           htmlFor={name}

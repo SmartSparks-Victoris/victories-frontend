@@ -10,7 +10,7 @@ const Admin = ({ results, recent }) => {
   return (
     <section className="flex gap-[64px] flex-col 2xl:flex-row">
       <div className="order-2 2xl:order-1 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[16px] mb-[32px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 mb-[32px]">
           <TicketItem
             href={'/tickets?status=1'}
             type="open"

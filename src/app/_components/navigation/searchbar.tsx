@@ -51,7 +51,7 @@ const SearchBar: FC<UserProps> = ({ user }) => {
 
   return (
     <nav className="fixed top-0 left-[var(--adminNavSmall)] md:left-[var(--adminNav)] h-[var(--searchNav)] w-[calc(100%-var(--adminNavSmall))] md:w-[calc(100%-var(--adminNav))] bg-gray-400 px-[32px] flex items-center justify-between gap-[24px] md:gap-[40px] bg-[url('/images/Background.png')] z-40">
-      <CustomLink href="/profile" className="flex items-center gap-[16px]">
+      <CustomLink href="/profile" className="flex items-center gap-2">
         <div className="w-[40px] h-[40px] flex-shrink-0 rounded-full overflow-hidden">
           {user.img && (
             <img

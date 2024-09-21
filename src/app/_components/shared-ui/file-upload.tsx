@@ -85,7 +85,7 @@ export default function FileUpload({ setValue }) {
         {/* Custom File Input Trigger */}
         <button
           onClick={handleFileClick}
-          className="border-[#999999] border-[1px] border-solid rounded-[16px] flex gap-[16px] px-[24px] py-[20px] w-[100%] flex-wrap items-center">
+          className="border-[#999999] border-[1px] border-solid rounded-[16px] flex gap-2 px-[24px] py-[20px] w-[100%] flex-wrap items-center">
           <svg
             width="24"
             height="24"

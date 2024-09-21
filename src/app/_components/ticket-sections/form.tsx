@@ -40,12 +40,12 @@ const Form = ({ ticket, categories, status }) => {
   const [selectedStatus, setSelectedStatus] = useState(ticket.status_id);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  function handleCategoryChange(selectedValue) {
+  function handleCategoryChange(selectedValue: string | number) {
     setSelectedCategory(selectedValue);
     router.refresh();
   }
 
-  function handleStatusChange(selectedValue) {
+  function handleStatusChange(selectedValue: string | number) {
     setSelectedStatus(selectedValue);
     router.refresh();
   }
@@ -65,8 +65,6 @@ const Form = ({ ticket, categories, status }) => {
             control={control}
             defaultValue={ticket.cateogry_id}
             array={categories}
-            value={selectedCategory}
-            selectedDropDown={openDropdown}
             setSelectedDropDown={(name) => setOpenDropdown(name)}
             isOpen={openDropdown === 'category'}
             handleChange={handleCategoryChange}
@@ -77,8 +75,6 @@ const Form = ({ ticket, categories, status }) => {
             control={control}
             defaultValue={ticket.status_id}
             array={status}
-            value={selectedStatus}
-            selectedDropDown={openDropdown}
             setSelectedDropDown={(name) => setOpenDropdown(name)}
             isOpen={openDropdown === 'status'}
             handleChange={handleStatusChange}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Results from '@/app/_components/admins-sections/page';
+import Results from '@/app/_components/admins-sections/results';
 import ResultsHead from '@/app/_components/shared-ui/results-head';
 
 const admins = [

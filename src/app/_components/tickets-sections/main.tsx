@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
 import Filters from './filters';
 import Results from './results';
+import { TicketsMainProps } from '@/app/_types/admin.types';
 
-const TicketsMain = ({ categories, status, results }) => {
+const TicketsMain: FC<TicketsMainProps> = ({ categories, status, results }) => {
   const [length, setLength] = useState(results.length);
   return (
     <div className="flex flex-col gap-[24px]">

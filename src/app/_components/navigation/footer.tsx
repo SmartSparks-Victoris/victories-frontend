@@ -11,19 +11,19 @@ import TwitterSVG from '../svg/twitter';
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col gap-[40px] justify-center py-[64px] text-textWhite">
-      <div className="grid grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(264px,_1fr))] gap-[40px] container mx-auto place-items-center sm:place-items-stretch">
-        <div className="flex flex-col items-start gap-[40px]">
-          <div className="flex flex-col gap-[40px]">
-            <div className="flex flex-col items-center gap-[16px]">
+    <footer className="flex flex-col gap-5 justify-center py-8 text-textNavBarPrimary">
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(264px,_1fr))] gap-5 container mx-auto place-items-center sm:place-items-stretch">
+        <div className="flex flex-col items-start gap-5">
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col items-center gap-2">
               <CustomLink href={'/'}>
                 <img src="/images/logo.png" alt="" />
               </CustomLink>
               <CustomLink href={'/'}>
-                <p className="font-medium text-[28px]">Smart Sparks</p>
+                <p className="text-28">Smart Sparks</p>
               </CustomLink>
             </div>
-            <div className="flex gap-[40px] flex-wrap items-center">
+            <div className="flex gap-5 flex-wrap items-center">
               <a href="https://www.google.com">
                 <LinkedinSVG />
               </a>
@@ -39,9 +39,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <nav className="flex flex-col gap-[16px]">
-          <h3 className="font-medium text-[22px]">Quick Links</h3>
-          <ul className="flex flex-col  gap-[16px] text-[18px]">
+        <nav className="flex flex-col gap-2">
+          <h3 className="text-22">Quick Links</h3>
+          <ul className="flex flex-col gap-2 text-18">
             <li>
               <CustomLink href={'/'}>Home</CustomLink>
             </li>
@@ -56,9 +56,9 @@ const Footer = () => {
             </li>
           </ul>
         </nav>
-        <div className="flex flex-col gap-[16px]">
-          <h3 className="font-medium text-[22px]">Contact</h3>
-          <div className="flex flex-col gap-[16px]">
+        <div className="flex flex-col gap-2">
+          <h3 className="text-22">Contact</h3>
+          <div className="flex flex-col gap-2">
             <FooterContactItem text="+201098536400">
               <PhoneOutlineSVG />
             </FooterContactItem>
@@ -68,8 +68,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-textWhite w-[90%] mx-auto h-[2px]"></div>
-      <p className="text-center text-[26px]">
+      <div className="bg-textNavBarPrimary w-[90%] mx-auto h-[2px]"></div>
+      <p className="text-center text-26">
         &copy; {new Date().getFullYear()} Smart Sparks, All Right Reserved
       </p>
     </footer>

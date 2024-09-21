@@ -25,7 +25,7 @@ const ServiceItem: FC<ServiceProps> = ({ service }) => {
         </div>
 
         <div className=" card-inner group-hover:-rotate-y-180 absolute w-[100%] h-[100%]   transition-transform transform-style-3d duration-1000 rounded-[24px] bg-[url('/images/service-background.png')] bg-cover text-textWhite ">
-          <div className="flex flex-col gap-[16px] items-center text-center justify-center card-front backface-hidden absolute w-[100%] h-[100%] px-[24px] rounded-[24px]">
+          <div className="flex flex-col gap-2 items-center text-center justify-center card-front backface-hidden absolute w-[100%] h-[100%] px-[24px] rounded-[24px]">
             <h2 className="text-[26px] font-semibold">{service.title}</h2>
             <p className="font-medium text-[20px]">{service.description}</p>
           </div>

@@ -32,14 +32,14 @@ export type TextInputProps = {
 export type DropDownProps = {
   name?: string;
   label?: string;
-  array?: readonly string[];
+  array?: readonly string[] | { id: string | number; name: string };
   error?: FieldError;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control?: Control<any>;
   setSelectedDropDown?: (name: string) => void;
-  handleChange?: (value: string | number) => void;
+  handleChange?: (value: number) => void;
   all?: boolean;
-  defaultValue?: null | string;
+  defaultValue?: null | string | number;
   isOpen?: boolean;
 };
 
@@ -74,7 +74,7 @@ export type ResultsHeadProps = {
 };
 
 export type RowViewProps = {
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   data: {
     tickets?: string | number;
     date?: string;

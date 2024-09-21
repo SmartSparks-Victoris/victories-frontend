@@ -2,7 +2,6 @@
 
 import CustomLink from '../navigation/custom-link';
 import TicketsCloseDarkSVG from '../svg/tickets-close-dark';
-import TicketsOpenSVG from '../svg/tickets-open';
 
 const Recent = ({ results }) => {
   return (

@@ -2,17 +2,19 @@
 
 import React, { useEffect, useState } from 'react';
 
-import ResultsTableHead from '../tickets-sections/results-table-head';
+import ResultsTableHead from './results-table-head';
+import SortingSVG from '../svg/sorting';
 import Status from '../shared-ui/status';
-import Urgent from '../tickets-sections/urgent';
+import Urgent from './urgent';
+import { revalidateLogin } from '@/app/_actions/login';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSearchParams } from 'next/navigation';
 
-const Results = ({ results }) => {
-  console.log(results);
+const Results = ({ results, setLength }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [filteredResults, setFilteredResults] = useState(null);
+
+  const [filteredResults, setFilteredResults] = useState([]);
   const [sortOrderView, setSortOrderView] = useState(
     searchParams.get('order') || 'desc',
   );
@@ -21,30 +23,39 @@ const Results = ({ results }) => {
   );
 
   useEffect(() => {
-    const sortKey = searchParams.get('key') || 'urgent'; // Default sort key
-    const sortOrder = searchParams.get('order') || 'desc'; // Default sort order
+    const category = Number(searchParams.get('category'));
+    const status = Number(searchParams.get('status'));
 
     let myFilteredResults = results;
 
-    console.log('MY');
-    console.log(myFilteredResults);
+    // Apply category filter
+    if (category) {
+      myFilteredResults = myFilteredResults.filter(
+        (result) => result.category_id === category,
+      );
+    }
 
+    // Apply status filter
+    if (status) {
+      myFilteredResults = myFilteredResults.filter(
+        (result) => result.status_id === status,
+      );
+    }
+
+    // Sort based on selected key and order
     myFilteredResults = myFilteredResults.sort((a, b) => {
-      if (a[sortKey] < b[sortKey]) return sortOrder === 'asc' ? -1 : 1;
-      if (a[sortKey] > b[sortKey]) return sortOrder === 'asc' ? 1 : -1;
+      if (a[sortKeyView] < b[sortKeyView])
+        return sortOrderView === 'asc' ? -1 : 1;
+      if (a[sortKeyView] > b[sortKeyView])
+        return sortOrderView === 'asc' ? 1 : -1;
       return 0;
     });
 
-    console.log('AFTER');
-    console.log(myFilteredResults);
-
     setFilteredResults(myFilteredResults);
-  }, [searchParams, results]);
+    setLength(myFilteredResults.length);
+  }, [results, sortKeyView, sortOrderView, searchParams]); // Updated dependencies
 
-  function handleRowClick(
-    e: React.MouseEvent<HTMLButtonElement>,
-    id: string | number,
-  ) {
+  function handleRowClick(e, id) {
     e.stopPropagation();
     router.push(`/tickets/${id}`);
   }
@@ -54,7 +65,7 @@ const Results = ({ results }) => {
       <div className="resultsDiv">
         <table className="results">
           <thead>
-            <tr>
+            <tr className="border-y-[1px] border-b-solid border-y-[#7E4556] results">
               <th>
                 <ResultsTableHead
                   text="Urgent"

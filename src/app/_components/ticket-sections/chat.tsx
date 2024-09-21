@@ -54,7 +54,7 @@ const Chat = ({ ticket, sentiment = true }) => {
             return (
               <div key={message.id} className="flex flex-col gap-[8px]">
                 <div
-                  className={`flex w-fit gap-[16px] items-end ${
+                  className={`flex w-fit gap-2 items-end ${
                     message.type === 'customer' ? 'mr-auto' : 'ml-auto'
                   }`}>
                   <div

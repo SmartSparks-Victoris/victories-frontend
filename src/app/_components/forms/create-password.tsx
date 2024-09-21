@@ -63,7 +63,7 @@ const CreatePassword: FC<CreatePasswordProps> = ({
             <form
               onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}
               className="flex flex-col justify-center">
-              <div className="flex flex-col gap-[16px] mb-[64px]">
+              <div className="flex flex-col gap-2 mb-[64px]">
                 <TextInput
                   label="New Password"
                   type="password"

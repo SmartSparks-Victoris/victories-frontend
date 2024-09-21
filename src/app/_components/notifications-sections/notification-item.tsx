@@ -18,7 +18,7 @@ const NotificationItem: FC<NotificationItemProps> = ({
       <div className="flex w-[100%] gap-[8px] flex-col">
         <div className="flex justify-between items-center flex-wrap gap-[8px]">
           <Label type={type}>{typeValue}</Label>
-          <div className="flex gap-[16px] items-center">
+          <div className="flex gap-2 items-center">
             <TimeSVG />
             <p>{time}</p>
           </div>

@@ -2,16 +2,16 @@
 
 import * as z from 'zod';
 
+import React, { FC } from 'react';
+
 import Button from '../shared-ui/button';
-import React from 'react';
 import TextInput from '../shared-ui/text-input';
+import { personalInfoProps } from '@/app/_types/admin.types';
 import personalInfoSchema from '@/app/_schemas/personal-info';
-import semanticSearchSchema from '@/app/_schemas/semantic-search';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'nextjs-toploader/app';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-const PersonalInfoForm = ({ data }) => {
+const PersonalInfoForm: FC<personalInfoProps> = ({ data }) => {
   const {
     register,
     handleSubmit,

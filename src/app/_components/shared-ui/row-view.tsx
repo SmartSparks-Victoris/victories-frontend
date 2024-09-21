@@ -14,7 +14,7 @@ const RowView: FC<RowViewProps> = ({
   return (
     <CustomLink
       href={href}
-      className={`grid py-[10px] px-[32px] border-[1px] border-[#231318] border-solid rounded-[10px] gap-[16px] w-[100%] ${
+      className={`grid py-[10px] px-[32px] border-[1px] border-[#231318] border-solid rounded-[10px] gap-2 w-[100%] ${
         type === 'admin'
           ? 'grid-cols-1 sm:grid-cols-3 lg:grid-cols-5'
           : 'grid-cols-1 sm:grid-cols-2'

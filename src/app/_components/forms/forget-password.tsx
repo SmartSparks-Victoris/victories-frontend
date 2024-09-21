@@ -59,7 +59,7 @@ const ForgetPassword: FC<ForgetPasswordProps> = ({
             <form
               onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}
               className="flex flex-col justify-center ">
-              <div className="mt-[24px] mb-[64px] flex flex-col gap-[16px]">
+              <div className="mt-[24px] mb-[64px] flex flex-col gap-2">
                 <TextInput
                   label="Email"
                   type="email"

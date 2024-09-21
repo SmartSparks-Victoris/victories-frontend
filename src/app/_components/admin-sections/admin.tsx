@@ -19,8 +19,10 @@ const Admin = ({ admin }) => {
     setSelectedAdmin(null);
   };
 
-  function handleButtonClick(e, admin) {
-    e.stopPropagation(); // Prevents parent div click
+  function handleButtonClick(e?: React.MouseEvent<HTMLButtonElement>, admin) {
+    if (e) {
+      e.stopPropagation(); // Prevents parent div click
+    }
     openModal(admin);
   }
 

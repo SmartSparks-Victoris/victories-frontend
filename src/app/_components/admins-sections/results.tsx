@@ -1,15 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import React, { useEffect, useState } from 'react';
 
 import ResultsTableHead from '../tickets-sections/results-table-head';
-import Status from '../shared-ui/status';
-import Urgent from '../tickets-sections/urgent';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSearchParams } from 'next/navigation';
 
 const Results = ({ results }) => {
-  console.log(results);
   const router = useRouter();
   const searchParams = useSearchParams();
   const [filteredResults, setFilteredResults] = useState(null);
@@ -17,11 +15,11 @@ const Results = ({ results }) => {
     searchParams.get('order') || 'desc',
   );
   const [sortKeyView, setSortKeyView] = useState(
-    searchParams.get('key') || 'urgent',
+    searchParams.get('key') || 'time',
   );
 
   useEffect(() => {
-    const sortKey = searchParams.get('key') || 'urgent'; // Default sort key
+    const sortKey = searchParams.get('key') || 'time'; // Default sort key
     const sortOrder = searchParams.get('order') || 'desc'; // Default sort order
 
     let myFilteredResults = results;
@@ -41,24 +39,22 @@ const Results = ({ results }) => {
     setFilteredResults(myFilteredResults);
   }, [searchParams, results]);
 
-  function handleRowClick(
-    e: React.MouseEvent<HTMLButtonElement>,
-    id: string | number,
-  ) {
-    e.stopPropagation();
-    router.push(`/tickets/${id}`);
+  function handleCustomerClick(id) {
+    // Navigate to customer page with selected customer id
+    router.push(`/admins/${id}`);
   }
 
   return (
-    <section className="flex items-start">
+    <section className="flex flex-col">
       <div className="resultsDiv">
         <table className="results">
           <thead>
             <tr>
+              <th>Admin</th>
               <th>
                 <ResultsTableHead
-                  text="Urgent"
-                  keyValue="urgent"
+                  text="Name"
+                  keyValue="name"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -67,8 +63,8 @@ const Results = ({ results }) => {
               </th>
               <th>
                 <ResultsTableHead
-                  text="Status"
-                  keyValue="status"
+                  text="Id"
+                  keyValue="id"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -77,8 +73,8 @@ const Results = ({ results }) => {
               </th>
               <th>
                 <ResultsTableHead
-                  text="Title"
-                  keyValue="title"
+                  text="Tickets"
+                  keyValue="tickets"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -87,48 +83,8 @@ const Results = ({ results }) => {
               </th>
               <th>
                 <ResultsTableHead
-                  text="Category"
-                  keyValue="category"
-                  sortKeyView={sortKeyView}
-                  sortOrderView={sortOrderView}
-                  setSortOrderView={setSortOrderView}
-                  setSortKeyView={setSortKeyView}
-                />
-              </th>
-              <th>
-                <ResultsTableHead
-                  text="Admin"
-                  keyValue="admin"
-                  sortKeyView={sortKeyView}
-                  sortOrderView={sortOrderView}
-                  setSortOrderView={setSortOrderView}
-                  setSortKeyView={setSortKeyView}
-                />
-              </th>
-              <th>
-                <ResultsTableHead
-                  text="Date"
-                  keyValue="date"
-                  sortKeyView={sortKeyView}
-                  sortOrderView={sortOrderView}
-                  setSortOrderView={setSortOrderView}
-                  setSortKeyView={setSortKeyView}
-                />
-              </th>
-              <th>
-                <ResultsTableHead
-                  text="Sentiment"
-                  keyValue="sentiment"
-                  sortKeyView={sortKeyView}
-                  sortOrderView={sortOrderView}
-                  setSortOrderView={setSortOrderView}
-                  setSortKeyView={setSortKeyView}
-                />
-              </th>
-              <th>
-                <ResultsTableHead
-                  text="Degree Of Sentiment"
-                  keyValue="degree_of_sentiment"
+                  text="Time"
+                  keyValue="time"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -142,20 +98,21 @@ const Results = ({ results }) => {
               filteredResults.map((result) => (
                 <tr
                   key={result.id}
-                  onClick={(e) => handleRowClick(e, result.id)}
+                  onClick={() => handleCustomerClick(result.id)}
                   className="cursor-pointer">
                   <td>
-                    <Urgent result={result} />
+                    <div className="w-[48px] h-[48px] overflow-hidden rounded-full mx-auto">
+                      <img
+                        src={result.img}
+                        className="w-[48px] h-[48px]"
+                        alt=""
+                      />
+                    </div>
                   </td>
-                  <td>
-                    <Status status={result.status} />
-                  </td>
-                  <td>{result.title}</td>
-                  <td>{result.category}</td>
-                  <td>{result.admin}</td>
-                  <td>{result.date}</td>
-                  <td>{result.sentiment}</td>
-                  <td>{result.degree_of_sentiment}</td>
+                  <td>{result.name}</td>
+                  <td>{result.id}</td>
+                  <td>{result.tickets}</td>
+                  <td>{result.time}</td>
                 </tr>
               ))}
           </tbody>

@@ -359,7 +359,7 @@ const JoinForm = () => {
             </Button>
           )}
           {step === 1 && (
-            <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
+            <div className="flex gap-2 flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
               <Button
                 onClick={getPrevious}
                 className="w-[100%]"
@@ -374,7 +374,7 @@ const JoinForm = () => {
           )}
 
           {step === 2 && (
-            <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
+            <div className="flex gap-2 flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
               <Button
                 onClick={getPrevious}
                 className="w-[100%]"
@@ -388,7 +388,7 @@ const JoinForm = () => {
             </div>
           )}
           {step === 3 && (
-            <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
+            <div className="flex gap-2 flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
               <Button
                 onClick={getPrevious}
                 className="w-[100%]"
