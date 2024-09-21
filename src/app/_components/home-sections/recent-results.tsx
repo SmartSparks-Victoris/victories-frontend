@@ -6,16 +6,16 @@ import TicketsCloseDarkSVG from '../svg/tickets-close-dark';
 const Recent = ({ results }) => {
   return (
     <section className="order-1 2xl:order-2">
-      <h2 className="text-[#231318] font-medium text-[18px] mb-[32px]">
+      <h2 className="text-[#231318] font-medium caption-18 mb-4">
         Recent Tickets
       </h2>
-      <div className="flex flex-col items-start gap-[32px]">
+      <div className="flex flex-col items-start gap-4">
         {results &&
           results.map((result) => (
             <CustomLink
               href={`/tickets/${result.id}`}
               key={result.id}
-              className="flex gap-[8px]">
+              className="flex gap-1">
               <TicketsCloseDarkSVG />
 
               <div className="flex flex-col items-start gap-[4px]">

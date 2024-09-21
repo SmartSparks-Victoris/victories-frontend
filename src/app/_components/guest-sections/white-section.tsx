@@ -13,8 +13,8 @@ const WhiteSection: FC<WhiteSectionProps> = ({
   src,
 }) => {
   return (
-    <section className="min-h-[calc(100vh-var(--guestNav))] flex justify-center items-center py-[64px] bg-backgroundOpacity">
-      <div className="container mx-auto flex lg:flex-row flex-col justify-between items-center gap-[80px] text-textWhite">
+    <section className="min-h-[calc(100vh-var(--guestNav))] flex justify-center items-center py-8 bg-backgroundOpacity">
+      <div className="container mx-auto flex lg:flex-row flex-col justify-between items-center gap-10 text-textNavBarPrimary">
         <div className="w-[100%] flex justify-center">
           <Transition from={'left'}>
             <img src={src} alt="" />
@@ -26,7 +26,7 @@ const WhiteSection: FC<WhiteSectionProps> = ({
             <h2 className="text-[40px] font-semibold font-roboto">{Head}</h2>
           </Transition>
           <Transition from={'right'} delay={0.1}>
-            <p className="mt-[32px] mb-[40px] text-[24px]">{body}</p>
+            <p className="mt-4 mb-5 text-[24px]">{body}</p>
           </Transition>
           <Transition from={'right'} delay={0.2}>
             <div>

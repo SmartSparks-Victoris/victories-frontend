@@ -104,7 +104,7 @@ const page: FC<ParamsProps> = ({ params }) => {
   return (
     <>
       <Admin admin={admin} />
-      <div className="mt-[24px]">
+      <div className="mt-3">
         <ResultsHead text={'History'} />
       </div>
       <Results results={results} />

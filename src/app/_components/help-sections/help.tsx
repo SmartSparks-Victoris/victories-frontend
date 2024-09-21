@@ -3,7 +3,7 @@ import React from 'react';
 const Help = () => {
   return (
     <div className="h-[calc(100vh-var(--searchNav)-80px)] overflow-hidden">
-      <h1 className="mb-[24px] text-[#1A1A1A] text-[20px] font-medium">
+      <h1 className="mb-3 text-textButtonSecondary text-[20px] font-medium">
         A Comprehensive Visual Guide to Streamlining and Managing All Your
         Account Settings:
       </h1>

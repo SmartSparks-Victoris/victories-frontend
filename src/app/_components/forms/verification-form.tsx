@@ -87,14 +87,14 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
   const { setIsStepTransitionComplete, animationVariants } = useAnimation();
 
   return (
-    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-[32px]">
+    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-4">
       <div className="container rounded-[20px] bg-backgroundColor">
         <motion.div
           variants={animationVariants}
           initial="hiddenRight"
           animate="visible"
           exit="hiddenLeft"
-          className="flex flex-col justify-center gap-[32px] lg:gap-[40px] items-center  py-[32px] px-[40px] mx-[16px] lg:flex-row">
+          className="flex flex-col justify-center gap-4 lg:gap-5 items-center  py-4 px-5 mx-2 lg:flex-row">
           <div className="w-[100%] flex items-center justify-center">
             <img src="/images/otp.png" alt="" />
           </div>
@@ -105,11 +105,11 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
 
             <form
               onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}>
-              <p className="text-[22px] font-medium mt-[32px] mb-[24px]">
+              <p className="text-[22px] font-medium mt-4 mb-3">
                 Enter your code
               </p>
 
-              <div className="code-inputs  flex-wrap flex gap-2 mb-[48px]">
+              <div className="code-inputs  flex-wrap flex gap-2 mb-6">
                 {[1, 2, 3, 4, 5, 6].map((num, index) => (
                   <div key={num} className="">
                     <input
@@ -131,7 +131,7 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
                 ))}
               </div>
 
-              <div className="flex flex-col gap-[24px]">
+              <div className="flex flex-col gap-3">
                 <Button
                   type="submit"
                   value="Send"

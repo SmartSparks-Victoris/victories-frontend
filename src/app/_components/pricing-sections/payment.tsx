@@ -25,14 +25,14 @@ const Payment: FC<PaymentProps> = ({ total, handleNext }) => {
   function handleFailureSubmit() {}
 
   return (
-    <div className="flex border-[1px] border-solid border-[#7E4556] rounded-[32px] py-[44px] px-[32px]">
+    <div className="flex border-1 border-surfaceTertiary rounded-[32px] py-[44px] px-4">
       <div className="w-[100%]">
         <ResultsHead text="Credit Card" icon="credit" result={`$${total}`} />
         <form
           action=""
           onSubmit={handleSubmit(handleSuccessSubmit, handleFailureSubmit)}
-          className="w-[100%] flex items-center flex-col gap-[48px]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[24px] w-[100%]">
+          className="w-[100%] flex items-center flex-col gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 w-[100%]">
             <TextInput
               name="name"
               label="Cardholder's Name"
@@ -62,7 +62,7 @@ const Payment: FC<PaymentProps> = ({ total, handleNext }) => {
               type="text"
             />
             <div>
-              <label className="flex items-center gap-[8px] flex-wrap">
+              <label className="flex items-center gap-1 flex-wrap">
                 <input
                   type="checkbox"
                   {...register('saveCard')}
@@ -79,7 +79,7 @@ const Payment: FC<PaymentProps> = ({ total, handleNext }) => {
           <Button
             type="submit"
             value="Pay now"
-            className="px-[0] md:px-[40px] w-[100%] lg:w-fit"
+            className="px-[0] md:px-5 w-[100%] lg:w-fit"
           />
         </form>
       </div>

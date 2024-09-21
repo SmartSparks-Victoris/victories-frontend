@@ -51,17 +51,17 @@ const Admins = () => {
   }
 
   return (
-    <section className="pt-[24px] mt-[38px] border-t-[1px] border-t-[#999999] border-t-solid">
-      <div className="flex justify-between items-center flex-wrap gap-[32px]">
-        <h2 className="text-[#452033] text-[20px] font-bold">Admins</h2>
+    <section className="pt-[24px] mt-[38px] border-t-[1px] border-t-strokeSecondary border-t-solid">
+      <div className="flex justify-between items-center flex-wrap gap-4">
+        <h2 className="text-tertiaryButton text-[20px] font-bold">Admins</h2>
         <CustomLink
           href="/new"
-          className="flex gap-[4px] items-center justify-center bg-[url('/images/service-background.png')] text-textWhite py-[10px] px-[16px] rounded-[16px]">
+          className="flex gap-[4px] items-center justify-center bg-[url('/images/service-background.png')] text-textNavBarPrimary py-[10px] px-2 rounded-md">
           <p>Add another admin</p>
           <PlusSVG />
         </CustomLink>
       </div>
-      <div className="flex flex-col w-[100%] gap-[32px] mt-[32px]">
+      <div className="flex flex-col w-[100%] gap-4 mt-4">
         {admins.map((admin) => (
           <RowView
             href={`/admins/${admin.id}`}

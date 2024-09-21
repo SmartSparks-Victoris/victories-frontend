@@ -12,16 +12,18 @@ const PricingItem: FC<PricingItemProps> = ({
   handlePlanChange,
 }) => {
   return (
-    <div className="py-[40px] px-[32px] border-[1px] border-solid border-[#7E4556] rounded-[20px] h-fit justify-self-stretch self-center">
-      <h2 className="text-[#452033] text-[26px] font-semibold">{type}</h2>
-      <h3 className="text-[#452033] text-[26px] font-semibold mb-[8px] mt-[16px]">
+    <div className="py-5 px-4 border-1 border-surfaceTertiary rounded-[20px] h-fit justify-self-stretch self-center">
+      <h2 className="text-tertiaryButton text-[26px] font-semibold">{type}</h2>
+      <h3 className="text-tertiaryButton text-[26px] font-semibold mb-[8px] mt-2">
         {isNumber(Number(price)) ? `$ ${Number(price)}` : price}
       </h3>
-      <h4 className="text-[16px] font-medium text-[#666666]">
+      <h4 className="text-[16px] font-medium text-textBodyPrimary">
         Per user/month , billed annualy
       </h4>
-      <div className="mb-[64px] flex flex-col gap-[24px] mt-[24px]">
-        <p className="text-[#1A1A1A] text-[16px] font-medium">{description}</p>
+      <div className="mb-8 flex flex-col gap-3 mt-3">
+        <p className="text-textButtonSecondary text-[16px] font-medium">
+          {description}
+        </p>
         {features.map((feature) => {
           return (
             <div key={feature} className="flex gap-[12px] items-center">
@@ -42,7 +44,7 @@ const PricingItem: FC<PricingItemProps> = ({
         })}
       </div>
       <Button
-        className="sm:px-[40px] sm:w-[100%]"
+        className="sm:px-5 sm:w-[100%]"
         onClick={() => handlePlanChange(type, price)}>
         Get Started For {type}
       </Button>

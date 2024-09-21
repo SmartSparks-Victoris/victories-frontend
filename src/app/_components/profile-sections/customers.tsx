@@ -24,11 +24,11 @@ const Customers = () => {
   ];
 
   return (
-    <section className="pt-[24px] mt-[38px] border-t-[1px] border-t-[#999999] border-t-solid">
-      <div className="flex justify-between items-center flex-wrap gap-[32px]">
-        <h2 className="text-[#452033] text-[20px] font-bold">Customers</h2>
+    <section className="pt-[24px] mt-[38px] border-t-[1px] border-t-strokeSecondary border-t-solid">
+      <div className="flex justify-between items-center flex-wrap gap-4">
+        <h2 className="text-tertiaryButton text-[20px] font-bold">Customers</h2>
       </div>
-      <div className="flex flex-col w-[100%] gap-[32px] mt-[32px]">
+      <div className="flex flex-col w-[100%] gap-4 mt-4">
         {customers.map((customer) => (
           <RowView
             href={`/customers/${customer.id}`}

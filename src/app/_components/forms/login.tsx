@@ -58,12 +58,12 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
   function handleLoginFailure() {}
 
   return (
-    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-[32px]">
-      <div className="container flex flex-col justify-center items-center bg-backgroundColor py-[32px] px-[40px] mx-[16px] rounded-[20px]">
+    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-4">
+      <div className="container flex flex-col justify-center items-center bg-backgroundColor py-4 px-5 mx-2 rounded-[20px]">
         <div className="w-[232px] flex justify-center items-center overflow-hidden">
           <img src="/images/login.png" alt="" />
         </div>
-        <h2 className="font-semibold text-[30px] text-textColor mt-[40px] mb-[16px] text-center font-roboto">
+        <h2 className="font-semibold text-[30px] text-textColor mt-5 mb-2 text-center font-roboto">
           Welcome back !
         </h2>
         <p className="font-semibold text-[20px] text-[#999294] text-center">
@@ -73,7 +73,7 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
         <form
           onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}
           className="flex flex-col justify-center w-[100%] md:w-[65%] lg:w-[50%]">
-          <div className="mt-[40px] mb-[60px] flex flex-col gap-[32px]">
+          <div className="mt-5 mb-[60px] flex flex-col gap-4">
             <TextInput
               placeholder="Enter Your User Name"
               type="text"

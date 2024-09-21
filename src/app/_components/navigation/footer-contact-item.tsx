@@ -4,7 +4,7 @@ import { FooterContactItemProps } from '@/app/_types/navigation.types';
 
 const FooterContactItem: FC<FooterContactItemProps> = ({ children, text }) => {
   return (
-    <div className="flex gap-[8px] items-center">
+    <div className="flex gap-1 items-center">
       <span>{children}</span>
       <p>{text}</p>
     </div>

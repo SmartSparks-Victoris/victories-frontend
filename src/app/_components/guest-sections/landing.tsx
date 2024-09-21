@@ -6,9 +6,9 @@ import Transition from '../shared-ui/transition';
 
 const Landing: FC<LandingSectionProps> = ({ Head }) => {
   return (
-    <section className="min-h-[calc(50vh-var(--guestNav))] py-[146px] flex justify-center items-center text-textWhite">
+    <section className="min-h-[calc(50vh-var(--guestNav))] py-[146px] flex justify-center items-center text-textNavBarPrimary">
       <Transition from={'up'}>
-        <div className="container mx-auto flex flex-col gap-16 justify-center items-center">
+        <div className="container mx-auto flex flex-col gap-2 justify-center items-center">
           <h1 className="font-roboto font-semibold text-[80px] text-center">
             {Head}
           </h1>

@@ -90,7 +90,7 @@ const page: FC<ParamsProps> = ({ params }) => {
   return (
     <>
       <Customer customer={customer} />
-      <div className="mt-[24px]">
+      <div className="mt-3">
         <ResultsHead text={'History of tickets'} />
       </div>
       <Results results={results} />

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 const ActionButton: FC<ActionButtonProps> = ({ onClick, type = 'delete' }) => {
   const mainClass =
-    'text-[16px] text-bold px-[20px] py-[7px] rounded-[8px] border-[1px] border-solid';
+    'text-[16px] text-bold px-[20px] py-[7px] rounded-sm border-1';
   let className;
   let text;
   if (type === 'delete') {

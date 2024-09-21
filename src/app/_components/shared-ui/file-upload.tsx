@@ -85,7 +85,7 @@ export default function FileUpload({ setValue }) {
         {/* Custom File Input Trigger */}
         <button
           onClick={handleFileClick}
-          className="border-[#999999] border-[1px] border-solid rounded-[16px] flex gap-2 px-[24px] py-[20px] w-[100%] flex-wrap items-center">
+          className="border-strokeSecondary border-1 rounded-md flex gap-2 px-3 py-[20px] w-[100%] flex-wrap items-center">
           <svg
             width="24"
             height="24"
@@ -113,7 +113,9 @@ export default function FileUpload({ setValue }) {
 
         {/* Reset Button */}
         {selectedFile && (
-          <button onClick={handleReset} className="text-[14px] text-[#1A1A1A]">
+          <button
+            onClick={handleReset}
+            className="text-[14px] text-textButtonSecondary">
             Reset File
           </button>
         )}
@@ -123,25 +125,25 @@ export default function FileUpload({ setValue }) {
           <div
             className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
             onClick={handleOutsideClick}>
-            <div className="bg-white p-[32px] rounded-[16px] flex flex-col items-center">
+            <div className="bg-white p-[32px] rounded-md flex flex-col items-center">
               <img
                 src={preview || ''}
                 alt="Selected file"
-                className="w-[200px] h-[200px] object-cover rounded-[16px]"
+                className="w-[200px] h-[200px] object-cover rounded-md"
               />
-              <p className="text-[14px] text-[#1A1A1A] mt-[16px]">
+              <p className="text-[14px] text-textButtonSecondary mt-2">
                 {selectedFile?.name}
               </p>
 
-              <div className="mt-[32px] space-x-[16px]">
+              <div className="mt-4 space-x-[16px]">
                 <button
                   onClick={handleConfirm}
-                  className="bg-[#792D81] text-white px-[24px] py-[8px] rounded-[8px]">
+                  className="bg-[#792D81] text-white px-3 py-[8px] rounded-sm">
                   Confirm
                 </button>
                 <button
                   onClick={handleCancel}
-                  className="text-[#1A1A1A] border-[1px] border-[#1A1A1A] px-[24px] py-[8px] rounded-[8px]">
+                  className="text-textButtonSecondary border-[1px] border-textButtonSecondary px-3 py-[8px] rounded-sm">
                   Cancel
                 </button>
               </div>

@@ -41,18 +41,18 @@ const TicketItem: FC<HomeTicketItemProps> = ({
   return (
     <CustomLink
       href={href}
-      className="rounded-[16px] bg-[#745865] p-[24px] flex flex-col gap-[48px] text-textWhite w-[100%] text-start">
-      <div className="flex flex-col gap-[8px]">
+      className="rounded-md bg-surfaceTertiary p-[24px] flex flex-col gap-6 text-textNavBarPrimary w-[100%] text-start">
+      <div className="flex flex-col gap-1">
         {svg}
         <p className="text-[14px] text-roboto">{text}</p>
       </div>
-      <div className="w-[100%] flex flex-col gap-[8px]">
-        <div className="flex gap-[8px] ">
+      <div className="w-[100%] flex flex-col gap-1">
+        <div className="flex gap-1 ">
           <p>{number} Tickets</p>
           <div>|</div>
           <p>{percentage}%</p>
         </div>
-        <div className="w-[100%] bg-textWhite h-[5px] rounded-full">
+        <div className="w-[100%] bg-textNavBarPrimary h-[5px] rounded-full">
           <div style={barStyle}></div>
         </div>
       </div>

@@ -80,12 +80,12 @@ const JoinForm = () => {
   }
 
   return (
-    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-[32px]">
-      <div className="container flex flex-col justify-center items-center bg-backgroundColor py-[32px] px-[40px] mx-[16px] rounded-[20px]">
+    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-4">
+      <div className="container flex flex-col justify-center items-center bg-backgroundColor py-4 px-5 mx-2 rounded-[20px]">
         <div className="w-[232px] flex justify-center items-center overflow-hidden">
           <img src="/images/join.png" alt="" />
         </div>
-        <h2 className="font-semibold text-[30px] text-textColor mt-[40px] mb-[16px] text-center font-roboto">
+        <h2 className="font-semibold text-[30px] text-textColor mt-5 mb-2 text-center font-roboto">
           {step === 3 && 'Accepted documents'}
           {step !== 3 && 'Tell Us About Your Business'}
         </h2>
@@ -97,7 +97,7 @@ const JoinForm = () => {
 
         <form
           onSubmit={handleSubmit(handleSuccess, handleFailure)}
-          className="flex flex-col justify-center w-[100%] items-center gap-[32px] mt-[40px]">
+          className="flex flex-col justify-center w-[100%] items-center gap-4 mt-5">
           <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
             {step === 0 && isStepTransitionComplete && (
               <motion.div
@@ -331,7 +331,7 @@ const JoinForm = () => {
                 animate="visible"
                 exit="hiddenRight"
                 className="grid grid-cols-1 gap-x-[40px] gap-y-[32px] w-[100%]">
-                <div className="flex flex-col gap-[24px]">
+                <div className="flex flex-col gap-3">
                   <DocumentItem
                     head="Utility bill"
                     text="A document proving that services are being provided for you to run your business (gas, water, electricity, etc...)."

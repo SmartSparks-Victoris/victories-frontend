@@ -38,14 +38,14 @@ const MessageAndRedirect: FC<MessageAndRedirectProps> = ({
   return (
     <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
       {isStepTransitionComplete && (
-        <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-[32px]">
+        <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-4">
           <div className="container bg-backgroundColor rounded-[20px]">
             <motion.div
               variants={animationVariants}
               initial="hiddenRight"
               animate="visible"
               exit="hiddenRight"
-              className="flex flex-col justify-center items-center py-[80px] px-[40px] mx-[16px] gap-[50px]">
+              className="flex flex-col justify-center items-center py-10 px-5 mx-2 gap-[50px]">
               <img src={src} alt="" />
               <div className="flex flex-col gap-[2px]">
                 <p className="text-lg font-bold text-[30px] text-center">

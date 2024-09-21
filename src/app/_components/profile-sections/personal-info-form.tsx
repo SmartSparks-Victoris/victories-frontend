@@ -33,7 +33,7 @@ const PersonalInfoForm: FC<personalInfoProps> = ({ data }) => {
 
   return (
     <form onSubmit={handleSubmit(handleInfoSuccess, handleInfoFailure)}>
-      <div className="flex gap-[40px] w-[100%] flex-col lg:flex-row">
+      <div className="flex gap-5 w-[100%] flex-col lg:flex-row">
         <TextInput
           name="fname"
           label="First Name"
@@ -56,7 +56,7 @@ const PersonalInfoForm: FC<personalInfoProps> = ({ data }) => {
           type="email"
         />
       </div>
-      <Button type="submit" value="Update" className="mt-[32px]"></Button>
+      <Button type="submit" value="Update" className="mt-4"></Button>
     </form>
   );
 };

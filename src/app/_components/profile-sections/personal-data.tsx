@@ -15,10 +15,10 @@ const PersonalData = ({ user }) => {
   console.log(user);
   return (
     <section>
-      <h2 className="text-[#452033] text-[20px] font-bold mb-[16px]">
+      <h2 className="text-tertiaryButton text-[20px] font-bold mb-2">
         Profile
       </h2>
-      <p className="text-[#452033] text-[14px] mb-[24px]">
+      <p className="text-tertiaryButton text-[14px] mb-3">
         Manage employee data and organize their roles to ensure optimal
         performance and customer support.
       </p>
@@ -28,11 +28,11 @@ const PersonalData = ({ user }) => {
           userId={user.id}
         />
       </div>
-      <h2 className="text-[#452033] text-[20px] font-bold mb-[16px] mt-[24px]">
+      <h2 className="text-tertiaryButton text-[20px] font-bold mb-2 mt-3">
         Personal Info
       </h2>
 
-      <div className="flex flex-col w-[100%] gap-[32px]">
+      <div className="flex flex-col w-[100%] gap-4">
         <PersonalInfoForm data={data} />
         <PasswordForm />
       </div>

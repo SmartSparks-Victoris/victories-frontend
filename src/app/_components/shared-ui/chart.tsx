@@ -53,7 +53,7 @@ const Chart: FC<ChartProps> = ({ labels, values, colors, head }) => {
       style={{
         width: windowWidth < 1100 ? '100%' : windowWidth < 1300 ? '45%' : '28%',
       }}>
-      <h3 className="text-[#452033] text-[20px] font-bold mb-[16px]">{head}</h3>
+      <h3 className="text-tertiaryButton text-[20px] font-bold mb-2">{head}</h3>
       <div
         style={{
           width: '100%',

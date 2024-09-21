@@ -41,7 +41,7 @@ const Footer = () => {
         </div>
         <nav className="flex flex-col gap-2">
           <h3 className="text-22">Quick Links</h3>
-          <ul className="flex flex-col gap-2 text-18">
+          <ul className="flex flex-col gap-2 caption-18">
             <li>
               <CustomLink href={'/'}>Home</CustomLink>
             </li>

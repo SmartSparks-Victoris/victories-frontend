@@ -56,7 +56,7 @@ const GuestNavbar = () => {
               <GuestNavbarItem href="/services" text="Services" />
               <GuestNavbarItem href="/contact" text="Contact" />
             </div>
-            <div className="flex gap-[24px] items-start md:items-center md:flex-row flex-col">
+            <div className="flex gap-3 items-start md:items-center md:flex-row flex-col">
               <li>
                 <CustomLink
                   href={'/login'}

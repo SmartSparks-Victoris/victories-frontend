@@ -50,7 +50,7 @@ const SearchBar: FC<UserProps> = ({ user }) => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-[var(--adminNavSmall)] md:left-[var(--adminNav)] h-[var(--searchNav)] w-[calc(100%-var(--adminNavSmall))] md:w-[calc(100%-var(--adminNav))] bg-gray-400 px-[32px] flex items-center justify-between gap-[24px] md:gap-[40px] bg-[url('/images/Background.png')] z-40">
+    <nav className="fixed top-0 left-[var(--adminNavSmall)] md:left-[var(--adminNav)] h-[var(--searchNav)] w-[calc(100%-var(--adminNavSmall))] md:w-[calc(100%-var(--adminNav))] bg-strokePrimary px-4 flex items-center justify-between gap-3 md:gap-5 bg-[url('/images/Background.png')] z-40">
       <CustomLink href="/profile" className="flex items-center gap-2">
         <div className="w-[40px] h-[40px] flex-shrink-0 rounded-full overflow-hidden">
           {user.img && (
@@ -68,11 +68,11 @@ const SearchBar: FC<UserProps> = ({ user }) => {
             />
           )}
         </div>
-        <p className="text-textWhite text-[18px] font-medium">
+        <p className="text-textNavBarPrimary caption-18 font-medium">
           {user.fullname}
         </p>
       </CustomLink>
-      <div className="flex flex-grow justify-end gap-[24px] md:gap-[24px] ">
+      <div className="flex flex-grow justify-end gap-3 md:gap-3 ">
         <CustomLink href="/notifications">
           {isActive('/notifications', pathname) ? (
             <NotificationsOpenSVG />
@@ -84,7 +84,7 @@ const SearchBar: FC<UserProps> = ({ user }) => {
         <div className="flex items-center justify-end">
           <button
             ref={toggleRef}
-            className="text-textWhite flex md:hidden"
+            className="text-textNavBarPrimary flex md:hidden"
             onClick={() => setIsOpen((old) => !old)}>
             <SearchToggleSVG />
           </button>
@@ -94,13 +94,13 @@ const SearchBar: FC<UserProps> = ({ user }) => {
             action=""
             className={`flex-grow flex justify-end items-center gap-[12px] absolute z-50 md:relative md:top-0 md:left-0 top-[var(--searchNav)] left-0 w-[100%] md:w-fit ${
               isOpen
-                ? 'flex px-[32px] py-[12px] bg-[#745865] bg-cover md:px-0 md:py-0 md:bg-transparent'
+                ? 'flex px-4 py-[12px] bg-surfaceTertiary bg-cover md:px-0 md:py-0 md:bg-transparent'
                 : 'hidden md:flex md:bg-transparent'
             }`}>
             <input
               type="text"
               placeholder="Search..."
-              className="rounded-[16px] h-[40px] w-[100%] lg:w-[380px] px-[12px] flex-grow bg-transparent border-[1px] border-solid border-textWhite placeholder-textWhite text-textWhite"
+              className="rounded-md h-[40px] w-[100%] lg:w-[380px] px-[12px] flex-grow bg-transparent border-1 border-textNavBarPrimary placeholder-textNavBarPrimary text-textNavBarPrimary"
               {...register('query', { required: true })}
             />
             {errors.query && (

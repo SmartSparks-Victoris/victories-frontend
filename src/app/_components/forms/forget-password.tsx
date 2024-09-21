@@ -40,14 +40,14 @@ const ForgetPassword: FC<ForgetPasswordProps> = ({
   function handleLoginFailure() {}
 
   return (
-    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-[32px]">
+    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-4">
       <div className="container bg-backgroundColor rounded-[20px] ">
         <motion.div
           variants={animationVariants}
           initial="hiddenLeft"
           animate="visible"
           exit="hiddenLeft"
-          className="flex flex-col justify-center gap-[32px] lg:gap-[40px] items-center py-[32px] px-[40px] mx-[16px] lg:flex-row">
+          className="flex flex-col justify-center gap-4 lg:gap-5 items-center py-4 px-5 mx-2 lg:flex-row">
           <div className="w-[100%] flex items-center justify-center">
             <img src="/images/reset.png" alt="" />
           </div>
@@ -59,7 +59,7 @@ const ForgetPassword: FC<ForgetPasswordProps> = ({
             <form
               onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}
               className="flex flex-col justify-center ">
-              <div className="mt-[24px] mb-[64px] flex flex-col gap-2">
+              <div className="mt-3 mb-8 flex flex-col gap-2">
                 <TextInput
                   label="Email"
                   type="email"

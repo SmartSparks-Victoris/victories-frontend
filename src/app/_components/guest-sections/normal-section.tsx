@@ -15,8 +15,8 @@ const NormalSection: FC<NormalSectionProps> = ({
   src,
 }) => {
   return (
-    <section className="min-h-[calc(100vh-var(--guestNav))] flex justify-center items-center py-[64px]">
-      <div className="container mx-auto flex lg:flex-row flex-col justify-between items-center gap-[80px] text-textWhite">
+    <section className="min-h-[calc(100vh-var(--guestNav))] flex justify-center items-center py-8">
+      <div className="container mx-auto flex lg:flex-row flex-col justify-between items-center gap-10 text-textNavBarPrimary">
         <div className="w-[100%]">
           <Transition from={'left'}>
             <h2 className="text-[48px] font-semibold uppercase font-roboto">
@@ -24,7 +24,7 @@ const NormalSection: FC<NormalSectionProps> = ({
             </h2>
           </Transition>
           <Transition from={'left'} delay={0.1}>
-            <p className="mt-[32px] mb-[40px] text-[24px]">{body}</p>
+            <p className="mt-4 mb-5 text-[24px]">{body}</p>
           </Transition>
           <Transition from={'left'} delay={0.15}>
             <div>

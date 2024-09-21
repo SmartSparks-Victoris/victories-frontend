@@ -6,10 +6,10 @@ import servicesData from '@/app/_data/services';
 
 const ServicesSection = () => {
   return (
-    <section className="py-[80px]  flex justify-center items-center bg-backgroundOpacity text-textWhite">
+    <section className="py-10  flex justify-center items-center bg-backgroundOpacity text-textNavBarPrimary">
       <div className="container mx-auto flex flex-col gap-4 items-center">
         <Transition from="up">
-          <div className="mb-[180px] text-center gap-[8px]">
+          <div className="mb-[180px] text-center gap-1">
             <p className="text-[28px] font-medium">Features Services</p>
             <h2 className="font-roboto text-[40px] font-semibold">
               What We Offer to Improve Customer Support

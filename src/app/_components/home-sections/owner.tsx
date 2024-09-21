@@ -7,15 +7,15 @@ const Owner = ({ admins, user }) => {
   return (
     <section className="">
       <Transition from="up">
-        <h2 className="text-[#452033] text-[26px] font-semibold mb-[16px]">
+        <h2 className="text-tertiaryButton text-[26px] font-semibold mb-2">
           Welcome {user.name}!
         </h2>
-        <p className="text-[#452033] text-[24px]">
+        <p className="text-tertiaryButton text-[24px]">
           Connect with your customers faster and more effectively with our
           all-in-one platform
         </p>
       </Transition>
-      <Transition from="right" className="flex gap-[80px] flex-wrap my-[56px]">
+      <Transition from="right" className="flex gap-10 flex-wrap my-7">
         <Chart
           head="Integrated Channels"
           labels={['Instagram', 'Whatsapp']}
@@ -36,10 +36,10 @@ const Owner = ({ admins, user }) => {
         />
       </Transition>
       <Transition from="bottom">
-        <h3 className="text-[20px] font-bold text-[#452033] mb-[16px]">
+        <h3 className="text-[20px] font-bold text-tertiaryButton mb-2">
           Admins overview
         </h3>
-        <div className="border-[1px] border-solid border-[#452033] rounded-[26px] overflow-auto">
+        <div className="border-1 border-tertiaryButton rounded-[26px] overflow-auto">
           <table className="owner-table w-[100%]">
             <thead>
               <tr>

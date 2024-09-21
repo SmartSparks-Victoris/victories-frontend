@@ -20,7 +20,7 @@ const TextInput: FC<TextInputProps> = ({
         <label
           htmlFor={name}
           className={`text-[22px] font-medium ${
-            labelColor === 'white' && 'text-textWhite'
+            labelColor === 'white' && 'text-textNavBarPrimary'
           }`}>
           {label}
         </label>
@@ -28,7 +28,7 @@ const TextInput: FC<TextInputProps> = ({
           id={name}
           {...register(name)}
           placeholder={placeholder && placeholder}
-          className={`border-[2px] border-solid rounded-[16px] p-[16px] w-[100%] bg-backgroundColor resize-none text-black ${
+          className={`border-[2px] border-solid rounded-md p-[16px] w-[100%] bg-backgroundColor resize-none text-black ${
             error ? 'border-errorColor' : 'border-borderColor'
           }`}
         />
@@ -46,13 +46,13 @@ const TextInput: FC<TextInputProps> = ({
         <label
           htmlFor={name}
           className={`text-[22px] font-medium ${
-            labelColor === 'white' && 'text-textWhite'
+            labelColor === 'white' && 'text-textNavBarPrimary'
           }`}>
           {label}
         </label>
       )}
       <div
-        className={`border-[2px] border-solid rounded-[16px] px-[16px] w-[100%] bg-backgroundColor text-black flex gap-[10px] items-center ${
+        className={`border-[2px] border-solid rounded-md px-2 w-[100%] bg-backgroundColor text-black flex gap-[10px] items-center ${
           error ? 'border-errorColor' : 'border-borderColor'
         }`}>
         {icon && icon === 'search' && iconSubmit === false && (
@@ -70,7 +70,7 @@ const TextInput: FC<TextInputProps> = ({
           id={name}
           {...register(name)}
           placeholder={placeholder && placeholder}
-          className="bg-transparent py-[16px] px-[4px] border-none outline-none w-[100%]"
+          className="bg-transparent py-2 px-[4px] border-none outline-none w-[100%]"
         />
       </div>
       {error && (

@@ -8,8 +8,8 @@ import Transition from '../shared-ui/transition';
 
 const ContactSection = () => {
   return (
-    <section className="min-h-[calc(100vh-var(--guestNav))] flex justify-center items-center py-[64px] bg-backgroundOpacity">
-      <div className="container mx-auto flex lg:flex-row flex-col justify-between items-center gap-[80px] text-textWhite">
+    <section className="min-h-[calc(100vh-var(--guestNav))] flex justify-center items-center py-8 bg-backgroundOpacity">
+      <div className="container mx-auto flex lg:flex-row flex-col justify-between items-center gap-10 text-textNavBarPrimary">
         <div className="w-[100%] flex justify-center">
           <Transition from={'left'}>
             <img src="/images/contact-section.png" alt="" />
@@ -23,13 +23,13 @@ const ContactSection = () => {
             </h2>
           </Transition>
           <Transition from={'right'} delay={0.1}>
-            <p className="mt-[24px] mb-[40px] text-[24px]">
+            <p className="mt-3 mb-5 text-[24px]">
               Feel free to reach out to us with any questions or support needs –
               we are here to help!
             </p>
           </Transition>
           <Transition from={'right'} delay={0.15}>
-            <div className="flex flex-col gap-[56px]">
+            <div className="flex flex-col gap-7">
               <ContactItem text="Phone: +123-456-7890">
                 <PhoneSVG />
               </ContactItem>

@@ -50,17 +50,15 @@ const AdminNavbar: FC<UserProps> = ({ user }) => {
   }
 
   return (
-    <nav className="w-[var(--adminNavSmall)] md:w-[var(--adminNav)] min-h-[100vh] fixed left-0 top-0 bg-slate-300 flex flex-col gap-0 bg-[url('/images/Background.png')] bg-cover text-textWhite z-20">
-      <CustomLink
-        href="/"
-        className="flex items-center gap-[14px] py-[40px] pl-[32px]">
+    <nav className="w-[var(--adminNavSmall)] md:w-[var(--adminNav)] min-h-[100vh] fixed left-0 top-0 flex flex-col gap-0 bg-[url('/images/Background.png')] bg-cover text-textNavBarPrimary z-20">
+      <CustomLink href="/" className="flex items-center gap-[14px] py-5 pl-4">
         <img src="/images/logo.png" alt="" className="h-[31px] w-[24px]" />
         <p className="font-roboto text-[20px] font-bold md:flex hidden">
           Smart Sparks
         </p>
       </CustomLink>
       <div className="flex flex-col justify-between flex-grow">
-        <ul className="flex flex-col gap-[24px]">
+        <ul className="flex flex-col gap-3">
           <AdminNavbarItem
             openIcon={HomeOpenSVG}
             closeIcon={HomeCloseSVG}
@@ -110,17 +108,17 @@ const AdminNavbar: FC<UserProps> = ({ user }) => {
           />
         </ul>
 
-        <ul className="flex flex-col gap-[24px] mb-[40px]">
+        <ul className="flex flex-col gap-3 mb-5">
           <AdminNavbarItem
             openIcon={SupportOpenSVG}
             closeIcon={SupportCloseSVG}
             href="/support"
             name="Support"
           />
-          <li className="pl-[32px]" title="Logout">
-            <button className="flex gap-[8px]" onClick={handleLogout}>
+          <li className="pl-4" title="Logout">
+            <button className="flex gap-1" onClick={handleLogout}>
               <LogoutSVG />
-              <p className="font-medium text-[16px] md:flex hidden">Logout</p>
+              <p className="caption-16 md:flex hidden">Logout</p>
             </button>
           </li>
         </ul>

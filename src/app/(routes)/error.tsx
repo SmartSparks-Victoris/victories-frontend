@@ -10,7 +10,7 @@ const error = () => {
       <div className="flex items-center justify-center">
         <img src="/images/error.png" alt="" />
       </div>
-      <p className="text-[#1A1A1A] font-bold text-[32px] font-roboto text-center mt-[10px] mb-[40px]">
+      <p className="text-textButtonSecondary font-bold text-[32px] font-roboto text-center mt-[10px] mb-5">
         Something went wrong
       </p>
       <CustomLink href="/" type="button" className="w-fit mx-auto">

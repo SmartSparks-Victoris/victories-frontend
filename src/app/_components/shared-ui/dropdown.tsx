@@ -46,7 +46,7 @@ const DropDown: FC<DropDownProps> = ({
             <>
               <div
                 onClick={handleDropDownClick}
-                className={`border-[2px] border-solid rounded-[16px] p-[16px] pr-[48px] w-[100%] cursor-pointer bg-backgroundColor ${
+                className={`border-[2px] border-solid rounded-md p-[16px] pr-[48px] w-[100%] cursor-pointer bg-backgroundColor ${
                   error ? 'border-errorColor' : 'border-borderColor'
                 }`}
                 onBlur={onBlur}
@@ -68,7 +68,7 @@ const DropDown: FC<DropDownProps> = ({
                 </div>
               </div>
               {isOpen && (
-                <div className="absolute z-10 mt-1 w-full bg-white border-[1px] border-mainColor border-solid rounded-[16px] shadow-lg overflow-hidden min-w-fit">
+                <div className="absolute z-10 mt-1 w-full bg-white border-[1px] border-mainColor border-solid rounded-md shadow-lg overflow-hidden min-w-fit">
                   {all && (
                     <div
                       key={-1}

@@ -58,17 +58,17 @@ const Pricing = () => {
           <h2 className="text-[#231318] text-[20px] font-bold font-roboto text-center">
             Choose the Plan That Fits Your Business Needs
           </h2>
-          <p className="text-[16px] font-medium text-center mt-[16px]">
+          <p className="text-[16px] font-medium text-center mt-2">
             Whether you are a small business or a large enterprise, we have a
             plan that suits your customer service requirements.
           </p>
-          <div className='flex bg-[url("/images/service-background.png")] bg-cover py-[14px] px-[22px] rounded-[16px] gap-[46px] w-fit flex-wrap mx-auto mt-[40px] mb-[32px]'>
+          <div className='flex bg-[url("/images/service-background.png")] bg-cover py-[14px] px-[22px] rounded-md gap-[46px] w-fit flex-wrap mx-auto mt-5 mb-4'>
             <button
               onClick={() => handleDurationChange('monthly')}
               className={`${
                 duration === 'monthly'
-                  ? 'bg-textWhite py-[16px] px-[14px] rounded-[16px] text-[20px] font-medium'
-                  : 'text-textWhite font-bold text-[20px]'
+                  ? 'bg-textNavBarPrimary py-2 px-[14px] rounded-md text-[20px] font-medium'
+                  : 'text-textNavBarPrimary font-bold text-[20px]'
               } `}>
               Monthly
             </button>
@@ -76,14 +76,14 @@ const Pricing = () => {
               onClick={() => handleDurationChange('annual')}
               className={`${
                 duration === 'annual'
-                  ? 'bg-textWhite py-[16px] px-[14px] rounded-[16px]'
-                  : 'text-textWhite font-bold text-[20px]'
+                  ? 'bg-textNavBarPrimary py-2 px-[14px] rounded-md'
+                  : 'text-textNavBarPrimary font-bold text-[20px]'
               } flex gap-[10px] items-center`}>
               <span className="text-[20px] flex">Annual</span>
               <span className="text-[16px] flex">30% Offer</span>
             </button>
           </div>
-          <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] lg:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-[40px]">
+          <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] lg:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-5">
             <PricingItem
               handlePlanChange={handlePlanChange}
               type={'Free'}
@@ -120,11 +120,11 @@ const Pricing = () => {
             />
           </div>
 
-          <div className="flex justify-between mt-[55px] flex-wrap gap-[24px] items-center">
-            <p className="text-[#452033] text-[20px] font-medium">
+          <div className="flex justify-between mt-[55px] flex-wrap gap-3 items-center">
+            <p className="text-tertiaryButton text-[20px] font-medium">
               Your current plan is set to auto-renew on a regular basis.
             </p>
-            <button className="text-[#452033] text-[16px] font-bold border-[1px] border-solid border-[#7E4556] p-[14px] rounded-[16px]">
+            <button className="text-tertiaryButton text-[16px] font-bold border-1 border-surfaceTertiary p-[14px] rounded-md">
               Cancel your subscription
             </button>
           </div>

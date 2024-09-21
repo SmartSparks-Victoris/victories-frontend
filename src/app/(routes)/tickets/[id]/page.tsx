@@ -192,11 +192,11 @@ const page: FC<ParamsProps> = ({ params }) => {
   const ticket = results.filter((t) => t.id === id)[0];
   return (
     <div>
-      <div className="rounded-[16px] flex flex-col sm:flex-row items-center border-[1px] border-solid border-[#999999] overflow-hidden font-medium text-[16px] mb-[48px] sm:w-fit w-[100%]">
-        <p className="px-[14px] py-[10px] border-r-[1px] border-b-[1px] border-solid w-[100%] text-center sm:w-fit border-b-[#999999] sm:border-r-[#999999] sm:border-b-transparent">
+      <div className="rounded-md flex flex-col sm:flex-row items-center border-1 border-strokeSecondary overflow-hidden caption-16 mb-6 sm:w-fit w-[100%]">
+        <p className="px-[14px] py-[10px] border-r-[1px] border-b-[1px] border-solid w-[100%] text-center sm:w-fit border-b-strokeSecondary sm:border-r-strokeSecondary sm:border-b-transparent">
           {ticket.category}
         </p>
-        <p className="px-[14px] py-[10px] border-r-[1px] border-b-[1px] border-solid w-[100%] text-center sm:w-fit border-b-[#999999] sm:border-r-[#999999] sm:border-b-transparent">
+        <p className="px-[14px] py-[10px] border-r-[1px] border-b-[1px] border-solid w-[100%] text-center sm:w-fit border-b-strokeSecondary sm:border-r-strokeSecondary sm:border-b-transparent">
           {ticket.title}
         </p>
         <div className="px-[14px] flex gap-[10px] items-center">
@@ -205,7 +205,7 @@ const page: FC<ParamsProps> = ({ params }) => {
         </div>
       </div>
 
-      <div className="flex gap-[48px] flex-col xl:flex-row">
+      <div className="flex gap-6 flex-col xl:flex-row">
         <Form ticket={ticket} categories={categories} status={status} />
         <Chat ticket={ticket} />
       </div>

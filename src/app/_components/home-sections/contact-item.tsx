@@ -4,7 +4,7 @@ import { ContactItemProps } from '@/app/_types/guest.types';
 
 const ContactItem: FC<ContactItemProps> = ({ children, text }) => {
   return (
-    <div className="flex gap-[24px] items-center">
+    <div className="flex gap-3 items-center">
       {children}
       <p className="text-[24px]">{text}</p>
     </div>

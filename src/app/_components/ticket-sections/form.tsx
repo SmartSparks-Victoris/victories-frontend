@@ -53,12 +53,12 @@ const Form = ({ ticket, categories, status }) => {
   console.log('TICKET: ', ticket);
 
   return (
-    <section className="flex flex-col gap-[24px] xl:order-1 order-2">
+    <section className="flex flex-col gap-3 xl:order-1 order-2">
       <SearchForm />
       <form
         onSubmit={handleSubmit(handleSuccess, handleFailure)}
-        className="flex flex-col gap-[48px]">
-        <div className="flex flex-col gap-[24px]">
+        className="flex flex-col gap-6">
+        <div className="flex flex-col gap-3">
           <DropDown
             name="category"
             label="Category"

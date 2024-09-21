@@ -98,7 +98,7 @@ export default function ImageUpload({
 
   return (
     <div className="image-upload">
-      <div className="flex items-center gap-[24px]">
+      <div className="flex items-center gap-3">
         <div className="image-preview w-[80px] h-[80px] overflow-hidden rounded-full flex-shrink-0">
           {image ? (
             <img
@@ -111,10 +111,10 @@ export default function ImageUpload({
           )}
         </div>
 
-        <div className="flex gap-[8px] items-center flex-wrap">
+        <div className="flex gap-1 items-center flex-wrap">
           <label
             htmlFor="fileInput"
-            className="cursor-pointer bg-[url('/images/service-background.png')] text-textWhite text-[12px] px-4 py-2 rounded-md inline-block w-fit h-fit">
+            className="cursor-pointer bg-[url('/images/service-background.png')] text-textNavBarPrimary text-[12px] px-4 py-2 rounded-md inline-block w-fit h-fit">
             Upload Picture
           </label>
           <input
@@ -129,7 +129,7 @@ export default function ImageUpload({
           <button
             onClick={handleDelete}
             disabled={loading || !image}
-            className="text-[#452033] text-[14px] p-[12px] rounded-md w-fit h-fit">
+            className="text-tertiaryButton text-[14px] p-[12px] rounded-md w-fit h-fit">
             {loading ? 'Deleting...' : 'Delete'}
           </button>
         </div>
@@ -143,8 +143,8 @@ export default function ImageUpload({
         >
           <div
             ref={modalRef}
-            className="modal-content bg-textWhite p-6 rounded-md shadow-md lg:w-[539px] w-[40%]">
-            <h3 className="text-[#452033] text-[20px] font-bold">
+            className="modal-content bg-textNavBarPrimary p-6 rounded-md shadow-md lg:w-[539px] w-[40%]">
+            <h3 className="text-tertiaryButton text-[20px] font-bold">
               New Picture
             </h3>
             {image && (
@@ -159,12 +159,12 @@ export default function ImageUpload({
               <button
                 onClick={handleUpload}
                 disabled={loading || !file}
-                className="cursor-pointer bg-[url('/images/service-background.png')] text-textWhite text-[12px] px-4 py-2 rounded-md inline-block w-fit h-fit">
+                className="cursor-pointer bg-[url('/images/service-background.png')] text-textNavBarPrimary text-[12px] px-4 py-2 rounded-md inline-block w-fit h-fit">
                 {loading ? 'Uploading...' : 'Confirm'}
               </button>
               <button
                 onClick={handleCancel}
-                className="text-[#452033] text-[14px] p-[12px] rounded-md w-fit h-fit">
+                className="text-tertiaryButton text-[14px] p-[12px] rounded-md w-fit h-fit">
                 Cancel
               </button>
             </div>

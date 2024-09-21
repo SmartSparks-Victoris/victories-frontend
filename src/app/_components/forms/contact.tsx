@@ -25,8 +25,8 @@ const ContactForm = () => {
   function handleLoginFailure() {}
 
   return (
-    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center text-textWhite py-[56px]">
-      <div className="container bg-backgroundOpacity mx-auto flex flex-col lg:flex-row justify-center gap-8 items-center rounded-[24px] py-[64px] px-[48px]">
+    <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center text-textNavBarPrimary py-[56px]">
+      <div className="container bg-backgroundOpacity mx-auto flex flex-col lg:flex-row justify-center gap-8 items-center rounded-lg py-8 px-6">
         <div className="w-[100%] flex justify-center">
           <Transition from={'left'}>
             <img src="/images/contact.png" alt="" />
@@ -34,12 +34,12 @@ const ContactForm = () => {
         </div>
         <Transition from={'right'} className="w-[100%]">
           <h2 className="text-[40px] font-roboto font-semibold">Contact Us</h2>
-          <p className="text-[16px] mb-[32px]">
+          <p className="text-[16px] mb-4">
             Reach out to us for any inquiries or support.
           </p>
           <form
             onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}
-            className="flex flex-col gap-[24px] w-[100%]">
+            className="flex flex-col gap-3 w-[100%]">
             <TextInput
               placeholder="Enter Your Name"
               type="text"
@@ -68,7 +68,7 @@ const ContactForm = () => {
               register={register}
             />
 
-            <Button type="submit" value="Send" className="mt-[40px]"></Button>
+            <Button type="submit" value="Send" className="mt-5"></Button>
           </form>
         </Transition>
       </div>

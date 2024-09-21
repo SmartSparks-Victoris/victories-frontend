@@ -26,7 +26,7 @@ const PasswordForm = () => {
 
   return (
     <form onSubmit={handleSubmit(handleInfoSuccess, handleInfoFailure)}>
-      <div className="flex gap-[40px] w-[100%] flex-col lg:flex-row">
+      <div className="flex gap-5 w-[100%] flex-col lg:flex-row">
         <TextInput
           name="old"
           label="Current Password"
@@ -43,7 +43,7 @@ const PasswordForm = () => {
         />
       </div>
 
-      <Button type="submit" value="Update" className="mt-[32px]"></Button>
+      <Button type="submit" value="Update" className="mt-4"></Button>
     </form>
   );
 };

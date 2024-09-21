@@ -39,7 +39,22 @@ export default function RootLayout({
         } `}>
         <Toaster position="top-center" />
         <NextTopLoader
-          color="var(--textWhite)"
+          color="white"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={8}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px white,0 0 5px white"
+          template='<div class="bar" role="bar"><div class="peg"></div></div>
+          <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+          zIndex={1600}
+          showAtBottom={false}
+        />
+        {/* <NextTopLoader
+          color="var(--textNavBarPrimary)"
           initialPosition={0.18}
           crawlSpeed={200}
           height={8}
@@ -47,12 +62,12 @@ export default function RootLayout({
           showSpinner={false}
           easing="ease"
           speed={200}
-          shadow="0 0 10px #var(--textWhite),0 0 5px var(--textWhite)"
+          shadow="0 0 10px var(--textNavBarPrimary),0 0 5px var(--textNavBarPrimary)"
           template='<div class="bar" role="bar"><div class="peg"></div></div>
           <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
           zIndex={1600}
           showAtBottom={false}
-        />
+        /> */}
         <SocketProvider>
           {!user && <GuestNavbar />}
           {user && (

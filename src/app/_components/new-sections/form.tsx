@@ -28,8 +28,8 @@ const NewForm = () => {
 
       <form
         onSubmit={handleSubmit(handleSuccess, handleError)}
-        className="bg-textWhite ">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
+        className="bg-textNavBarPrimary ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <TextInput
             name="fname"
             label="First Name"

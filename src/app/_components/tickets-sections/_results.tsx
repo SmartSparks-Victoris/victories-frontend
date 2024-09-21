@@ -65,7 +65,7 @@ const Results = ({ results, setLength }) => {
       <div className="resultsDiv">
         <table className="results">
           <thead>
-            <tr className="border-y-[1px] border-b-solid border-y-[#7E4556] results">
+            <tr className="border-y-[1px] border-b-solid border-y-surfaceTertiary results">
               <th>
                 <ResultsTableHead
                   text="Urgent"

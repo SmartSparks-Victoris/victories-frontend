@@ -6,10 +6,9 @@ import { isActive } from '@/app/_utils/navigation';
 import { usePathname } from 'next/navigation';
 
 const activeListClass =
-  'pl-[16px] after:content-[""] relative after:absolute after:left-0 after:top-0 after:w-[8px] after:h-[100%] after:bg-backgroundOpacity after:rounded-r-[24px]';
-const inActiveListClass = 'pl-[32px]';
-const activeLinkClass =
-  'pl-[16px] rounded-l-full bg-backgroundOpacity py-[12px]';
+  'pl-2 after:content-[""] relative after:absolute after:left-0 after:top-0 after:w-[8px] after:h-[100%] after:bg-backgroundOpacity after:rounded-r-lg';
+const inActiveListClass = 'pl-4';
+const activeLinkClass = 'pl-2 rounded-l-full bg-backgroundOpacity py-[12px]';
 
 const AdminNavbarItem: FC<AdminNavbarItemProps> = ({
   href,
@@ -26,11 +25,11 @@ const AdminNavbarItem: FC<AdminNavbarItemProps> = ({
       className={`${isActiveItem ? activeListClass : inActiveListClass}`}>
       <CustomLink
         href={href}
-        className={`flex gap-[8px] w-[100%] ${
+        className={`flex gap-1 w-[100%] ${
           isActiveItem ? activeLinkClass : ''
         }`}>
         {isActiveItem ? <OpenIcon /> : <CloseIcon />}
-        <p className="font-medium text-[16px] md:flex hidden">{name}</p>
+        <p className="caption-16 md:flex hidden">{name}</p>
       </CustomLink>
     </li>
   );
