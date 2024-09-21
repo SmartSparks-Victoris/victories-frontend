@@ -2,7 +2,9 @@
 // app/components/FileUpload.tsx
 'use client';
 
-import { useRef, useState } from 'react';
+import { FC, useRef, useState } from 'react';
+
+import { FileUploadProps } from '@/app/_types/shared-ui.types';
 
 export default function FileUpload({ setValue }) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);

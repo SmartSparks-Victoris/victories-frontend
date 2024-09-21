@@ -6,24 +6,20 @@ import * as z from 'zod';
 import React, { useState } from 'react';
 
 import Button from '../shared-ui/button';
-import TextInput from '../shared-ui/text-input';
+import { VerificationFormProps } from '@/app/_types/guest.types';
 import { motion } from 'framer-motion';
 import useAnimation from '@/app/_hooks/useAnimation';
 import { useForm } from 'react-hook-form';
 import verificationSchema from '@/app/_schemas/verification';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-interface VerificationFormProps {
-  setStep: (step: number) => void;
-  username: string;
-  mobile: string;
-}
-
 const VerificationForm: React.FC<VerificationFormProps> = ({
   setStep,
   username,
   mobile,
 }) => {
+  console.log(username);
+  console.log(mobile);
   const {
     register,
     handleSubmit,

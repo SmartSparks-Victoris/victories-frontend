@@ -1,31 +1,31 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const ActionButton = ({ onClick, type = 'delete' }) => {
+import { ActionButtonProps } from '@/app/_types/shared-ui.types';
+import classNames from 'classnames';
+
+const ActionButton: FC<ActionButtonProps> = ({ onClick, type = 'delete' }) => {
+  const mainClass =
+    'text-[16px] text-bold px-[20px] py-[7px] rounded-[8px] border-[1px] border-solid';
+  let className;
+  let text;
   if (type === 'delete') {
-    return (
-      <div
-        onClick={onClick}
-        className="text-openStroke bg-openColor text-[16px] text-bold px-[20px] py-[7px] rounded-[8px] border-[1px] border-solid border-openStroke">
-        Delete
-      </div>
-    );
+    className = 'text-openStroke bg-openColor border-openStroke';
+    text = 'Delete';
   } else if (type === 'inProgress') {
-    return (
-      <div
-        onClick={onClick}
-        className="text-inProgressStroke bg-inProgressColor text-[12px] px-[20px] py-[7px] rounded-[16px] border-[1px] border-solid border-inProgressStroke">
-        {type}
-      </div>
-    );
+    className =
+      'text-inProgressStroke bg-inProgressColor border-inProgressStroke';
+    text = 'In Progress';
   } else if (type === 'completed') {
-    return (
-      <div
-        onClick={onClick}
-        className="text-completedStroke bg-completedColor text-[12px] px-[20px] py-[7px] rounded-[16px] border-[1px] border-solid border-completedStroke">
-        {type}
-      </div>
-    );
+    className =
+      'text-completedStroke bg-completedColor  border-completedStroke';
+    text = 'Completed';
   }
+
+  return (
+    <div onClick={onClick} className={classNames(mainClass, className)}>
+      {text}
+    </div>
+  );
 };
 
 export default ActionButton;

@@ -1,15 +1,16 @@
 import * as z from 'zod';
 
-import React, { useState } from 'react';
+import React, { FC } from 'react';
 
 import Button from '../shared-ui/button';
+import { PaymentProps } from '@/app/_types/admin.types';
 import ResultsHead from '../shared-ui/results-head';
 import TextInput from '../shared-ui/text-input';
 import paymentSchema from '@/app/_schemas/payment';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-const Payment = ({ total, handleNext }) => {
+const Payment: FC<PaymentProps> = ({ total, handleNext }) => {
   const {
     register,
     handleSubmit,

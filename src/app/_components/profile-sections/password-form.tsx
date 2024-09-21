@@ -7,7 +7,6 @@ import React from 'react';
 import TextInput from '../shared-ui/text-input';
 import passwordSchema from '@/app/_schemas/password';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'nextjs-toploader/app';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const PasswordForm = () => {
@@ -18,8 +17,6 @@ const PasswordForm = () => {
   } = useForm<z.infer<typeof passwordSchema>>({
     resolver: zodResolver(passwordSchema),
   });
-
-  // const router = useRouter();
 
   function handleInfoSuccess(data) {}
 
@@ -34,12 +31,14 @@ const PasswordForm = () => {
           name="old"
           label="Current Password"
           register={register}
+          error={errors.old}
           type="password"
         />
         <TextInput
           name="new"
           label="New Password"
           register={register}
+          error={errors.new}
           type="password"
         />
       </div>

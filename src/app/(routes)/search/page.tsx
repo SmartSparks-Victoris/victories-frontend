@@ -1,7 +1,11 @@
-import React from 'react';
-import Results from '@/app/_components/search-sections/results';
+import React, { FC } from 'react';
 
-const page = async ({ searchParams }) => {
+import Results from '@/app/_components/search-sections/results';
+import { SearchParamsProps } from '@/app/_types/search-params.types';
+
+const page: FC<SearchParamsProps> = async ({ searchParams }) => {
+  const query = searchParams['query'] || '';
+
   const results = [
     {
       id: 1,
@@ -75,7 +79,7 @@ const page = async ({ searchParams }) => {
     },
   ];
 
-  console.log(results);
+  console.log(query);
 
   return (
     <>

@@ -1,3 +1,4 @@
+import './fonts.css';
 import './globals.css';
 
 import AdminNavbar from '@/app/_components/navigation/admin-navbar';
@@ -5,11 +6,10 @@ import Footer from '@/app/_components/navigation/footer';
 import GuestNavbar from '@/app/_components/navigation/guest-navbar';
 import type { Metadata } from 'next';
 import NextTopLoader from 'nextjs-toploader';
-import SearchBar from '../_components/navigation/searchbar';
-import SocketComponent from '@/app/_components/socket-component';
+import SearchBar from '@/app/_components/navigation/searchbar';
+import SocketComponent from '@/app/_components/general-components/socket-component';
 import { SocketProvider } from '@/app/_contexts/socket-context';
 import { Toaster } from 'react-hot-toast';
-import Transition from './transition';
 import { cookies } from 'next/headers';
 import { parseJwt } from '@/app/_utils/auth';
 
@@ -61,7 +61,14 @@ export default function RootLayout({
               <SearchBar user={user} />
             </>
           )}
-          {children}
+          <main
+            className={`relative ${
+              user
+                ? 'min-h-[calc(100vh-var(--paddingAdminTop)*2-var(--searchNav))]'
+                : ''
+            }`}>
+            {children}
+          </main>
           {!user && <Footer />}
           <SocketComponent user={user} />
         </SocketProvider>

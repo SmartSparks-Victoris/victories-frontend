@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 
-import Button from '../shared-ui/button';
 import MessageAndRedirect from '../shared-ui/temp-component';
 import Payment from './payment';
 import PricingItem from './pricing-item';
@@ -13,12 +12,13 @@ const Pricing = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [step, setStep] = useState(1);
-  const [price, setPrice] = useState(null);
+  const [price, setPrice] = useState<string | number | null>(null);
 
   const [duration, setDuration] = useState(
     searchParams.get('duration') || 'monthly',
   );
   const [plan, setPlan] = useState(searchParams.get('plan') || 'free');
+  console.log(plan);
 
   useEffect(() => {
     const duration = searchParams.get('duration');
@@ -33,13 +33,13 @@ const Pricing = () => {
     }
   }, [searchParams]);
 
-  function handleDurationChange(value) {
+  function handleDurationChange(value: string) {
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.set('duration', value);
     router.push(`${window.location.pathname}?${searchParams.toString()}`);
   }
 
-  function handlePlanChange(value, price) {
+  function handlePlanChange(value: string, price: string | number) {
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.set('plan', value);
     router.push(`${window.location.pathname}?${searchParams.toString()}`);
@@ -49,10 +49,6 @@ const Pricing = () => {
 
   function handleNext() {
     setStep((step) => step + 1);
-  }
-
-  function handlePrevious() {
-    setStep((step) => step - 1);
   }
 
   return (

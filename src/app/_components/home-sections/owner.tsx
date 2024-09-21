@@ -1,6 +1,5 @@
 import Chart from '../shared-ui/chart';
 import CustomLink from '../navigation/custom-link';
-import Link from 'next/link';
 import React from 'react';
 import Transition from '../shared-ui/transition';
 

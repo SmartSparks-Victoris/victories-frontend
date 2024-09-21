@@ -1,10 +1,12 @@
 'use client';
 
+import React, { FC } from 'react';
+
 import Button from '../shared-ui/button';
-import React from 'react';
+import { CustomLinkProps } from '@/app/_types/navigation.types';
 import { useRouter } from 'nextjs-toploader/app';
 
-const CustomLink = ({
+const CustomLink: FC<CustomLinkProps> = ({
   children,
   href,
   className = '',

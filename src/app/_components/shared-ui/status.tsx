@@ -1,25 +1,23 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const Status = ({ status }) => {
+import { StatusProps } from '@/app/_types/shared-ui.types';
+import classNames from 'classnames';
+
+const Status: FC<StatusProps> = ({ status }) => {
+  const mainClass =
+    'text-[12px] px-[20px] py-[7px] rounded-[16px] border-[1px] border-solid';
+  let className;
   if (status === 'open') {
-    return (
-      <div className="text-openStroke bg-openColor text-[12px] px-[20px] py-[7px] rounded-[16px] border-[1px] border-solid border-openStroke">
-        {status}
-      </div>
-    );
+    className = 'text-openStroke bg-openColor border-openStroke';
   } else if (status === 'inProgress') {
-    return (
-      <div className="text-inProgressStroke bg-inProgressColor text-[12px] px-[20px] py-[7px] rounded-[16px] border-[1px] border-solid border-inProgressStroke">
-        {status}
-      </div>
-    );
+    className =
+      'text-inProgressStroke bg-inProgressColor border-inProgressStroke';
   } else if (status === 'completed') {
-    return (
-      <div className="text-completedStroke bg-completedColor text-[12px] px-[20px] py-[7px] rounded-[16px] border-[1px] border-solid border-completedStroke">
-        {status}
-      </div>
-    );
+    className =
+      'text-completedStroke bg-completedColor  border-completedStroke';
   }
+
+  return <div className={classNames(mainClass, className)}>{status}</div>;
 };
 
 export default Status;

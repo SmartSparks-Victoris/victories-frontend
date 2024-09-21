@@ -2,20 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+@layer utilities {
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  .-rotate-y-180 {
+    transform: rotateY(-180deg);
+  }
 }
 
 :root {
@@ -46,13 +39,6 @@
   --urgentStroke: #452033;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 input::placeholder {
   color: var(--placeHolderColor); /* Change to the desired color */
   opacity: 1; /* Adjust opacity if needed */
@@ -68,6 +54,7 @@ body {
 
 svg {
   display: flex;
+  flex-shrink: 0;
 }
 
 .owner-table th,
@@ -102,10 +89,6 @@ table th {
   @apply font-roboto font-semibold text-[14px] text-[#452033];
 }
 
-/* .results tr:first-of-type {
-  @apply border-y-[1px] border-b-solid border-y-[#7E4556];
-} */
-
 .results tr:first-of-type {
   @apply border-y-[1px] border-solid border-y-[#7E4556];
 }
@@ -120,11 +103,11 @@ table th {
 
 .pagePadding {
   @apply pl-[calc(var(--adminNavSmall)+var(--paddingAdminLeft))]
-         md:pl-[calc(var(--adminNav)+var(--paddingAdminLeft))]
-         pt-[calc(var(--searchNav)+var(--paddingAdminTop))]
-         pb-[var(--paddingAdminTop)]
-         pr-[var(--paddingAdminLeft)]
-         bg-[var(--textWhite)];
+          md:pl-[calc(var(--adminNav)+var(--paddingAdminLeft))]
+          pt-[calc(var(--searchNav)+var(--paddingAdminTop))]
+          pb-[var(--paddingAdminTop)]
+          pr-[var(--paddingAdminLeft)]
+          bg-[var(--textWhite)];
 }
 
 input[type='checkbox'] {
@@ -142,11 +125,10 @@ input[type='checkbox'] {
   height: 26px;
   border: 1px solid #7e4556;
   border-radius: 4px;
-  background-color: #f0f0f0; /* Background color when unchecked */
-  transition: background-color 0.2s; /* Optional: smooth transition */
+  background-color: #f0f0f0;
+  transition: background-color 0.2s;
 }
 
-/* Checkmark (hidden by default) */
 .custom-checkbox::after {
   content: '';
   position: absolute;
@@ -160,72 +142,20 @@ input[type='checkbox'] {
   transform: rotate(45deg);
 }
 
-/* Show the checkmark when the checkbox is checked */
 input[type='checkbox']:checked + .custom-checkbox::after {
   display: block;
 }
 
-/* Change background color when checked */
 input[type='checkbox']:checked ~ .custom-checkbox {
-  background-color: #7e4556; /* Background color when checked */
+  background-color: #7e4556;
 }
 
-/* Optional: Hover effect */
 .custom-checkbox:hover {
-  background-color: #d1d1d1; /* Slightly darker on hover when unchecked */
-}
-
-/* Hover effect (optional) */
-/* input[type='checkbox']:hover + .custom-checkbox {
-  background-color: #f0f0f0;
-} */
-
-/* .card:hover .card-inner {
-  transform: rotateY(-180deg);
-}
-
-.card-back {
-  transform: rotateY(-180deg);
-} */
-
-/* input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='number'],
-select,
-textarea {
-  @apply border-2 border-gray-300 focus:ring-2 focus:ring-gray-500 rounded-[16px] p-[8px] mx-[8px] my-[8px];
-}
-
-input[type='submit'],
-button {
-  @apply bg-slate-400 rounded-full my-[8px] text-white py-[8px] px-[24px] inline-block;
-}
-
-nav button {
-  @apply !bg-transparent !rounded-none !my-0 !mx-0 !text-black !py-0 !px-0;
-}
-
-p.fieldError {
-  @apply text-red-500;
-} */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .rotate-y-180 {
-    transform: rotateY(180deg);
-  }
-
-  .-rotate-y-180 {
-    transform: rotateY(-180deg);
-  }
+  background-color: #d1d1d1;
 }
 
 ::selection {
-  background-color: var(
-    --mainColorAlpha
-  ); /* Background color of the selected text */
-  color: var(--textColor); /* Text color of the selected text */
+  background-color: var(--mainColorAlpha);
+  color: var(--textColor);
 }
 

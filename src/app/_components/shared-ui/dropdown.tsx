@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { Controller } from 'react-hook-form';
-import { DropDownProps } from '@/app/_types/dropdown.types';
+import { DropDownProps } from '@/app/_types/shared-ui.types';
 
 const DropDown: FC<DropDownProps> = ({
   name,
@@ -9,8 +9,6 @@ const DropDown: FC<DropDownProps> = ({
   control,
   array,
   error,
-  value,
-  selectedDropDown,
   setSelectedDropDown,
   isOpen,
   defaultValue = null,

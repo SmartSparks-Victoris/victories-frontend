@@ -1,9 +1,8 @@
-import Filters from '@/app/_components/tickets-sections/filters';
 import React from 'react';
-import Results from '@/app/_components/tickets-sections/results';
 import TicketsMain from '@/app/_components/tickets-sections/main';
+import { wait } from '@/app/_utils/test';
 
-const page = async ({ searchParams }) => {
+const page = async () => {
   const response = await fetch('http://localhost:3001/categories');
   const result = await response.json();
   const categories = result.categories;
@@ -11,6 +10,8 @@ const page = async ({ searchParams }) => {
   const response2 = await fetch('http://localhost:3001/status');
   const result2 = await response2.json();
   const status = result2.status;
+
+  await wait(5);
 
   const results = [
     {

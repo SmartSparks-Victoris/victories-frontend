@@ -4,13 +4,11 @@
 import * as z from 'zod';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, FieldErrors, useForm } from 'react-hook-form';
 import React, { useState } from 'react';
 import {
   communicate,
-  customers,
   employees,
-  people,
   plan,
   size,
   solution,
@@ -66,7 +64,7 @@ const JoinForm = () => {
     setStep(-1);
   }
 
-  function handleFailure(errors: any) {
+  function handleFailure(errors: FieldErrors) {
     console.error('Form submission failed due to errors:', errors);
     console.log('FAILURE');
   }
@@ -218,17 +216,16 @@ const JoinForm = () => {
                 <Controller
                   name="type"
                   control={control}
-                  defaultValue=""
-                  render={({ field }) => (
+                  render={() => (
                     <DropDown
                       name="type"
                       label="Business Type"
                       control={control}
                       array={type}
                       error={errors.type}
-                      value={field.value}
-                      selectedDropDown={openDropdown}
-                      setSelectedDropDown={(name) => setOpenDropdown(name)}
+                      setSelectedDropDown={(name: string) =>
+                        setOpenDropdown(name)
+                      }
                       isOpen={openDropdown === 'type'}
                     />
                   )}
@@ -237,17 +234,16 @@ const JoinForm = () => {
                 <Controller
                   name="communicate"
                   control={control}
-                  defaultValue=""
-                  render={({ field }) => (
+                  render={() => (
                     <DropDown
                       name="communicate"
                       label="How do you communicate with customers today?"
                       control={control}
                       array={communicate}
                       error={errors.communicate}
-                      value={field.value}
-                      selectedDropDown={openDropdown}
-                      setSelectedDropDown={(name) => setOpenDropdown(name)}
+                      setSelectedDropDown={(name: string) =>
+                        setOpenDropdown(name)
+                      }
                       isOpen={openDropdown === 'communicate'}
                     />
                   )}
@@ -256,17 +252,16 @@ const JoinForm = () => {
                 <Controller
                   name="size"
                   control={control}
-                  defaultValue=""
-                  render={({ field }) => (
+                  render={() => (
                     <DropDown
                       name="size"
                       label="Company Size"
                       control={control}
                       array={size}
                       error={errors.size}
-                      value={field.value}
-                      selectedDropDown={openDropdown}
-                      setSelectedDropDown={(name) => setOpenDropdown(name)}
+                      setSelectedDropDown={(name: string) =>
+                        setOpenDropdown(name)
+                      }
                       isOpen={openDropdown === 'size'}
                     />
                   )}
@@ -275,17 +270,16 @@ const JoinForm = () => {
                 <Controller
                   name="plan"
                   control={control}
-                  defaultValue=""
-                  render={({ field }) => (
+                  render={() => (
                     <DropDown
                       name="plan"
                       label="When do you plan to launch"
                       control={control}
                       array={plan}
                       error={errors.plan}
-                      value={field.value}
-                      selectedDropDown={openDropdown}
-                      setSelectedDropDown={(name) => setOpenDropdown(name)}
+                      setSelectedDropDown={(name: string) =>
+                        setOpenDropdown(name)
+                      }
                       isOpen={openDropdown === 'plan'}
                     />
                   )}
@@ -294,17 +288,16 @@ const JoinForm = () => {
                 <Controller
                   name="solution"
                   control={control}
-                  defaultValue=""
-                  render={({ field }) => (
+                  render={() => (
                     <DropDown
                       name="solution"
                       label="Have you ever set up a customer support solution?"
                       control={control}
                       array={solution}
                       error={errors.solution}
-                      value={field.value}
-                      selectedDropDown={openDropdown}
-                      setSelectedDropDown={(name) => setOpenDropdown(name)}
+                      setSelectedDropDown={(name: string) =>
+                        setOpenDropdown(name)
+                      }
                       isOpen={openDropdown === 'solution'}
                     />
                   )}
@@ -313,17 +306,16 @@ const JoinForm = () => {
                 <Controller
                   name="employees"
                   control={control}
-                  defaultValue=""
-                  render={({ field }) => (
+                  render={() => (
                     <DropDown
                       name="employees"
                       label="How many employees will use InstaHub ?"
                       control={control}
                       array={employees}
                       error={errors.employees}
-                      value={field.value}
-                      selectedDropDown={openDropdown}
-                      setSelectedDropDown={(name) => setOpenDropdown(name)}
+                      setSelectedDropDown={(name: string) =>
+                        setOpenDropdown(name)
+                      }
                       isOpen={openDropdown === 'employees'}
                     />
                   )}
@@ -368,7 +360,11 @@ const JoinForm = () => {
           )}
           {step === 1 && (
             <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
-              <Button onClick={getPrevious} className="w-[100%]">
+              <Button
+                onClick={getPrevious}
+                className="w-[100%]"
+                variant="outline"
+                variantColor="dark">
                 Previous
               </Button>
               <Button onClick={getNext} className="w-[100%]">
@@ -379,7 +375,11 @@ const JoinForm = () => {
 
           {step === 2 && (
             <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
-              <Button onClick={getPrevious} className="w-[100%]">
+              <Button
+                onClick={getPrevious}
+                className="w-[100%]"
+                variant="outline"
+                variantColor="dark">
                 Previous
               </Button>
               <Button onClick={getNext} className="w-[100%]">
@@ -389,7 +389,11 @@ const JoinForm = () => {
           )}
           {step === 3 && (
             <div className="flex gap-[16px] flex-wrap md:flex-nowrap justify-center w-[100%] xl:w-[50%] mt-[80px]">
-              <Button onClick={getPrevious} className="w-[100%]">
+              <Button
+                onClick={getPrevious}
+                className="w-[100%]"
+                variant="outline"
+                variantColor="dark">
                 Previous
               </Button>
               <Button

@@ -1,9 +1,16 @@
+/* eslint-disable @next/next/no-img-element */
+import React, { FC } from 'react';
+
 import ActionButton from './action';
 import CustomLink from '../navigation/custom-link';
-/* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import { RowViewProps } from '@/app/_types/shared-ui.types';
 
-const RowView = ({ onClick = () => {}, data, type, href }) => {
+const RowView: FC<RowViewProps> = ({
+  onClick = () => {},
+  data,
+  type,
+  href,
+}) => {
   return (
     <CustomLink
       href={href}

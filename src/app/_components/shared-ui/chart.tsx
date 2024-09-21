@@ -1,13 +1,14 @@
 'use client';
 
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
+import { ChartProps } from '@/app/_types/shared-ui.types';
 import { Pie } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Chart = ({ labels, values, colors, head }) => {
+const Chart: FC<ChartProps> = ({ labels, values, colors, head }) => {
   const [windowWidth, setWindowWidth] = useState(1200); // Default initial width
 
   // Function to handle window resizing

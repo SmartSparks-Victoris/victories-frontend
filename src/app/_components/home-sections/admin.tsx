@@ -1,7 +1,5 @@
 'use client';
 
-import CustomLink from '../navigation/custom-link';
-import Link from 'next/link';
 import React from 'react';
 import Recent from './recent-results';
 import Results from './admin-results';

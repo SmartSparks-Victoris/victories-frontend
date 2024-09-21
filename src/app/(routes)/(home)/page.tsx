@@ -1,12 +1,9 @@
-import AboutSection from '@/app/_components/home-sections/about';
 import Admin from '@/app/_components/home-sections/admin';
 import ContactSection from '@/app/_components/home-sections/contact';
-// import Form from '../_components/test-form';
-import Landing from '@/app/_components/home-sections/landing';
+import NormalSection from '@/app/_components/guest-sections/normal-section';
 import Owner from '@/app/_components/home-sections/owner';
-import ServicesSection from '@/app/_components/home-sections/services';
+import WhiteSection from '@/app/_components/guest-sections/white-section';
 import { cookies } from 'next/headers';
-// import { headers } from 'next/headers';
 import { parseJwt } from '@/app/_utils/auth';
 
 const admins = [
@@ -168,9 +165,27 @@ export default function Home() {
 
   return (
     <>
-      <Landing />
-      <AboutSection />
-      <ServicesSection />
+      <NormalSection
+        Head="WE CONNECT YOU WITH YOUR CUSTOMERS"
+        src="/images/landing.png"
+        buttonValue="Join Us"
+        href="/join"
+        body="Connect, Manage, Resolve – All in One Place . Your Unified Solution for Seamless Customer Support, Bringing All Customer Interactions Under One Roof"
+      />
+      <WhiteSection
+        Head="About Us"
+        src="/images/about-section.png"
+        buttonValue="Read More"
+        href="/about"
+        body="We are a technology company focused on transforming how businesses engage with their customers. Our mission is to simplify customer support through a centralized platform that integrates messaging services like WhatsApp and Messenger, providing seamless tools to enhance communication and deliver exceptional service"
+      />
+      <NormalSection
+        Head="Our Services"
+        src="/images/services-section.png"
+        buttonValue="Read More"
+        href="/services"
+        body="We provide a powerful, all-in-one customer service platform designed to simplify and streamline the way businesses manage customer interactions across multiple channels. Our services are tailored to help you deliver efficient, responsive, and personalized support."
+      />
       <ContactSection />
     </>
   );

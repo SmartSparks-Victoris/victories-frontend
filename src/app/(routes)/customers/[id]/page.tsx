@@ -1,6 +1,7 @@
-import Admin from '@/app/_components/admin-sections/admin';
+import React, { FC } from 'react';
+
 import Customer from '@/app/_components/customer-section/customer';
-import React from 'react';
+import { ParamsProps } from '@/app/_types/params.types';
 import Results from '@/app/_components/customer-section/results';
 import ResultsHead from '@/app/_components/shared-ui/results-head';
 
@@ -82,7 +83,7 @@ const results = [
   },
 ];
 
-const page = ({ params }) => {
+const page: FC<ParamsProps> = ({ params }) => {
   const id = Number(params.id);
   const customer = results.filter((a) => a.id === id)[0];
 

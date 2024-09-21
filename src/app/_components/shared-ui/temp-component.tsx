@@ -2,12 +2,18 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import { FC, useEffect } from 'react';
 
+import { MessageAndRedirectProps } from '@/app/_types/shared-ui.types';
 import useAnimation from '@/app/_hooks/useAnimation';
-import { useEffect } from 'react';
 import { useRouter } from 'nextjs-toploader/app';
 
-const MessageAndRedirect = ({ nextPage, src, text, text2 = '' }) => {
+const MessageAndRedirect: FC<MessageAndRedirectProps> = ({
+  nextPage,
+  src,
+  text,
+  text2 = '',
+}) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -19,6 +25,7 @@ const MessageAndRedirect = ({ nextPage, src, text, text2 = '' }) => {
 
     // Cleanup the timeout when the component is unmounted
     return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router, nextPage]);
 
   const {

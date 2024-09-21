@@ -1,6 +1,8 @@
+import React, { FC } from 'react';
+
 import Chat from '@/app/_components/ticket-sections/chat';
 import Form from '@/app/_components/ticket-sections/form';
-import React from 'react';
+import { ParamsProps } from '@/app/_types/params.types';
 import Status from '@/app/_components/shared-ui/status';
 
 const messages = [
@@ -185,7 +187,7 @@ const status = [
   },
 ];
 
-const page = ({ params }) => {
+const page: FC<ParamsProps> = ({ params }) => {
   const id = Number(params.id);
   const ticket = results.filter((t) => t.id === id)[0];
   return (

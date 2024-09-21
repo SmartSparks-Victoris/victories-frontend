@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const DocumentItem = ({ head, text }) => {
+import { DocumentItemProps } from '@/app/_types/guest.types';
+
+const DocumentItem: FC<DocumentItemProps> = ({ head, text }) => {
   return (
     <div className="flex flex-col gap-[8px] w-[100%]">
       <h3 className="text-[#1A1A1A] font-medium text-[22px]">{head}</h3>

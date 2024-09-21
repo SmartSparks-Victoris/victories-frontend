@@ -1,4 +1,5 @@
 import React from 'react';
+import StatisticsItem from './statistics-item';
 import Transition from '../shared-ui/transition';
 
 const Statistics = () => {
@@ -18,22 +19,10 @@ const Statistics = () => {
         </Transition>
         <Transition from="right">
           <div className="grid grid-cols-[repeat(auto-fit,_minmax(172px,_1fr))] md:grid-cols-[repeat(auto-fit,_minmax(272px,_1fr))] gap-[32px] max-w-[600px] w-[100%]">
-            <div className="flex flex-col gap-[8px] items-center">
-              <h2 className="font-roboto text-[48px] font-bold">2,555+</h2>
-              <p className="text-[24px] font-medium">lorem ipsum</p>
-            </div>
-            <div className="flex flex-col gap-[8px] items-center">
-              <h2 className="font-roboto text-[48px] font-bold">12</h2>
-              <p className="text-[24px] font-medium">lorem ipsum</p>
-            </div>
-            <div className="flex flex-col gap-[8px] items-center">
-              <h2 className="font-roboto text-[48px] font-bold">12</h2>
-              <p className="text-[24px] font-medium">lorem ipsum</p>
-            </div>
-            <div className="flex flex-col gap-[8px] items-center">
-              <h2 className="font-roboto text-[48px] font-bold">12</h2>
-              <p className="text-[24px] font-medium">lorem ipsum</p>
-            </div>
+            <StatisticsItem number="2,555+" text="lorem ipsum" />
+            <StatisticsItem number="12" text="lorem ipsum" />
+            <StatisticsItem number="12" text="lorem ipsum" />
+            <StatisticsItem number="12" text="lorem ipsum" />
           </div>
         </Transition>
       </div>

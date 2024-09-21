@@ -1,6 +1,5 @@
 import Chat from '@/app/_components/ticket-sections/chat';
 import React from 'react';
-import SupportChat from '@/app/_components/support-sections/support-chat';
 
 const messages = [
   {

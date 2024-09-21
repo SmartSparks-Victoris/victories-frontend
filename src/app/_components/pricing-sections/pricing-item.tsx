@@ -1,8 +1,10 @@
+import React, { FC } from 'react';
+
 import Button from '../shared-ui/button';
-import React from 'react';
+import { PricingItemProps } from '@/app/_types/admin.types';
 import { isNumber } from 'chart.js/helpers';
 
-const PricingItem = ({
+const PricingItem: FC<PricingItemProps> = ({
   type,
   price,
   description,

@@ -1,9 +1,16 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 
-const Transition = ({ from, children, delay = 0, className = '' }) => {
+import { TransitionProps } from '@/app/_types/shared-ui.types';
+
+const Transition: FC<TransitionProps> = ({
+  from,
+  children,
+  delay = 0,
+  className = '',
+}) => {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);

@@ -25,8 +25,6 @@ const PersonalInfoForm = ({ data }) => {
     },
   });
 
-  const router = useRouter();
-
   function handleInfoSuccess(data) {}
 
   function handleInfoFailure() {
@@ -40,18 +38,21 @@ const PersonalInfoForm = ({ data }) => {
           name="fname"
           label="First Name"
           register={register}
+          error={errors.fname}
           type="text"
         />
         <TextInput
           name="lname"
           label="Last Name"
           register={register}
+          error={errors.lname}
           type="text"
         />
         <TextInput
           name="email"
           label="Email"
           register={register}
+          error={errors.email}
           type="email"
         />
       </div>

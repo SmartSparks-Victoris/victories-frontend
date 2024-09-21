@@ -3,8 +3,10 @@
 
 import * as z from 'zod';
 
+import React, { FC } from 'react';
+
 import Button from '../shared-ui/button';
-import React from 'react';
+import { ForgetPasswordProps } from '@/app/_types/guest.types';
 import TextInput from '../shared-ui/text-input';
 import mobileSchema from '@/app/_schemas/forget-password';
 import { motion } from 'framer-motion';
@@ -12,7 +14,11 @@ import useAnimation from '@/app/_hooks/useAnimation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-const ForgetPassword = ({ setStep, setUsername, setMobile }) => {
+const ForgetPassword: FC<ForgetPasswordProps> = ({
+  setStep,
+  setUsername,
+  setMobile,
+}) => {
   const {
     register,
     handleSubmit,

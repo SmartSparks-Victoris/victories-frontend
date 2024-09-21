@@ -3,17 +3,24 @@
 
 import * as z from 'zod';
 
+import React, { FC } from 'react';
+
 import Button from '../shared-ui/button';
-import React from 'react';
+import { CreatePasswordProps } from '@/app/_types/guest.types';
 import TextInput from '../shared-ui/text-input';
-import createPasswordSchema from '@/app/_schemas/craete-password';
-import mobileSchema from '@/app/_schemas/forget-password';
+import createPasswordSchema from '@/app/_schemas/create-password';
 import { motion } from 'framer-motion';
 import useAnimation from '@/app/_hooks/useAnimation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-const CreatePassword = ({ setStep, username, mobile }) => {
+const CreatePassword: FC<CreatePasswordProps> = ({
+  setStep,
+  username,
+  mobile,
+}) => {
+  console.log(username);
+  console.log(mobile);
   const {
     register,
     handleSubmit,
@@ -50,7 +57,7 @@ const CreatePassword = ({ setStep, username, mobile }) => {
             </h2>
             <p className="text-[16px] mt-[16px] mb-[24px]">
               The password must contain a mix of uppercase and lowercase letters
-              numbers, and special symbols. Minimum length is 8 characters{' '}
+              numbers, and special symbols. Minimum length is 8 characters
             </p>
 
             <form

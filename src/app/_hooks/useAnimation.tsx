@@ -13,11 +13,11 @@ const useAnimation = () => {
     useState(true);
 
   const startTransition = () => {
-    setIsStepTransitionComplete(false); // Disable rendering next step until transition completes
+    setIsStepTransitionComplete(false);
   };
 
   const handleExitComplete = () => {
-    setIsStepTransitionComplete(true); // Enable rendering next step after exit animation completes
+    setIsStepTransitionComplete(true);
   };
 
   return {

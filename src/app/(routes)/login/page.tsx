@@ -1,8 +1,10 @@
-import LoginForm from '@/app/_components/forms/login';
-import React from 'react';
+import React, { FC } from 'react';
 
-const page = ({ searchParams }) => {
-  const redirect = searchParams?.redirect || '/'; // Fallback to a default value if not provided
+import LoginForm from '@/app/_components/forms/login';
+import { SearchParamsProps } from '@/app/_types/search-params.types';
+
+const page: FC<SearchParamsProps> = ({ searchParams }) => {
+  const redirect = String(searchParams?.redirect) || '/'; // Fallback to a default value if not provided
 
   return (
     <>

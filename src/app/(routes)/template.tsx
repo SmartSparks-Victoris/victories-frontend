@@ -1,9 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { FC } from 'react';
+
+import { ChildrenProps } from '../_types/children.types';
 import { motion } from 'framer-motion';
 
-const Transition = ({ children }) => {
+const Transition: FC<ChildrenProps> = ({ children }) => {
   return (
     <motion.div
       initial={{ y: 20, opacity: 0 }}
