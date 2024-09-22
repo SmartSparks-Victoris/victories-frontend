@@ -6,7 +6,9 @@ import { getSocket, initSocket } from '../_lib/socket';
 
 import { UserId } from '../_types/user.types';
 
-const SocketContext = createContext<SocketContextType | undefined>(undefined);
+export const SocketContext = createContext<SocketContextType | undefined>(
+  undefined,
+);
 
 export const SocketProvider = ({ children }: SocketProviderProps) => {
   const [isConnected, setIsConnected] = useState(false);

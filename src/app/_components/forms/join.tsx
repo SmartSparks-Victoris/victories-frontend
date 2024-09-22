@@ -59,7 +59,8 @@ const JoinForm = () => {
     resolver: zodResolver(joinSchema),
   });
 
-  function handleSuccess() {
+  function handleSuccess(data) {
+    console.log(data);
     console.log('SUCCESS');
     setStep(-1);
   }

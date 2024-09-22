@@ -1,8 +1,9 @@
 import CustomLink from '../navigation/custom-link';
-import React from 'react';
+// import React from 'react';
 import Transition from '../shared-ui/transition';
 
 const JoinSection = () => {
+  // return <h1>Hello</h1>;
   return (
     <section className="py-10 flex justify-center items-center text-textNavBarPrimary">
       <Transition from="bottom">

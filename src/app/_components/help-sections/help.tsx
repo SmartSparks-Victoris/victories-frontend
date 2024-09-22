@@ -8,7 +8,7 @@ const Help = () => {
         Account Settings:
       </h1>
       <div className="">
-        <video className="h-[100%]" loop controls>
+        <video className="h-[100%]" loop controls data-testid="help-video">
           <source src="/images/help.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>

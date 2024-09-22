@@ -134,7 +134,7 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
               <div className="flex flex-col gap-3">
                 <Button
                   type="submit"
-                  value="Send"
+                  value="Next"
                   className="w-[100%]"></Button>
 
                 <button

@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/iocon.ico" sizes="any" />
+        <link rel="icon" href="/icon.ico" sizes="any" />
       </head>
       <body
         className={`font-poppins ${!user && 'pt-[var(--guestNav)]'} ${

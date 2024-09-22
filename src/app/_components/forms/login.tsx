@@ -16,6 +16,7 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSocket } from '@/app/_contexts/socket-context';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { API_URL } from '@/app/_data/base';
 
 const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
   const { connectSocket } = useSocket();
@@ -30,32 +31,41 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
   });
 
   async function handleLoginSuccess(data) {
-    try {
-      const res = await fetch('http://localhost:3001/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: data.username,
-          password: data.password,
-        }),
-        credentials: 'include',
-      });
-      const result = await res.json();
-      const user = result.user;
-      console.log(user);
-      connectSocket(user.id);
-      await revalidateLogin();
-      router.push(redirect);
-      toast.success('Logged In Successfully');
-    } catch (error) {
-      console.error('Error:', error);
-      // alert('Error submitting form.');
-    }
+    // try {
+    //   const res = await fetch('http://localhost:3001/login', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       username: data.username,
+    //       password: data.password,
+    //     }),
+    //     credentials: 'include',
+    //   });
+    //   const result = await res.json();
+    //   const user = result.user;
+    //   console.log(user);
+    //   connectSocket(user.id);
+    //   await revalidateLogin();
+    //   router.push(redirect);
+    //   toast.success('Logged In Successfully');
+    // } catch (error) {
+    //   console.error('Error:', error);
+    //   // alert('Error submitting form.');
+    // }
+
+    console.log(data);
+    console.log('OK??');
+
+    const res = await fetch(`${API_URL}/`);
+    const result = await res.json();
+    console.log(result);
   }
 
-  function handleLoginFailure() {}
+  function handleLoginFailure() {
+    console.log('???');
+  }
 
   return (
     <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-4">
