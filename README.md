@@ -72,12 +72,11 @@ To run the application locally, follow these steps:
 
    - Access the client application at [http://localhost:3000](http://localhost:3000).
    - Use the following credentials to test different functionalities:
-     - **Admin**: Username: `john`, Password: `any password`
-     - **Owner**: Username: `jane`, Password: `any password`
+     - **Admin**: Username: `shahdfaris`, Password: `hello`
+     - **Owner**: Username: `amr`, Password: `hello`
 
-## Current State
-
-The application is currently in its initial implementation phase. The structure represents the foundational codebase, but the UI design and final features are still in development.
+4. Run Unit Testing:
+   `npm run vitest-ui`
 
 ## Summary
 
