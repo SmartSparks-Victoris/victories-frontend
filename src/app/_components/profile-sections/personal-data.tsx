@@ -1,16 +1,20 @@
-import Admins from './admins';
+import { cookies } from 'next/headers';
+import SmallSpinner from '../shared-ui/small-spinner';
+import AdminsData from './admins-data';
 import Customers from './customers';
 import ImageUploadForm from './image-upload';
 import PasswordForm from './password-form';
 import PersonalInfoForm from './personal-info-form';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 const PersonalData = ({ user }) => {
   const data = {
-    fname: user.name.split(' ')[0],
-    lname: user.name.split(' ')[1],
+    fname: user.FirstName,
+    lname: user.LastName,
     email: user.email,
   };
+
+  const token = cookies().get('token');
 
   console.log(user);
   return (
@@ -34,12 +38,12 @@ const PersonalData = ({ user }) => {
 
       <div className="flex flex-col w-[100%] gap-4">
         <PersonalInfoForm data={data} />
-        <PasswordForm />
+        <PasswordForm user={user} token={token} />
       </div>
       {user && user.role === 'owner' && (
-        <div>
-          <Admins />
-        </div>
+        <Suspense fallback={<SmallSpinner />}>
+          <AdminsData />
+        </Suspense>
       )}
       {user && user.role === 'admin' && (
         <div>

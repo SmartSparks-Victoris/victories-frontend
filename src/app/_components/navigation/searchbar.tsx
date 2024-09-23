@@ -69,7 +69,7 @@ const SearchBar: FC<UserProps> = ({ user }) => {
           )}
         </div>
         <p className="text-textNavBarPrimary caption-18 font-medium">
-          {user.fullname}
+          {user.FirstName} {user.LastName}
         </p>
       </CustomLink>
       <div className="flex flex-grow justify-end gap-3 md:gap-3 ">

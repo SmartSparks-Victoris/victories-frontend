@@ -4,106 +4,118 @@ import Admin from '@/app/_components/admin-sections/admin';
 import { ParamsProps } from '@/app/_types/params.types';
 import Results from '@/app/_components/admin-sections/results';
 import ResultsHead from '@/app/_components/shared-ui/results-head';
+import { parseJwt } from '@/app/_utils/auth';
+import { cookies } from 'next/headers';
+import { API_URL } from '@/app/_data/base';
 
-const results = [
+const results2 = [
   {
-    id: 1,
-    urgent: 1,
-    status: 'inProgress', // "open", "inProgress", "completed"
-    status_id: 2,
-    title: 'Order #1234',
-    category: 'orders', // "orders", "feedbacks", "persons"
-    category_id: 1,
-    admin: 'John Doe',
-    date: '2024-09-11',
-    sentiment: 'positive',
-    degree_of_sentiment: 85,
+    Id: 1,
+    Urgent: 1,
+    State: 'inProgress', // "open", "inProgress", "completed"
+    StateId: 2,
+    Title: 'Order #1234',
+    Category: 'orders', // "orders", "feedbacks", "persons"
+    CategoryId: 1,
+    Admin: 'John Doe',
+    Date: '2024-09-11',
+    Sentiment: 'positive',
+    SentimentDegree: 85,
+    AdminId: 2,
   },
   {
-    id: 2,
-    urgent: 4,
-    status: 'completed', // "open", "inProgress", "completed"
-    status_id: 3,
-    title: 'Feedback #5678',
-    category: 'feedbacks', // "orders", "feedbacks", "persons"
-    category_id: 2,
-    admin: 'Jane Smith',
-    date: '2024-09-10',
-    sentiment: 'neutral',
-    degree_of_sentiment: 50,
+    Id: 2,
+    Urgent: 0,
+    State: 'completed', // "open", "inProgress", "completed"
+    StateId: 3,
+    Title: 'Feedback #5678',
+    Category: 'feedbacks', // "orders", "feedbacks", "persons"
+    CategoryId: 2,
+    Admin: 'Jane Smith',
+    Date: '2024-09-10',
+    Sentiment: 'neutral',
+    SentimentDegree: 50,
+    AdminId: 1,
   },
   {
-    id: 3,
-    urgent: 10,
-    status: 'open', // "open", "inProgress", "completed"
-    status_id: 1,
-    title: 'Person Update #2345',
-    category: 'persons', // "orders", "feedbacks", "persons"
-    category_id: 3,
-    admin: 'Alice Johnson',
-    date: '2024-09-09',
-    sentiment: 'negative',
-    degree_of_sentiment: 20,
+    Id: 3,
+    Urgent: 0,
+    State: 'open', // "open", "inProgress", "completed"
+    StateId: 1,
+    Title: 'Person UpDate #2345',
+    Category: 'persons', // "orders", "feedbacks", "persons"
+    CategoryId: 3,
+    Admin: 'Alice Johnson',
+    Date: '2024-09-09',
+    Sentiment: 'negative',
+    SentimentDegree: 20,
+    AdminId: 2,
   },
   {
-    id: 4,
-    urgent: 1,
-    status: 'completed', // "open", "inProgress", "completed"
-    status_id: 3,
-    title: 'Order #4321',
-    category: 'orders', // "orders", "feedbacks", "persons"
-    category_id: 1,
-    admin: 'Bob Brown',
-    date: '2024-09-08',
-    sentiment: 'positive',
-    degree_of_sentiment: 90,
+    Id: 4,
+    Urgent: 1,
+    State: 'completed', // "open", "inProgress", "completed"
+    StateId: 3,
+    Title: 'Order #4321',
+    Category: 'orders', // "orders", "feedbacks", "persons"
+    CategoryId: 1,
+    Admin: 'Bob Brown',
+    Date: '2024-09-08',
+    Sentiment: 'positive',
+    SentimentDegree: 90,
+    AdminId: 2,
   },
   {
-    id: 5,
-    urgent: 1,
-    status: 'open', // "open", "inProgress", "completed"
-    status_id: 1,
-    title: 'Feedback #8765',
-    category: 'feedbacks', // "orders", "feedbacks", "persons"
-    category_id: 2,
-    admin: 'Charlie Green',
-    date: '2024-09-07',
-    sentiment: 'negative',
-    degree_of_sentiment: 30,
+    Id: 5,
+    Urgent: 1,
+    State: 'open', // "open", "inProgress", "completed"
+    StateId: 1,
+    Title: 'Feedback #8765',
+    Category: 'feedbacks', // "orders", "feedbacks", "persons"
+    CategoryId: 2,
+    Admin: 'Charlie Green',
+    Date: '2024-09-07',
+    Sentiment: 'negative',
+    SentimentDegree: 30,
+    AdminId: 1,
   },
 ];
 
-const admins = [
-  {
-    img: '/images/default.png',
-    id: 1,
-    name: 'John Doe',
-    date: '2024-09-19T08:05:00Z',
-    tickets: 250,
-  },
-  {
-    img: '/images/default.png',
-    id: 2,
-    name: 'Jane Doe',
-    date: '2024-09-19T08:05:00Z',
-    tickets: 150,
-  },
-  {
-    img: '/images/default.png',
-    id: 3,
-    name: 'Doe Joe',
-    date: '2024-09-19T08:05:00Z',
-    tickets: 270,
-  },
-];
-
-const page: FC<ParamsProps> = ({ params }) => {
+const page: FC<ParamsProps> = async ({ params }) => {
   const id = Number(params.id);
-  const admin = admins.filter((a) => a.id === id)[0];
+  const token = cookies().get('token');
+  const results = results2.filter((r) => r.AdminId === id);
+  let admin;
+  try {
+    const res = await fetch(`${API_URL}/api/admin/${id}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    // Check if content-type is JSON
+    const contentType = res.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      const result = await res.json();
+      admin = result;
+      console.log(result);
+    } else {
+      console.log('Response is not in JSON format or empty');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+
+  console.log(admin);
 
   return (
     <>
-      <Admin admin={admin} />
+      <Admin admin={admin} token={token} />
       <div className="mt-3">
         <ResultsHead text={'History'} />
       </div>

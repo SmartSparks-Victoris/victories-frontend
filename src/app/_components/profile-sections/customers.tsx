@@ -4,22 +4,54 @@ import RowView from '../shared-ui/row-view';
 const Customers = () => {
   const customers = [
     {
-      img: '/images/default.png',
-      id: 1,
-      number: '01094774383',
-      date: '2024-09-01T10:00:00Z',
+      Id: 1,
+      Number: '01894774383',
+      Date: '2024-09-01T10:00:00Z',
     },
     {
-      img: '/images/default.png',
-      id: 2,
-      number: '01094734383',
-      date: '2024-09-01T11:30:00Z',
+      Id: 2,
+      Number: '01094774383',
+      Date: '2024-09-01T10:00:00Z',
     },
     {
-      img: '/images/default.png',
-      id: 3,
-      number: '01194774383',
-      date: '2024-09-01T13:45:00Z',
+      Id: 3,
+      Number: '01094774383',
+      Date: '2024-09-01T10:00:00Z',
+    },
+    {
+      Id: 4,
+      Number: '01094774383',
+      Date: '2024-09-01T10:00:00Z',
+    },
+    {
+      Id: 5,
+      Number: '01094774383',
+      Date: '2024-09-01T10:00:00Z',
+    },
+    {
+      Id: 6,
+      Number: '01094774383',
+      Date: '2024-09-01T10:00:00Z',
+    },
+    {
+      Id: 7,
+      Number: '01094774383',
+      Date: '2024-09-01T10:00:00Z',
+    },
+    {
+      Id: 8,
+      Number: '01094774383',
+      Date: '2024-09-01T10:00:00Z',
+    },
+    {
+      Id: 9,
+      Number: '01094774383',
+      Date: '2024-09-01T10:00:00Z',
+    },
+    {
+      Id: 10,
+      Number: '01094774383',
+      Date: '2024-09-01T10:00:00Z',
     },
   ];
 
@@ -29,10 +61,10 @@ const Customers = () => {
         <h2 className="text-tertiaryButton text-[20px] font-bold">Customers</h2>
       </div>
       <div className="flex flex-col w-[100%] gap-4 mt-4">
-        {customers.map((customer) => (
+        {customers.slice(0, 3).map((customer) => (
           <RowView
-            href={`/customers/${customer.id}`}
-            key={customer.id}
+            href={`/customers/${customer.Id}`}
+            key={customer.Id}
             data={customer}
             type={'customer'}
           />

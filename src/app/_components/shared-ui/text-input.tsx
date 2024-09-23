@@ -13,6 +13,7 @@ const TextInput: FC<TextInputProps> = ({
   placeholder,
   icon = '',
   iconSubmit = false,
+  isPending = false,
 }) => {
   if (type === 'textarea') {
     return (
@@ -28,9 +29,10 @@ const TextInput: FC<TextInputProps> = ({
           id={name}
           {...register(name)}
           placeholder={placeholder && placeholder}
+          disabled={isPending}
           className={`border-[2px] border-solid rounded-md p-[16px] w-[100%] bg-backgroundColor resize-none text-black ${
             error ? 'border-errorColor' : 'border-borderColor'
-          }`}
+          } ${isPending && 'bg-gray-300'}`}
         />
         {error && (
           <p className="text-[14px] font-medium text-errorColor">
@@ -54,7 +56,7 @@ const TextInput: FC<TextInputProps> = ({
       <div
         className={`border-[2px] border-solid rounded-md px-2 w-[100%] bg-backgroundColor text-black flex gap-[10px] items-center ${
           error ? 'border-errorColor' : 'border-borderColor'
-        }`}>
+        } ${isPending && 'bg-gray-300'}`}>
         {icon && icon === 'search' && iconSubmit === false && (
           <SearchInputSVG />
         )}
@@ -70,7 +72,8 @@ const TextInput: FC<TextInputProps> = ({
           id={name}
           {...register(name)}
           placeholder={placeholder && placeholder}
-          className="bg-transparent py-2 px-[4px] border-none outline-none w-[100%]"
+          disabled={isPending}
+          className={`bg-transparent py-2 px-[4px] border-none outline-none w-[100%]`}
         />
       </div>
       {error && (

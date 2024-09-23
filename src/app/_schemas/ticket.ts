@@ -1,10 +1,10 @@
 import * as z from 'zod';
 
 const ticketUpdateSchema = z.object({
-  category: z.string(),
-  status: z.string(),
-  summary: z.string(),
-  title: z.string(),
+  Category: z.string(),
+  State: z.string(),
+  Summary: z.string(),
+  Title: z.string(),
 });
 
 export default ticketUpdateSchema;

@@ -2,13 +2,24 @@ import Chart from '../shared-ui/chart';
 import CustomLink from '../navigation/custom-link';
 import React from 'react';
 import Transition from '../shared-ui/transition';
+import { API_URL } from '@/app/_data/base';
+import toast from 'react-hot-toast';
 
-const Owner = ({ admins, user }) => {
+const Owner = async ({ user }) => {
+  let admins = [];
+  try {
+    const res = await fetch(`${API_URL}/api/admin/admins`);
+    const results = await res.json();
+    admins = results.filter((res) => res.role !== 'owner');
+  } catch (e) {
+    toast.error('Error Getting Admins.');
+  }
+
   return (
     <section className="">
       <Transition from="up">
         <h2 className="text-tertiaryButton text-[26px] font-semibold mb-2">
-          Welcome {user.name}!
+          Welcome {user.FirstName}!
         </h2>
         <p className="text-tertiaryButton text-[24px]">
           Connect with your customers faster and more effectively with our
@@ -52,8 +63,8 @@ const Owner = ({ admins, user }) => {
               {admins.map((admin) => {
                 return (
                   <tr key={admin.id}>
-                    <td>{admin.name}</td>
-                    <td>{admin.tickets}</td>
+                    <td>{admin.userName}</td>
+                    <td>{admin.countOfTickets}</td>
                     <td>
                       <CustomLink href={`/admins/${admin.id}`}>Link</CustomLink>
                     </td>

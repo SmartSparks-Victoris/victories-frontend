@@ -3,7 +3,7 @@
 
 import * as z from 'zod';
 
-import React, { useState } from 'react';
+import React, { useState, useTransition } from 'react';
 
 import Button from '../shared-ui/button';
 import { VerificationFormProps } from '@/app/_types/guest.types';
@@ -12,13 +12,15 @@ import useAnimation from '@/app/_hooks/useAnimation';
 import { useForm } from 'react-hook-form';
 import verificationSchema from '@/app/_schemas/verification';
 import { zodResolver } from '@hookform/resolvers/zod';
+import toast from 'react-hot-toast';
 
 const VerificationForm: React.FC<VerificationFormProps> = ({
   setStep,
-  username,
+  email,
   mobile,
+  id,
 }) => {
-  console.log(username);
+  console.log(email);
   console.log(mobile);
   const {
     register,
@@ -29,12 +31,25 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
     resolver: zodResolver(verificationSchema),
   });
 
+  console.log('ID: ', id);
+
   const [code, setCode] = useState<string[]>(Array(6).fill(''));
+
+  const [isPending, startTransition] = useTransition();
+
+  const type = 'success';
+  const response = {
+    message: 'Invalid Code or Expired',
+  };
 
   const handleLoginSuccess = () => {
     // TODO: Handle successful verification
-    setIsStepTransitionComplete(false);
-    setStep(3);
+    if (type === 'error') {
+      toast.error(response.message);
+    } else {
+      setIsStepTransitionComplete(false);
+      setStep(3);
+    }
   };
 
   const handleLoginFailure = () => {
@@ -115,11 +130,12 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
                     <input
                       type="text"
                       id={`code-input-${index}`}
+                      disabled={isPending}
                       {...register(`n${num}`)}
                       value={code[index]}
                       className={`border-2 border-solid border-black text-center w-[56px] h-[56px] lg:w-[64px] lg:h-[64px] xl:w-[86px] xl:h-[86px] rounded-[15px] text-[30px] font-medium  ${
                         errors[`n${num}`] ? 'border-errorColor' : ''
-                      }`}
+                      } ${isPending && 'bg-gray-300'}`}
                       onChange={(e) => handleInputChange(e, index)}
                     />
                     {errors[`n${num}`] && (
@@ -135,10 +151,12 @@ const VerificationForm: React.FC<VerificationFormProps> = ({
                 <Button
                   type="submit"
                   value="Next"
+                  isPending={isPending}
                   className="w-[100%]"></Button>
 
                 <button
                   onClick={resendCode}
+                  disabled={isPending}
                   className="mt-2 text-[20px] font-bold text-black underline">
                   Resend Code
                 </button>

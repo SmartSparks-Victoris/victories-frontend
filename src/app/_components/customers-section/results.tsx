@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import ResultsTableHead from '../tickets-sections/results-table-head';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSearchParams } from 'next/navigation';
+import { convertToDateString } from '@/app/_utils/helpers';
 
 const Results = ({ results }) => {
   const router = useRouter();
@@ -15,11 +16,11 @@ const Results = ({ results }) => {
     searchParams.get('order') || 'desc',
   );
   const [sortKeyView, setSortKeyView] = useState(
-    searchParams.get('key') || 'time',
+    searchParams.get('key') || 'Date',
   );
 
   useEffect(() => {
-    const sortKey = searchParams.get('key') || 'time'; // Default sort key
+    const sortKey = searchParams.get('key') || 'Date'; // Default sort key
     const sortOrder = searchParams.get('order') || 'desc'; // Default sort order
 
     let myFilteredResults = results;
@@ -44,6 +45,10 @@ const Results = ({ results }) => {
     router.push(`/customers/${id}`);
   }
 
+  // Id: 9,
+  // Number: '01094774383',
+  // Date: '2024-09-01T10:00:00Z',
+
   return (
     <section className="flex flex-col">
       <div className="resultsDiv">
@@ -53,8 +58,8 @@ const Results = ({ results }) => {
               <th>Customer</th>
               <th>
                 <ResultsTableHead
-                  text="Contact"
-                  keyValue="contact"
+                  text="Number"
+                  keyValue="Number"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -63,8 +68,8 @@ const Results = ({ results }) => {
               </th>
               <th>
                 <ResultsTableHead
-                  text="Time"
-                  keyValue="time"
+                  text="Date"
+                  keyValue="Date"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -77,20 +82,20 @@ const Results = ({ results }) => {
             {filteredResults &&
               filteredResults.map((result) => (
                 <tr
-                  key={result.id}
-                  onClick={() => handleCustomerClick(result.id)}
+                  key={result.Id}
+                  onClick={() => handleCustomerClick(result.Id)}
                   className="cursor-pointer">
                   <td>
                     <div className="w-[48px] h-[48px] overflow-hidden rounded-full mx-auto">
                       <img
-                        src={result.img}
+                        src={'/images/default.png'}
                         className="w-[48px] h-[48px]"
                         alt=""
                       />
                     </div>
                   </td>
-                  <td>{result.contact}</td>
-                  <td>{result.time}</td>
+                  <td>{result.Number}</td>
+                  <td>{convertToDateString(result.Date)}</td>
                 </tr>
               ))}
           </tbody>

@@ -11,8 +11,9 @@ import useAnimation from '@/app/_hooks/useAnimation';
 
 const ForgetPasswordComponent = () => {
   const [step, setStep] = useState(1);
-  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
   const [mobile, setMobile] = useState(null);
+  const [id, setId] = useState(null);
 
   const { isStepTransitionComplete, handleExitComplete } = useAnimation();
 
@@ -22,8 +23,9 @@ const ForgetPasswordComponent = () => {
         {step === 1 && isStepTransitionComplete && (
           <ForgetPassword
             setStep={setStep}
-            setUsername={setUsername}
+            setEmail={setEmail}
             setMobile={setMobile}
+            setId={setId}
           />
         )}
       </AnimatePresence>
@@ -31,8 +33,9 @@ const ForgetPasswordComponent = () => {
         {step === 2 && isStepTransitionComplete && (
           <VerificationForm
             setStep={setStep}
-            username={username}
+            email={email}
             mobile={mobile}
+            id={id}
           />
         )}
       </AnimatePresence>
@@ -40,8 +43,9 @@ const ForgetPasswordComponent = () => {
         {step === 3 && isStepTransitionComplete && (
           <CreatePassword
             setStep={setStep}
-            username={username}
+            email={email}
             mobile={mobile}
+            id={id}
           />
         )}
       </AnimatePresence>

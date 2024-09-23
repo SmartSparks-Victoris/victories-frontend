@@ -9,22 +9,24 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSearchParams } from 'next/navigation';
 
-const Filters: FC<FiltersProps> = ({ categories, status, numberOfResults }) => {
+const Filters: FC<FiltersProps> = ({ categories, state, numberOfResults }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState(
     Number(searchParams.get('category')) || -1,
   );
-  const [selectedStatus, setSelectedStatus] = useState(
-    Number(searchParams.get('status')) || -1,
+  const [selectedState, setSelectedState] = useState(
+    Number(searchParams.get('state')) || -1,
   );
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  console.log('STATE: ', state);
 
   const { control } = useForm();
 
   useEffect(() => {
     const category = Number(searchParams.get('category'));
-    const status = Number(searchParams.get('status'));
+    const state = Number(searchParams.get('state'));
 
     if (category) {
       setSelectedCategory(category);
@@ -32,10 +34,10 @@ const Filters: FC<FiltersProps> = ({ categories, status, numberOfResults }) => {
       setSelectedCategory(-1);
     }
 
-    if (status) {
-      setSelectedStatus(status);
+    if (state) {
+      setSelectedState(state);
     } else {
-      setSelectedStatus(-1);
+      setSelectedState(-1);
     }
   }, [searchParams]);
 
@@ -52,15 +54,15 @@ const Filters: FC<FiltersProps> = ({ categories, status, numberOfResults }) => {
     router.push(`${window.location.pathname}?${searchParams.toString()}`);
   }
 
-  function handleStatusChange(selectedValue: number) {
+  function handleStateChange(selectedValue: number) {
     const searchParams = new URLSearchParams(window.location.search);
 
     if (selectedValue === -1) {
-      searchParams.delete('status');
+      searchParams.delete('state');
     } else {
-      searchParams.set('status', String(selectedValue));
+      searchParams.set('state', String(selectedValue));
     }
-    setSelectedStatus(selectedValue);
+    setSelectedState(selectedValue);
 
     router.push(`${window.location.pathname}?${searchParams.toString()}`);
   }
@@ -85,15 +87,15 @@ const Filters: FC<FiltersProps> = ({ categories, status, numberOfResults }) => {
         </div>
         <div className="w-fit">
           <DropDown
-            name="status"
+            name="state"
             label=""
             control={control}
-            defaultValue={selectedStatus}
-            array={status}
+            defaultValue={selectedState}
+            array={state}
             setSelectedDropDown={(name) => setOpenDropdown(name)}
-            isOpen={openDropdown === 'status'}
+            isOpen={openDropdown === 'state'}
             all={true}
-            handleChange={handleStatusChange}
+            handleChange={handleStateChange}
           />
         </div>
       </div>

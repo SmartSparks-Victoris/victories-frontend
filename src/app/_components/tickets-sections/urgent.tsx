@@ -33,7 +33,7 @@ const Urgent: FC<UrgentProps> = ({ result }) => {
 
   return (
     <>
-      {result.urgent === 0 && result.status !== 'completed' && (
+      {result.Urgent === 0 && result.State !== 'completed' && (
         <label
           onClick={(e) => e.stopPropagation()}
           style={{
@@ -42,7 +42,7 @@ const Urgent: FC<UrgentProps> = ({ result }) => {
           }}>
           <input
             type="checkbox"
-            checked={result.urgent === 0}
+            checked={result.Urgent === 0}
             style={{ display: 'none' }} // Hide the default checkbox
             onClick={(e) => e.stopPropagation()}
             onChange={(e) => {
@@ -53,11 +53,11 @@ const Urgent: FC<UrgentProps> = ({ result }) => {
           <span className="custom-checkbox"></span>
         </label>
       )}
-      {result.urgent === 1 && result.status !== 'completed' && (
+      {result.Urgent === 1 && result.State !== 'completed' && (
         <label onClick={(e) => e.stopPropagation()}>
           <input
             type="checkbox"
-            checked={result.urgent === 1}
+            checked={result.Urgent === 1}
             onClick={(e) => e.stopPropagation()}
             onChange={(e) => {
               e.stopPropagation();

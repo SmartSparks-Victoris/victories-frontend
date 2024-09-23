@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import DeleteModal from '../shared-ui/delete-modal';
 import RowView from '../shared-ui/row-view';
 
-const Admin = ({ admin }) => {
+const Admin = ({ admin, token }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAdmin, setSelectedAdmin] = useState(null);
 
@@ -38,6 +38,7 @@ const Admin = ({ admin }) => {
         show={isModalOpen}
         onClose={closeModal}
         admin={selectedAdmin}
+        token={token}
       />
     </>
   );

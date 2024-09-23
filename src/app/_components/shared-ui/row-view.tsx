@@ -4,6 +4,7 @@ import React, { FC } from 'react';
 import ActionButton from './action';
 import CustomLink from '../navigation/custom-link';
 import { RowViewProps } from '@/app/_types/shared-ui.types';
+import { convertToDateString } from '@/app/_utils/helpers';
 
 const RowView: FC<RowViewProps> = ({
   onClick = () => {},
@@ -21,18 +22,22 @@ const RowView: FC<RowViewProps> = ({
       }`}>
       <div className="flex gap-[26px] items-center justify-center justify-self-center lg:justify-self-start flex-wrap">
         <div className="w-[52px] h-[52px] flex-shrink-0">
-          <img src={data.img} className="w-[52px] h-[52px]" alt="" />
+          <img
+            src={data.img ? data.img : '/images/default.png'}
+            className="w-[52px] h-[52px]"
+            alt=""
+          />
         </div>
-        {type === 'admin' && <p>{data.name}</p>}
-        {type === 'customer' && <p>{data.number}</p>}
+        {type === 'admin' && <p>{data.userName}</p>}
+        {type === 'customer' && <p>{data.Number}</p>}
       </div>
       {type === 'admin' && (
         <>
           <div className="text-center flex items-center justify-center h-[100%]">
-            <p>{data.tickets} Tickets</p>
+            <p>{data.countOfTickets} Tickets</p>
           </div>
           <div className="text-center flex items-center justify-center h-[100%]">
-            <p>{data.date}</p>
+            <p>{convertToDateString(data.registerationDate)}</p>
           </div>
           <div className="text-center flex items-center justify-center h-[100%]">
             <p>Id: {data.id}</p>
@@ -44,7 +49,7 @@ const RowView: FC<RowViewProps> = ({
       )}
       {type === 'customer' && (
         <div className="text-center flex items-center justify-center lg:justify-end h-[100%]">
-          <p>{data.date}</p>
+          <p>{convertToDateString(data.Date)}</p>
         </div>
       )}
     </CustomLink>

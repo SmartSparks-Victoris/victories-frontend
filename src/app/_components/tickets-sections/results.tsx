@@ -17,26 +17,26 @@ const Results = ({ results, setLength }) => {
     searchParams.get('order') || 'desc',
   );
   const [sortKeyView, setSortKeyView] = useState(
-    searchParams.get('key') || 'urgent',
+    searchParams.get('key') || 'Urgent',
   );
 
   useEffect(() => {
     const category = Number(searchParams.get('category'));
-    const status = Number(searchParams.get('status'));
-    const sortKey = searchParams.get('key') || sortKeyView || 'urgent'; // Default sort key
+    const state = Number(searchParams.get('state'));
+    const sortKey = searchParams.get('key') || sortKeyView || 'Urgent'; // Default sort key
     const sortOrder = searchParams.get('order') || sortOrderView || 'desc'; // Default sort order
 
     let myFilteredResults = results;
 
     if (category) {
       myFilteredResults = myFilteredResults.filter(
-        (result) => result.category_id === category,
+        (result) => result.CategoryId === category,
       );
     }
 
-    if (status) {
+    if (state) {
       myFilteredResults = myFilteredResults.filter(
-        (result) => result.status_id === status,
+        (result) => result.StateId === state,
       );
     }
 
@@ -73,7 +73,7 @@ const Results = ({ results, setLength }) => {
               <th>
                 <ResultsTableHead
                   text="Urgent"
-                  keyValue="urgent"
+                  keyValue="Urgent"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -82,8 +82,8 @@ const Results = ({ results, setLength }) => {
               </th>
               <th>
                 <ResultsTableHead
-                  text="Status"
-                  keyValue="status"
+                  text="State"
+                  keyValue="State"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -93,7 +93,7 @@ const Results = ({ results, setLength }) => {
               <th>
                 <ResultsTableHead
                   text="Title"
-                  keyValue="title"
+                  keyValue="Title"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -103,7 +103,7 @@ const Results = ({ results, setLength }) => {
               <th>
                 <ResultsTableHead
                   text="Category"
-                  keyValue="category"
+                  keyValue="Category"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -113,7 +113,7 @@ const Results = ({ results, setLength }) => {
               <th>
                 <ResultsTableHead
                   text="Admin"
-                  keyValue="admin"
+                  keyValue="Admin"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -123,7 +123,7 @@ const Results = ({ results, setLength }) => {
               <th>
                 <ResultsTableHead
                   text="Date"
-                  keyValue="date"
+                  keyValue="Date"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -133,7 +133,7 @@ const Results = ({ results, setLength }) => {
               <th>
                 <ResultsTableHead
                   text="Sentiment"
-                  keyValue="sentiment"
+                  keyValue="Sentiment"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -143,7 +143,7 @@ const Results = ({ results, setLength }) => {
               <th>
                 <ResultsTableHead
                   text="Degree Of Sentiment"
-                  keyValue="degree_of_sentiment"
+                  keyValue="SentimentDegree"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -157,20 +157,20 @@ const Results = ({ results, setLength }) => {
               filteredResults.map((result) => (
                 <tr
                   key={result.id}
-                  onClick={(e) => handleRowClick(e, result.id)}
+                  onClick={(e) => handleRowClick(e, result.Id)}
                   className="cursor-pointer">
                   <td>
                     <Urgent result={result} />
                   </td>
                   <td>
-                    <Status status={result.status} />
+                    <Status status={result.State} />
                   </td>
-                  <td>{result.title}</td>
-                  <td>{result.category}</td>
-                  <td>{result.admin}</td>
-                  <td>{result.date}</td>
-                  <td>{result.sentiment}</td>
-                  <td>{result.degree_of_sentiment}</td>
+                  <td>{result.Title}</td>
+                  <td>{result.Category}</td>
+                  <td>{result.Admin}</td>
+                  <td>{result.Date}</td>
+                  <td>{result.Sentiment}</td>
+                  <td>{result.SentimentDegree}</td>
                 </tr>
               ))}
           </tbody>

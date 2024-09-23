@@ -6,6 +6,7 @@ const newSchema = z.object({
   email: z.string().email(),
   username: z.string().min(1),
   password: z.string().min(1),
+  number: z.string().min(1),
 });
 
 export default newSchema;

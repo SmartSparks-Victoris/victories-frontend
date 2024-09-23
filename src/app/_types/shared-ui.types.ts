@@ -14,6 +14,7 @@ export type ButtonProps = {
   className?: string;
   variant?: string;
   variantColor?: string;
+  isPending?: boolean;
 };
 
 export type TextInputProps = {
@@ -27,6 +28,7 @@ export type TextInputProps = {
   labelColor?: string;
   icon?: string;
   iconSubmit?: boolean;
+  isPending?: boolean;
 };
 
 export type DropDownProps = {

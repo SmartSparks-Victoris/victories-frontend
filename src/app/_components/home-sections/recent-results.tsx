@@ -13,16 +13,16 @@ const Recent = ({ results }) => {
         {results &&
           results.map((result) => (
             <CustomLink
-              href={`/tickets/${result.id}`}
-              key={result.id}
+              href={`/tickets/${result.Id}`}
+              key={result.Id}
               className="flex gap-1">
               <TicketsCloseDarkSVG />
 
               <div className="flex flex-col items-start gap-[4px]">
                 <p className="text-[#231318] text-[14px] font-semibold text-start">
-                  {result.title}
+                  {result.Title}
                 </p>
-                <p className="text-[12px] text-[#231318]">{result.category}</p>
+                <p className="text-[12px] text-[#231318]">{result.Category}</p>
               </div>
             </CustomLink>
           ))}

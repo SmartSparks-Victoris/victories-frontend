@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import ResultsTableHead from '../tickets-sections/results-table-head';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSearchParams } from 'next/navigation';
+import { convertToDateString } from '@/app/_utils/helpers';
 
 const Results = ({ results }) => {
   const router = useRouter();
@@ -15,11 +16,11 @@ const Results = ({ results }) => {
     searchParams.get('order') || 'desc',
   );
   const [sortKeyView, setSortKeyView] = useState(
-    searchParams.get('key') || 'time',
+    searchParams.get('key') || 'date',
   );
 
   useEffect(() => {
-    const sortKey = searchParams.get('key') || 'time'; // Default sort key
+    const sortKey = searchParams.get('key') || 'date'; // Default sort key
     const sortOrder = searchParams.get('order') || 'desc'; // Default sort order
 
     let myFilteredResults = results;
@@ -54,7 +55,7 @@ const Results = ({ results }) => {
               <th>
                 <ResultsTableHead
                   text="Name"
-                  keyValue="name"
+                  keyValue="userName"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -74,7 +75,7 @@ const Results = ({ results }) => {
               <th>
                 <ResultsTableHead
                   text="Tickets"
-                  keyValue="tickets"
+                  keyValue="countOfTickets"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -83,8 +84,8 @@ const Results = ({ results }) => {
               </th>
               <th>
                 <ResultsTableHead
-                  text="Time"
-                  keyValue="time"
+                  text="Date"
+                  keyValue="registerationDate"
                   sortKeyView={sortKeyView}
                   sortOrderView={sortOrderView}
                   setSortOrderView={setSortOrderView}
@@ -103,16 +104,16 @@ const Results = ({ results }) => {
                   <td>
                     <div className="w-[48px] h-[48px] overflow-hidden rounded-full mx-auto">
                       <img
-                        src={result.img}
+                        src={result.img ? result.img : '/images/default.png'}
                         className="w-[48px] h-[48px]"
                         alt=""
                       />
                     </div>
                   </td>
-                  <td>{result.name}</td>
+                  <td>{result.userName}</td>
                   <td>{result.id}</td>
-                  <td>{result.tickets}</td>
-                  <td>{result.time}</td>
+                  <td>{result.countOfTickets}</td>
+                  <td>{convertToDateString(result.registerationDate)}</td>
                 </tr>
               ))}
           </tbody>

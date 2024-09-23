@@ -13,7 +13,7 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'nextjs-toploader/app';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-const Form = ({ ticket, categories, status }) => {
+const Form = ({ ticket, categories, state }) => {
   const [selectedDropDown, setSelectedDropDown] = useState(null);
   console.log(ticket);
   const {
@@ -24,10 +24,10 @@ const Form = ({ ticket, categories, status }) => {
   } = useForm<z.infer<typeof ticketUpdateSchema>>({
     resolver: zodResolver(ticketUpdateSchema),
     defaultValues: {
-      category: ticket.category_id,
-      status: ticket.status_id,
-      summary: ticket.summary,
-      title: ticket.title,
+      Category: ticket.CategoryId,
+      State: ticket.StateId,
+      Summary: ticket.Summary,
+      Title: ticket.Title,
     },
   });
 
@@ -36,8 +36,8 @@ const Form = ({ ticket, categories, status }) => {
 
   const router = useRouter();
 
-  const [selectedCategory, setSelectedCategory] = useState(ticket.category_id);
-  const [selectedStatus, setSelectedStatus] = useState(ticket.status_id);
+  const [selectedCategory, setSelectedCategory] = useState(ticket.CategoryId);
+  const [selectedState, setSelectedState] = useState(ticket.StateId);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   function handleCategoryChange(selectedValue: string | number) {
@@ -45,8 +45,8 @@ const Form = ({ ticket, categories, status }) => {
     router.refresh();
   }
 
-  function handleStatusChange(selectedValue: string | number) {
-    setSelectedStatus(selectedValue);
+  function handleStateChange(selectedValue: string | number) {
+    setSelectedState(selectedValue);
     router.refresh();
   }
 
@@ -60,34 +60,34 @@ const Form = ({ ticket, categories, status }) => {
         className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
           <DropDown
-            name="category"
+            name="Category"
             label="Category"
             control={control}
-            defaultValue={ticket.cateogry_id}
+            defaultValue={ticket.CategoryId}
             array={categories}
             setSelectedDropDown={(name) => setOpenDropdown(name)}
-            isOpen={openDropdown === 'category'}
+            isOpen={openDropdown === 'Category'}
             handleChange={handleCategoryChange}
           />
           <DropDown
-            name="status"
-            label="Status"
+            name="State"
+            label="State"
             control={control}
-            defaultValue={ticket.status_id}
-            array={status}
+            defaultValue={ticket.StateId}
+            array={state}
             setSelectedDropDown={(name) => setOpenDropdown(name)}
-            isOpen={openDropdown === 'status'}
-            handleChange={handleStatusChange}
+            isOpen={openDropdown === 'State'}
+            handleChange={handleStateChange}
           />
           <TextInput
-            name="title"
+            name="Title"
             register={register}
             label="Title"
             placeholder="Title"
             type="text"
           />
           <TextInput
-            name="summary"
+            name="Summary"
             register={register}
             label="Summary"
             placeholder="Summary"

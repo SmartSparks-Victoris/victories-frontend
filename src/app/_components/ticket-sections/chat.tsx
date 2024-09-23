@@ -8,6 +8,7 @@ import SendSVG from '../svg/send';
 import messageSchema from '@/app/_schemas/message';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { convertToChatTime } from '@/app/_utils/helpers';
 
 const Chat = ({ ticket, sentiment = true }) => {
   const [sentimentValue, setSentimentValue] = useState(null);
@@ -31,7 +32,7 @@ const Chat = ({ ticket, sentiment = true }) => {
   return (
     <section className="w-[100%] rounded-lg overflow-hidden border-1 border-surfaceTertiary shadow-[0px_4px_8px_2px_#999999] xl:order-2 order-1">
       <div className="flex justify-between py-[20px] px-4 bg-surfaceTertiary text-textNavBarPrimary text-[20px] font-medium">
-        <p>{ticket.user_number}</p>
+        <p>{ticket.Mobile}</p>
         {sentiment && (
           <button
             onClick={handleSentimentCheck}
@@ -51,7 +52,7 @@ const Chat = ({ ticket, sentiment = true }) => {
       </div>
       <div>
         <div className="px-4 py-[24px] flex flex-col gap-5 max-h-[600px] overflow-y-auto overflow-x-hidden">
-          {ticket.messages.map((message) => {
+          {ticket.Messages.map((message) => {
             return (
               <div key={message.id} className="flex flex-col gap-1">
                 <div
@@ -77,7 +78,7 @@ const Chat = ({ ticket, sentiment = true }) => {
                   className={`${
                     message.type === 'customer' ? 'mr-auto' : 'ml-auto'
                   } w-fit text-textBodyPrimary text-[12px]`}>
-                  {message.time}
+                  {convertToChatTime(message.time)}
                 </p>
               </div>
             );

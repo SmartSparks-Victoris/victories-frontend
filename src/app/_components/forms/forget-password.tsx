@@ -3,7 +3,7 @@
 
 import * as z from 'zod';
 
-import React, { FC } from 'react';
+import React, { FC, useTransition } from 'react';
 
 import Button from '../shared-ui/button';
 import { ForgetPasswordProps } from '@/app/_types/guest.types';
@@ -13,11 +13,13 @@ import { motion } from 'framer-motion';
 import useAnimation from '@/app/_hooks/useAnimation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import toast from 'react-hot-toast';
 
 const ForgetPassword: FC<ForgetPasswordProps> = ({
   setStep,
-  setUsername,
+  setEmail,
   setMobile,
+  setId,
 }) => {
   const {
     register,
@@ -27,17 +29,34 @@ const ForgetPassword: FC<ForgetPasswordProps> = ({
     resolver: zodResolver(mobileSchema),
   });
 
+  const type = 'success';
+  // const response = {
+  //   message: 'Invalid Email or Mobile Number',
+  // };
+  const response = {
+    id: 6,
+  };
+
   const { setIsStepTransitionComplete, animationVariants } = useAnimation();
 
   function handleLoginSuccess(data) {
     // TODO: Redirect to reset password page
-    setUsername(data.username);
-    setMobile(data.mobile);
-    setIsStepTransitionComplete(false);
-    setStep(2); // Move to step 2
+    startTransition(() => {
+      if (type === 'error') {
+        toast.error(response.message);
+      } else {
+        setId(response.id);
+        setEmail(data.email);
+        setMobile(data.mobile);
+        setIsStepTransitionComplete(false);
+        setStep(2); // Move to step 2
+      }
+    });
   }
 
   function handleLoginFailure() {}
+
+  const [isPending, startTransition] = useTransition();
 
   return (
     <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center py-4">
@@ -67,6 +86,7 @@ const ForgetPassword: FC<ForgetPasswordProps> = ({
                   error={errors.email}
                   register={register}
                   placeholder={'Enter your email'}
+                  isPending={isPending}
                 />
                 <TextInput
                   label="Mobile"
@@ -75,6 +95,7 @@ const ForgetPassword: FC<ForgetPasswordProps> = ({
                   error={errors.mobile}
                   register={register}
                   placeholder={'Enter your Mobile Number'}
+                  isPending={isPending}
                 />
                 <p>
                   You may receive Mobile notifications for security and login
@@ -84,6 +105,7 @@ const ForgetPassword: FC<ForgetPasswordProps> = ({
               <Button
                 type="submit"
                 value="Send"
+                isPending={isPending}
                 className={'w-[100%]'}></Button>
             </form>
           </div>

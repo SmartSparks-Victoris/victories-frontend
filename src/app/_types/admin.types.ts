@@ -45,7 +45,7 @@ export type FiltersProps = {
     name: string;
     id: string | number;
   };
-  status: {
+  state: {
     name: string;
     id: string | number;
   };

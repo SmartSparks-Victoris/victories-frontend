@@ -33,7 +33,7 @@ const Admin = ({ results, recent }) => {
             number={40}
           />
           <TicketItem
-            href={'/tickets?key=urgent&order=desc'}
+            href={'/tickets?key=Urgent&order=desc'}
             type="urgent"
             text="Urgent Tickets"
             percentage={20}

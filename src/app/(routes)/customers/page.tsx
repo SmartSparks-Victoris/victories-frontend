@@ -4,68 +4,58 @@ import ResultsHead from '@/app/_components/shared-ui/results-head';
 
 const customers = [
   {
-    img: '/images/default.png',
-    id: 1,
-    contact: '01094774383',
-    time: '2024-09-01T10:00:00Z',
+    Id: 1,
+    Number: '01894774383',
+    Date: '2024-09-01T10:00:00Z',
   },
   {
-    img: '/images/default.png',
-    id: 2,
-    contact: '01094734383',
-    time: '2024-09-01T11:30:00Z',
+    Id: 2,
+    Number: '01094774383',
+    Date: '2024-09-01T10:00:00Z',
   },
   {
-    img: '/images/default.png',
-    id: 3,
-    contact: '01194774383',
-    time: '2024-09-01T13:45:00Z',
+    Id: 3,
+    Number: '01094774383',
+    Date: '2024-09-01T10:00:00Z',
   },
   {
-    img: '/images/default.png',
-    id: 4,
-    contact: '01294774383',
-    time: '2024-09-01T15:00:00Z',
+    Id: 4,
+    Number: '01094774383',
+    Date: '2024-09-01T10:00:00Z',
   },
   {
-    img: '/images/default.png',
-    id: 5,
-    contact: '01294774383',
-    time: '2024-09-01T16:30:00Z',
+    Id: 5,
+    Number: '01094774383',
+    Date: '2024-09-01T10:00:00Z',
   },
   {
-    img: '/images/default.png',
-    id: 6,
-    contact: '01594774383',
-    time: '2024-09-01T18:00:00Z',
+    Id: 6,
+    Number: '01094774383',
+    Date: '2024-09-01T10:00:00Z',
   },
   {
-    img: '/images/default.png',
-    id: 7,
-    contact: '01022774383',
-    time: '2024-09-01T19:15:00Z',
+    Id: 7,
+    Number: '01094774383',
+    Date: '2024-09-01T10:00:00Z',
   },
   {
-    img: '/images/default.png',
-    id: 8,
-    contact: '01094774380',
-    time: '2024-09-01T20:45:00Z',
+    Id: 8,
+    Number: '01094774383',
+    Date: '2024-09-01T10:00:00Z',
   },
   {
-    img: '/images/default.png',
-    id: 9,
-    contact: '01014774383',
-    time: '2024-09-01T22:00:00Z',
+    Id: 9,
+    Number: '01094774383',
+    Date: '2024-09-01T10:00:00Z',
   },
   {
-    img: '/images/default.png',
-    id: 10,
-    contact: '01094114383',
-    time: '2024-09-01T23:30:00Z',
+    Id: 10,
+    Number: '01094774383',
+    Date: '2024-09-01T10:00:00Z',
   },
 ];
 
-const page = () => {
+const page = async () => {
   return (
     <>
       <ResultsHead text="Customers" results={customers} />

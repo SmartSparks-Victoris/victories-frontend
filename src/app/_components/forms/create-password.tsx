@@ -3,7 +3,7 @@
 
 import * as z from 'zod';
 
-import React, { FC } from 'react';
+import React, { FC, useTransition } from 'react';
 
 import Button from '../shared-ui/button';
 import { CreatePasswordProps } from '@/app/_types/guest.types';
@@ -13,13 +13,16 @@ import { motion } from 'framer-motion';
 import useAnimation from '@/app/_hooks/useAnimation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import toast from 'react-hot-toast';
 
 const CreatePassword: FC<CreatePasswordProps> = ({
   setStep,
-  username,
+  email,
   mobile,
+  id,
 }) => {
-  console.log(username);
+  console.log('ID IS: ', id);
+  console.log(email);
   console.log(mobile);
   const {
     register,
@@ -29,10 +32,23 @@ const CreatePassword: FC<CreatePasswordProps> = ({
     resolver: zodResolver(createPasswordSchema),
   });
 
+  const type = 'success';
+  const response = {
+    message: "Can't Accept this password",
+  };
+
+  const [isPending, startTransition] = useTransition();
+
   function handleLoginSuccess(data) {
-    // TODO: Redirect to reset password page
-    setIsStepTransitionComplete(false);
-    setStep(-1);
+    startTransition(() => {
+      if (type === 'error') {
+        toast.error(response.message);
+      } else {
+        // TODO: Redirect to reset password page
+        setIsStepTransitionComplete(false);
+        setStep(-1);
+      }
+    });
   }
 
   function handleLoginFailure() {}
@@ -71,6 +87,7 @@ const CreatePassword: FC<CreatePasswordProps> = ({
                   error={errors.newPassword}
                   register={register}
                   placeholder={'Enter your New password'}
+                  isPending={isPending}
                 />
                 <TextInput
                   label="Confirm New Password"
@@ -79,6 +96,7 @@ const CreatePassword: FC<CreatePasswordProps> = ({
                   error={errors.confirm}
                   register={register}
                   placeholder={'Confirm your New password'}
+                  isPending={isPending}
                 />
               </div>
               <Button type="submit" value="Confirm" className="w-[100%]" />

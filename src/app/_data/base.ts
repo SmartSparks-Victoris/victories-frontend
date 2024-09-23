@@ -1,2 +1,2 @@
-export const API_URL =
-  'https://instahubbackend-grfmdnexbsezhwh6.germanywestcentral-01.azurewebsites.net';
+export const API_URL = 'https://instahub20240922062720.azurewebsites.net';
+

@@ -76,137 +76,119 @@ const messages = [
 
 const results = [
   {
-    id: 1,
-    urgent: 1,
-    status: 'inProgress', // "open", "inProgress", "completed"
-    status_id: 2,
-    title: 'Order #1234',
-    category: 'orders', // "orders", "feedbacks", "persons"
-    category_id: 1,
-    admin: 'John Doe',
-    date: '2024-09-11',
-    sentiment: 'positive',
-    degree_of_sentiment: 85,
-    messages: messages,
-    summary: 'This is a summary for ticket #1',
-    user_number: '(+20) 01594774383',
+    Id: 1,
+    Urgent: 1,
+    State: 'inProgress', // "open", "inProgress", "completed"
+    StateId: 2,
+    Title: 'Order #1234',
+    Category: 'orders', // "orders", "feedbacks", "persons"
+    CategoryId: 1,
+    Admin: 'John Doe',
+    Date: '2024-09-11',
+    Sentiment: 'positive',
+    SentimentDegree: 85,
+    Messages: messages,
+    Summary: 'This is a summary for ticket #1',
+    Mobile: '(+20) 01594774383',
   },
   {
-    id: 2,
-    urgent: 0,
-    status: 'completed', // "open", "inProgress", "completed"
-    status_id: 3,
-    title: 'Feedback #5678',
-    category: 'feedbacks', // "orders", "feedbacks", "persons"
-    category_id: 2,
-    admin: 'Jane Smith',
-    date: '2024-09-10',
-    sentiment: 'neutral',
-    degree_of_sentiment: 50,
-    messages: messages,
-    summary: 'This is a summary for ticket #2',
-    user_number: '(+20) 01394774383',
+    Id: 2,
+    Urgent: 0,
+    State: 'completed', // "open", "inProgress", "completed"
+    StateId: 3,
+    Title: 'Feedback #5678',
+    Category: 'feedbacks', // "orders", "feedbacks", "persons"
+    CategoryId: 2,
+    Admin: 'Jane Smith',
+    Date: '2024-09-10',
+    Sentiment: 'neutral',
+    SentimentDegree: 50,
+    Messages: messages,
+    Summary: 'This is a summary for ticket #1',
+    Mobile: '(+20) 01594774383',
   },
   {
-    id: 3,
-    urgent: 0,
-    status: 'open', // "open", "inProgress", "completed"
-    status_id: 1,
-    title: 'Person Update #2345',
-    category: 'persons', // "orders", "feedbacks", "persons"
-    category_id: 3,
-    admin: 'Alice Johnson',
-    date: '2024-09-09',
-    sentiment: 'negative',
-    degree_of_sentiment: 20,
-    messages: messages,
-    summary: 'This is a summary for ticket #3',
-    user_number: '(+20) 01294774383',
+    Id: 3,
+    Urgent: 0,
+    State: 'open', // "open", "inProgress", "completed"
+    StateId: 1,
+    Title: 'Person UpDate #2345',
+    Category: 'persons', // "orders", "feedbacks", "persons"
+    CategoryId: 3,
+    Admin: 'Alice Johnson',
+    Date: '2024-09-09',
+    Sentiment: 'negative',
+    SentimentDegree: 20,
+    Messages: messages,
+    Summary: 'This is a summary for ticket #1',
+    Mobile: '(+20) 01594774383',
   },
   {
-    id: 4,
-    urgent: 1,
-    status: 'completed', // "open", "inProgress", "completed"
-    status_id: 3,
-    title: 'Order #4321',
-    category: 'orders', // "orders", "feedbacks", "persons"
-    category_id: 1,
-    admin: 'Bob Brown',
-    date: '2024-09-08',
-    sentiment: 'positive',
-    degree_of_sentiment: 90,
-    messages: messages,
-    summary: 'This is a summary for ticket #4',
-    user_number: '(+20) 01194774383',
+    Id: 4,
+    Urgent: 1,
+    State: 'completed', // "open", "inProgress", "completed"
+    StateId: 3,
+    Title: 'Order #4321',
+    Category: 'orders', // "orders", "feedbacks", "persons"
+    CategoryId: 1,
+    Admin: 'Bob Brown',
+    Date: '2024-09-08',
+    Sentiment: 'positive',
+    SentimentDegree: 90,
+    Messages: messages,
+    Summary: 'This is a summary for ticket #1',
+    Mobile: '(+20) 01594774383',
   },
   {
-    id: 5,
-    urgent: 1,
-    status: 'open', // "open", "inProgress", "completed"
-    status_id: 1,
-    title: 'Feedback #8765',
-    category: 'feedbacks', // "orders", "feedbacks", "persons"
-    category_id: 2,
-    admin: 'Charlie Green',
-    date: '2024-09-07',
-    sentiment: 'negative',
-    degree_of_sentiment: 30,
-    messages: messages,
-    summary: 'This is a summary for ticket #5',
-    user_number: '(+20) 01094774383',
+    Id: 5,
+    Urgent: 1,
+    State: 'open', // "open", "inProgress", "completed"
+    StateId: 1,
+    Title: 'Feedback #8765',
+    Category: 'feedbacks', // "orders", "feedbacks", "persons"
+    CategoryId: 2,
+    Admin: 'Charlie Green',
+    Date: '2024-09-07',
+    Sentiment: 'negative',
+    SentimentDegree: 30,
+    Messages: messages,
+    Summary: 'This is a summary for ticket #1',
+    Mobile: '(+20) 01594774383',
   },
 ];
 
 const categories = [
-  {
-    id: 1,
-    name: 'orders',
-  },
-  {
-    id: 2,
-    name: 'feedbacks',
-  },
-  {
-    id: 3,
-    name: 'people',
-  },
+  { name: 'orders', id: 1 },
+  { name: 'Feedbacks', id: 2 },
+  { name: 'persons', id: 3 },
 ];
 
-const status = [
-  {
-    id: 1,
-    name: 'Open',
-  },
-  {
-    id: 2,
-    name: 'In Progress',
-  },
-  {
-    id: 3,
-    name: 'Closed',
-  },
+const States = [
+  { id: 1, name: 'open' },
+  { id: 2, name: 'inProgress' },
+  { id: 3, name: 'completed' },
 ];
 
 const page: FC<ParamsProps> = ({ params }) => {
   const id = Number(params.id);
-  const ticket = results.filter((t) => t.id === id)[0];
+  const ticket = results.filter((t) => t.Id === id)[0];
   return (
     <div>
       <div className="rounded-md flex flex-col sm:flex-row items-center border-1 border-strokeSecondary overflow-hidden caption-16 mb-6 sm:w-fit w-[100%]">
         <p className="px-[14px] py-[10px] border-r-[1px] border-b-[1px] border-solid w-[100%] text-center sm:w-fit border-b-strokeSecondary sm:border-r-strokeSecondary sm:border-b-transparent">
-          {ticket.category}
+          {ticket.Category}
         </p>
         <p className="px-[14px] py-[10px] border-r-[1px] border-b-[1px] border-solid w-[100%] text-center sm:w-fit border-b-strokeSecondary sm:border-r-strokeSecondary sm:border-b-transparent">
-          {ticket.title}
+          {ticket.Title}
         </p>
         <div className="px-[14px] flex gap-[10px] items-center">
-          <Status status={ticket.status} />
-          Ticket # {ticket.id}
+          <Status status={ticket.State} />
+          Ticket # {ticket.Id}
         </div>
       </div>
 
       <div className="flex gap-6 flex-col xl:flex-row">
-        <Form ticket={ticket} categories={categories} status={status} />
+        <Form ticket={ticket} categories={categories} state={States} />
         <Chat ticket={ticket} />
       </div>
     </div>

@@ -12,6 +12,7 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   variant = 'default',
   variantColor = 'none',
+  isPending = false,
 }) => {
   const defaultClasses =
     'cursor-pointer py-[12px] px-5 sm:px-[104px] rounded-md text-[24px]';
@@ -33,18 +34,23 @@ const Button: React.FC<ButtonProps> = ({
         'border-1 border-surfaceTertiary text-surfaceTertiary font-semibold';
     }
   } else {
-    extraClasses =
-      'bg-[url("/images/service-background.png")] bg-cover font-medium text-textNavBarPrimary';
+    extraClasses = `bg-[url("/images/service-background.png")] bg-cover font-medium text-textNavBarPrimary`;
   }
 
   const combinedClasses = classNames(defaultClasses, extraClasses, className);
 
   if (type === 'submit') {
-    return <input type="submit" value={value} className={combinedClasses} />;
+    return (
+      <input
+        type="submit"
+        value={isPending ? 'Loading...' : value}
+        className={combinedClasses}
+      />
+    );
   }
   return (
-    <button onClick={onClick} className={combinedClasses}>
-      {children}
+    <button onClick={onClick} className={combinedClasses} disabled={isPending}>
+      {isPending ? 'Loading...' : children}
     </button>
   );
 };

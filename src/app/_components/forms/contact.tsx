@@ -10,19 +10,24 @@ import Transition from '../shared-ui/transition';
 import contactSchema from '@/app/_schemas/contact';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import toast from 'react-hot-toast';
 
 const ContactForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
   });
 
-  function handleLoginSuccess() {}
+  function handleFormSuccess(data) {
+    toast.success('Data Sent Successfully');
+    reset();
+  }
 
-  function handleLoginFailure() {}
+  function handleFormFailure(error) {}
 
   return (
     <section className="min-h-[calc(100vh-var(--guestNav))] flex  justify-center items-center text-textNavBarPrimary py-[56px]">
@@ -38,7 +43,7 @@ const ContactForm = () => {
             Reach out to us for any inquiries or support.
           </p>
           <form
-            onSubmit={handleSubmit(handleLoginSuccess, handleLoginFailure)}
+            onSubmit={handleSubmit(handleFormSuccess, handleFormFailure)}
             className="flex flex-col gap-3 w-[100%]">
             <TextInput
               placeholder="Enter Your Name"
@@ -64,7 +69,7 @@ const ContactForm = () => {
               name="message"
               label="Message"
               labelColor="white"
-              error={errors.email}
+              error={errors.message}
               register={register}
             />
 

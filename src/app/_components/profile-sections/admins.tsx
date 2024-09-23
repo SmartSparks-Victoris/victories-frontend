@@ -7,31 +7,7 @@ import DeleteModal from '../shared-ui/delete-modal';
 import PlusSVG from '../svg/plus';
 import RowView from '../shared-ui/row-view';
 
-const admins = [
-  {
-    img: '/images/default.png',
-    id: 1,
-    name: 'John Doe',
-    date: '2024-09-19T08:05:00Z',
-    tickets: 250,
-  },
-  {
-    img: '/images/default.png',
-    id: 2,
-    name: 'Jane Doe',
-    date: '2024-09-19T08:05:00Z',
-    tickets: 150,
-  },
-  {
-    img: '/images/default.png',
-    id: 3,
-    name: 'Doe Joe',
-    date: '2024-09-19T08:05:00Z',
-    tickets: 270,
-  },
-];
-
-const Admins = () => {
+const Admins = ({ admins, token }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAdmin, setSelectedAdmin] = useState(null);
 
@@ -81,6 +57,7 @@ const Admins = () => {
         show={isModalOpen}
         onClose={closeModal}
         admin={selectedAdmin}
+        token={token}
       />
     </section>
   );

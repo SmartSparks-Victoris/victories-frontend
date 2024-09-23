@@ -3,7 +3,7 @@
 
 import * as z from 'zod';
 
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState, useTransition } from 'react';
 
 import Button from '../shared-ui/button';
 import CustomLink from '../navigation/custom-link';
@@ -30,7 +30,46 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
     resolver: zodResolver(loginSchema),
   });
 
+  const [isPending, startTransition] = useTransition();
+
   async function handleLoginSuccess(data) {
+    startTransition(async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/admin/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: data.username,
+            password: data.password,
+          }),
+        });
+        const result = await res.json();
+
+        if (result.token) {
+          document.cookie = `token=${result.token}; path=/; secure; samesite=strict; max-age=86000`;
+        }
+        router.push('/');
+        await revalidateLogin();
+
+        toast.success('Logged in successfully');
+      } catch (e) {
+        toast.error('Error submitting form.');
+      }
+    });
+    // request to be sent
+    // if (type === 'error') {
+    //   toast.error(response.message);
+    //   return;
+    // }
+
+    // if (type === 'success') {
+    //   toast.success('Logged In Successfully');
+    //   await revalidateLogin();
+    //   router.push('/');
+    // }
+
     // try {
     //   const res = await fetch('http://localhost:3001/login', {
     //     method: 'POST',
@@ -55,12 +94,12 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
     //   // alert('Error submitting form.');
     // }
 
-    console.log(data);
-    console.log('OK??');
+    // console.log(data);
+    // console.log('OK??');
 
-    const res = await fetch(`${API_URL}/`);
-    const result = await res.json();
-    console.log(result);
+    // const res = await fetch(`${API_URL}/`);
+    // const result = await res.json();
+    // console.log(result);
   }
 
   function handleLoginFailure() {
@@ -91,6 +130,7 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
               label="Username"
               error={errors.username}
               register={register}
+              isPending={isPending}
             />
             <div>
               <TextInput
@@ -100,6 +140,7 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
                 label="Password"
                 error={errors.password}
                 register={register}
+                isPending={isPending}
               />
               <CustomLink
                 href="/forget-password"
@@ -108,7 +149,12 @@ const LoginForm: FC<{ redirect: string }> = ({ redirect }) => {
               </CustomLink>
             </div>
           </div>
-          <Button type="submit" value="Login" className="w-[100%]" />
+          <Button
+            type="submit"
+            value="Login"
+            className="w-[100%]"
+            isPending={isPending}
+          />
         </form>
       </div>
     </section>

@@ -7,7 +7,7 @@ const Customer = ({ customer }) => {
       <RowView
         data={customer}
         type="customer"
-        href={`/customers/${customer.id}`}
+        href={`/customers/${customer.Id}`}
       />
     </>
   );

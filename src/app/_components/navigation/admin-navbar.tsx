@@ -27,6 +27,7 @@ import { revalidateLogin } from '@/app/_actions/login';
 import toast from 'react-hot-toast';
 import { useRouter } from 'nextjs-toploader/app';
 import { useSocket } from '@/app/_contexts/socket-context';
+import { logout } from '@/app/_actions/logout';
 
 const AdminNavbar: FC<UserProps> = ({ user }) => {
   const { socket } = useSocket();
@@ -34,10 +35,14 @@ const AdminNavbar: FC<UserProps> = ({ user }) => {
 
   async function handleLogout() {
     try {
-      await fetch('http://localhost:3001/logout', {
-        method: 'POST',
-        credentials: 'include',
-      });
+      // await fetch('http://localhost:3001/logout', {
+      //   method: 'POST',
+      //   credentials: 'include',
+      // });
+
+      // document.cookie =
+      //   'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+      await logout();
       socket.emit('logout', 1);
       // disconnectSocket();
       await revalidateLogin();

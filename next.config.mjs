@@ -6,6 +6,12 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true, // Ignores TypeScript errors during build
   },
+  // experimental: {
+  //   staleTimes: {
+  //     dynamic: 0,
+  //     static: 180,
+  //   },
+  // },
 };
 
 export default nextConfig;
