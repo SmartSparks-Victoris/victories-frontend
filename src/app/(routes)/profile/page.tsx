@@ -3,9 +3,8 @@ import React from 'react';
 import { cookies } from 'next/headers';
 import { parseJwt } from '@/app/_utils/auth';
 
-const user = parseJwt(cookies().get('token')?.value);
-
 const page = () => {
+  const user = parseJwt(cookies().get('token')?.value);
   return (
     <>
       <PersonalData user={user} />
